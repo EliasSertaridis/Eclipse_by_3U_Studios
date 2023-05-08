@@ -1,0 +1,6 @@
+Add Abilities Class in domain model
+Attributes:
+	Description (String)
+	Modifier (int)
+	Race_id (int)
+
