@@ -1,6 +1,13 @@
-Add Abilities Class in domain model
+Classes to be added in Domain Model
+
+Ability
 Attributes:
 	Description (String)
 	Modifier (int)
 	Race_id (int)
 
+Combat
+Attributes:
+	turn (bool)
+	tempPlayerHP (int)
+	tempEnemyHP (int)
