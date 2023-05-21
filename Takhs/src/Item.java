@@ -17,7 +17,7 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
-
+// we love takhs for ever
     public void setDescription(String description) {
         this.description = description;
     }
