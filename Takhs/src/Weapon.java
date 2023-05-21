@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Weapon extends Item {
 
     int damage;
