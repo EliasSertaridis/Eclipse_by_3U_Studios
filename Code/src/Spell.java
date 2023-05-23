@@ -1,12 +1,19 @@
 public class Spell extends Item{
 
-    String[] damageType={"Fire","Ice","Arcane","Holy","Lightning"};
+    TypeOfDamage damageType;
+    enum TypeOfDamage{
+        Fire,
+        Ice,
+        Arcane,
+        Holy,
+        Lightning
+    }
     float scaling;
     int damage;
     String[] statPrerequisiteName={"INT","WIS"};
     int statPrerequisite;
 
-    public Spell(String name, String description,float scaling,int damage,String[]damageType,String[] statPrerequisiteName,int statPrerequisite) {
+    public Spell(String name, String description,float scaling,int damage,TypeOfDamage damageType,String[] statPrerequisiteName,int statPrerequisite) {
         super(name, description);
         this.damage=damage;
         this.scaling=scaling;
@@ -15,11 +22,11 @@ public class Spell extends Item{
         this.statPrerequisiteName=statPrerequisiteName;
     }
 
-    public String[] getDamageType() {
+    public TypeOfDamage getDamageType() {
         return damageType;
     }
 
-    public void setDamageType(String[] damageType) {
+    public void setDamageType(TypeOfDamage damageType) {
         this.damageType = damageType;
     }
 

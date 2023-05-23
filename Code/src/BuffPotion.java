@@ -1,9 +1,18 @@
 public class BuffPotion extends QuickItem{
 
     int statModifier;
-    String[] statToBeModified={"STR","DEX","VIT","INT","WIS","Defence"};
+    StatForModifing statToBeModified;
+    enum StatForModifing{
+        STR,
+        DEX,
+        VIT,
+        INT,
+        WIS,
+        Defence
+    }
 
-    public BuffPotion(String name, String description,int statModifier,String[] statToBeModified) {
+
+    public BuffPotion(String name, String description,int statModifier,StatForModifing statToBeModified) {
         super(name, description);
         this.statModifier=statModifier;
         this.statToBeModified=statToBeModified;
@@ -17,11 +26,11 @@ public class BuffPotion extends QuickItem{
         this.statModifier = statModifier;
     }
 
-    public String[] getStatToBeModified() {
+    public StatForModifing getStatToBeModified() {
         return statToBeModified;
     }
 
-    public void setStatToBeModified(String[] statToBeModified) {
+    public void setStatToBeModified(StatForModifing statToBeModified) {
         this.statToBeModified = statToBeModified;
     }
 }
