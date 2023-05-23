@@ -3,17 +3,31 @@ import java.util.Arrays;
 public class Weapon extends Item {
 
     int damage;
-    float scaling;
-    String[] damageType={"Slashing","Piercing","Bludgeoning"};
-    String[] weaponType={"Sword","Spear","Axe","Hammer"};
+    double scaling;
+    TypeOfDamage damageType;
+
+    enum TypeOfDamage {
+        Slashing,
+        Piercing,
+        Bludgeoning
+    }
+
+    enum TypeOfWeapon {
+        Sword,
+        Spear,
+        Axe,
+        Hammer
+    }
+
+    TypeOfWeapon weaponType;
 
 
-    public Weapon(String name, String description,String[] weaponType, String[] damageType, int damage, float scaling) {
+    public Weapon(String name, String description, TypeOfWeapon weaponType, TypeOfDamage damageType, int damage, double scaling) {
         super(name, description);
-        this.damage= damage;
-        this.scaling= scaling;
-        this.damageType= damageType;
-        this.weaponType= weaponType;
+        this.damage = damage;
+        this.scaling = scaling;
+        this.damageType = damageType;
+        this.weaponType = weaponType;
     }
 
     public int getDamage() {
@@ -24,27 +38,27 @@ public class Weapon extends Item {
         this.damage = damage;
     }
 
-    public float getScaling() {
+    public double getScaling() {
         return scaling;
     }
 
-    public void setScaling(float scaling) {
+    public void setScaling(double scaling) {
         this.scaling = scaling;
     }
 
-    public String[] getDamageType() {
+    public TypeOfDamage getDamageType() {
         return damageType;
     }
 
-    public void setDamageType(String[] damageType) {
+    public void setDamageType(TypeOfDamage damageType) {
         this.damageType = damageType;
     }
 
-    public String[] getWeaponType() {
+    public TypeOfWeapon getWeaponType() {
         return weaponType;
     }
 
-    public void setWeaponType(String[] weaponType) {
+    public void setWeaponType(TypeOfWeapon weaponType) {
         this.weaponType = weaponType;
     }
 }
