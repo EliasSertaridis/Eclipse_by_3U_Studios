@@ -10,10 +10,14 @@ public class Spell extends Item{
     }
     float scaling;
     int damage;
-    String[] statPrerequisiteName={"INT","WIS"};
+    PrerequisiteStat statPrerequisiteName;
+    enum PrerequisiteStat {
+        INT,
+        WIS
+    }
     int statPrerequisite;
 
-    public Spell(String name, String description,float scaling,int damage,TypeOfDamage damageType,String[] statPrerequisiteName,int statPrerequisite) {
+    public Spell(String name, String description,float scaling,int damage,TypeOfDamage damageType,PrerequisiteStat statPrerequisiteName,int statPrerequisite) {
         super(name, description);
         this.damage=damage;
         this.scaling=scaling;
@@ -46,11 +50,11 @@ public class Spell extends Item{
         this.damage = damage;
     }
 
-    public String[] getStatPrerequisiteName() {
+    public PrerequisiteStat getStatPrerequisiteName() {
         return statPrerequisiteName;
     }
 
-    public void setStatPrerequisiteName(String[] statPrerequisiteName) {
+    public void setStatPrerequisiteName(PrerequisiteStat statPrerequisiteName) {
         this.statPrerequisiteName = statPrerequisiteName;
     }
 

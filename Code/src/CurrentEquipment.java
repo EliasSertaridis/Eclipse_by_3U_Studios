@@ -3,7 +3,9 @@ import java.util.ArrayList;
 public class CurrentEquipment {
 
     ArrayList<Armor> currentArmor=new ArrayList<Armor>();
+    Armor head,chest,hands,legs;
     ArrayList<Weapon> currentWeapons=new ArrayList<Weapon>();
+    Weapon rightWeapon,leftWeapon;
     ArrayList<QuickItem> currentQuickItems=new ArrayList<QuickItem>();
 
     public CurrentEquipment(ArrayList<Armor> currentArmor, ArrayList<Weapon> currentWeapons, ArrayList<QuickItem> currentQuickItems) {
