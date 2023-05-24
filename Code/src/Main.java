@@ -8,5 +8,6 @@ public class Main {
        Weapon sword= new Weapon("excalibur","The sword of king Arthur", Weapon.TypeOfWeapon.Sword,Weapon.TypeOfDamage.Slashing,10,0.3);
        flask.setName("makhs");
         System.out.println(sword.getDamageType()+flask.getDescription());
+
     }
 }
