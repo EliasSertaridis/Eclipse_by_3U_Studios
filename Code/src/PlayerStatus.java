@@ -35,6 +35,24 @@ public class PlayerStatus {
         this.equipment = equipment;
     }
 
+    public int totalDamage(Weapon weapon){
+        double totalDamage;
+        double scalingDamage = 0;
+        if(weapon.getScalingType()== Weapon.TypeOfScaling.DEX) {
+            scalingDamage = (weapon.getScaling() + 1)*(player.getDexterity());
+        }else if(weapon.getScalingType()== Weapon.TypeOfScaling.STR) {
+            scalingDamage = (weapon.getScaling() + 1)*(player.getStrength());
+        }
+        else if(weapon.getScalingType()== Weapon.TypeOfScaling.INT) {
+            scalingDamage = (weapon.getScaling() + 1)*(player.getIntelligence());
+        }
+        else if(weapon.getScalingType()== Weapon.TypeOfScaling.WIS) {
+            scalingDamage = (weapon.getScaling() + 1)*(player.getWisdom());
+        }
+        totalDamage= weapon.getDamage()+scalingDamage;
+        return (int)totalDamage;
+    }
+
     public void openPlayerStatus() {
         int i = 0;
         boolean madeChoice = false;
@@ -64,7 +82,7 @@ public class PlayerStatus {
         while (!madeChoice) {
             if (input.equals("Head") || input.equals("Chest") || input.equals("Hand") || input.equals("Leg") || input.equals("Right") || input.equals("Left")) {
                 madeChoice = true;
-                chooseEquipment(input);
+                chooseEquipmentType(input);
             } else {
                 System.out.println("You typed it wrong. Try again");
                 input = scanner.nextLine();
@@ -73,7 +91,7 @@ public class PlayerStatus {
 
     }
 
-    public void chooseEquipment(String choice) {
+    public void chooseEquipmentType(String choice) {
         if (choice.equals("Head")) {
             chooseHead();
         } else if (choice.equals("Hand")) {
@@ -99,6 +117,11 @@ public class PlayerStatus {
             System.out.println(i + ".  " + head.getName());
             i++;
         }
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        input=scanner.nextLine();
+        int position= Integer.parseInt(input);
+        chooseEquipment(armor.get(position));
     }
 
     public void chooseChest() {
@@ -109,6 +132,11 @@ public class PlayerStatus {
             System.out.println(i + ".  " + chest.getName());
             i++;
         }
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        input=scanner.nextLine();
+        int position= Integer.parseInt(input);
+        chooseEquipment(armor.get(position-1));
     }
 
     public void chooseHand() {
@@ -118,7 +146,12 @@ public class PlayerStatus {
         for (Armor hand : armor) {
             System.out.println(i + ".  " + hand.getName());
             i++;
-        }
+        }Scanner scanner = new Scanner(System.in);
+        String input;
+        input=scanner.nextLine();
+        int position= Integer.parseInt(input);
+        chooseEquipment(armor.get(position-1));
+
     }
 
     public void chooseLeg() {
@@ -129,6 +162,11 @@ public class PlayerStatus {
             System.out.println(i + ".  " + leg.getName());
             i++;
         }
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        input=scanner.nextLine();
+        int position= Integer.parseInt(input);
+        chooseEquipment(armor.get(position));
     }
 
     public void chooseRightWeapon() {
@@ -139,6 +177,12 @@ public class PlayerStatus {
             System.out.println(i + ".  " + weapon.getName());
             i++;
         }
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        input=scanner.nextLine();
+        int position= Integer.parseInt(input);
+        chooseEquipment(equipment.get(position-1));
+        compareStats(equipment.get(position-1),this.equipment.getRightWeapon());
     }
 
     public void chooseLeftWeapon() {
@@ -149,6 +193,57 @@ public class PlayerStatus {
             System.out.println(i + ".  " + weapon.getName());
             i++;
         }
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        input=scanner.nextLine();
+        int position= Integer.parseInt(input);
+        chooseEquipment(equipment.get(position-1));
+        compareStats(equipment.get(position-1),this.equipment.getLeftWeapon());
+    }
+    public void chooseEquipment(Weapon weapon){
+        System.out.println("Weapon Name: "+weapon.getName());
+        System.out.println("Weapon Description: "+weapon.getDescription());
+        System.out.println("This Weapon Scales With: "+weapon.getScalingType());
+        System.out.println("The total Damage that "+ weapon.getName()+" can do is "+totalDamage(weapon));
+        System.out.println("Weapon Weight: "+weapon.getWeight());
+    }
+    public void chooseEquipment(Armor armor){
+        System.out.println(armor.armorType+" Armor Name: "+armor.getName());
+        System.out.println(armor.armorType+" Armor Description: "+armor.getDescription());
+        System.out.println("Defense: "+armor.getDefense());
+        System.out.println(armor.getWeight()+" Armor Weight: "+armor.getWeight());
+    }
+
+    public void compareStats(Weapon newWeapon, Weapon oldWeapon){
+        int diff=0;
+        int diffWeight=0;
+        System.out.println("The equiped "+oldWeapon.getName()+" has a total damage of "+totalDamage(oldWeapon));
+        if(totalDamage(oldWeapon)<totalDamage(newWeapon)){
+            diff=totalDamage(newWeapon)-totalDamage(oldWeapon);
+            System.out.println("The "+newWeapon.getName()+" has "+diff+" more damage than "+oldWeapon.getName());
+        }else if(totalDamage(oldWeapon)>totalDamage(newWeapon)){
+            diff=totalDamage(oldWeapon)-totalDamage(newWeapon);
+            System.out.println("The "+oldWeapon.getName()+" has "+diff+" more damage than "+newWeapon.getName());
+
+        }else if(totalDamage(oldWeapon)==totalDamage(newWeapon)) {
+            System.out.println("Both "+oldWeapon.getName()+" and "+newWeapon.getName()+" have the same damage of "+totalDamage(oldWeapon));
+        }
+            if(oldWeapon.getWeight()< newWeapon.getWeight()){
+                diffWeight= newWeapon.getWeight()- oldWeapon.getWeight();
+                System.out.println("The "+newWeapon.getName()+" has "+diffWeight+" more Weight than "+oldWeapon.getName());
+            }
+            else if(newWeapon.getWeight()< oldWeapon.getWeight()){
+                diffWeight= oldWeapon.getWeight()- newWeapon.getWeight();
+                System.out.println("The "+oldWeapon.getName()+" has "+diffWeight+" more Weight than "+newWeapon.getName());
+            }
+            else if(newWeapon.getWeight()== oldWeapon.getWeight()){
+                System.out.println("Both "+oldWeapon.getName()+" and "+newWeapon.getName()+" have the same Weight of "+oldWeapon.getWeight());
+
+            }
+    }
+    public void compareStats(Armor oldArmor, Armor newArmor){
+
     }
 }
 
+// System.out.println(enemy.get(i-1).getName());

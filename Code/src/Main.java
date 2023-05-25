@@ -8,8 +8,8 @@ public class Main {
 
         PlayableCharacter takhs = new PlayableCharacter("Takhs",12,20,9,40,80,7,3009,19,53.4,0.9);
        Item flask = new Item("takhs"," he is not here");
-       Weapon sword= new Weapon("excalibur","The sword of king Arthur",13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword);
-        Weapon sword2= new Weapon("Zangetse","The sword of Ichigo",13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword);
+       Weapon sword= new Weapon("excalibur","The sword of king Arthur",13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword, Weapon.TypeOfScaling.INT);
+       Weapon sword2= new Weapon("Zangetse","The sword of Ichigo",13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword,Weapon.TypeOfScaling.DEX);
 
         Armor head1= new Armor("kefali","its noice",13, Armor.TypeOfArmor.Head,1);
        Armor head2= new Armor("KARANIO","its HUGE",13, Armor.TypeOfArmor.Head,1);
@@ -26,7 +26,7 @@ public class Main {
         CurrentEquipment eq1=new CurrentEquipment(head1,chest1,hands1,legs1,sword,sword);
         playerStatus.setEquipment(eq1);
 
-        System.out.println(eq1.getCurrentEquipment()+" phase 1");
+    //    System.out.println(eq1.getCurrentEquipment()+" phase 1");
 
         eq1.setHead(head2);
        /* List<Equipment> equipment = eq1.getCurrentEquipment();
