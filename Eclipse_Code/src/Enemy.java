@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Enemy extends NonPlayableCharacter{
 
     enum Type{
@@ -75,5 +80,26 @@ public class Enemy extends NonPlayableCharacter{
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public List<Double> getEnemyStats(){
+        List<Double> enemyStats = new ArrayList<Double>();
+        enemyStats.add((double)getHp());
+        enemyStats.add((double) getStrength());
+        enemyStats.add((double) getDexterity());
+        enemyStats.add((double) getVitality());
+        enemyStats.add((double) getIntelligence());
+        enemyStats.add((double) getWisdom());
+        enemyStats.add((double) getLevel());
+        return enemyStats;
+    }
+
+    public Map<Type,Double> getEnemyInfo(boolean facedBefore){
+        Map<Type,Double> enemyInfo = new HashMap<Type,Double>();
+        if(facedBefore==true){
+            enemyInfo.put(getResistance(),getResistMod());
+            enemyInfo.put(getWeakness(),getWeakMod());
+        }
+        return enemyInfo;
     }
 }

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlayableCharacter extends Character{
     private int money;
     private int level;
@@ -11,6 +14,11 @@ public class PlayableCharacter extends Character{
         this.equipLoad = equipLoad;
         this.defenceModifier = defenceModifier;
     }
+
+    public PlayableCharacter(){
+        super();
+    }
+
 
     public int getMoney() {
         return money;
@@ -43,4 +51,20 @@ public class PlayableCharacter extends Character{
     public void setDefenceModifier(double defenceModifier) {
         this.defenceModifier = defenceModifier;
     }
+
+    public List<Double> getPlayerStats(){
+        List<Double> playerStats = new ArrayList<Double>();
+        playerStats.add((double)getHp());
+        playerStats.add((double) getStrength());
+        playerStats.add((double) getDexterity());
+        playerStats.add((double) getVitality());
+        playerStats.add((double) getIntelligence());
+        playerStats.add((double) getWisdom());
+        playerStats.add((double) getLevel());
+        playerStats.add(getEquipLoad());
+        playerStats.add(getDefenceModifier());
+        return playerStats;
+    }
+
+
 }
