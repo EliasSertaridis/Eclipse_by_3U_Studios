@@ -43,4 +43,6 @@ public class PlayableCharacter extends Character{
     public void setDefenceModifier(double defenceModifier) {
         this.defenceModifier = defenceModifier;
     }
+
+
 }
