@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Weapon extends Item {
+public class Weapon extends Equipment {
 
     int damage;
     double scaling;
@@ -22,8 +22,8 @@ public class Weapon extends Item {
     TypeOfWeapon weaponType;
 
 
-    public Weapon(String name, String description, TypeOfWeapon weaponType, TypeOfDamage damageType, int damage, double scaling) {
-        super(name, description);
+    public Weapon(String name, String description, int weight, int damage, double scaling, TypeOfDamage damageType, TypeOfWeapon weaponType) {
+        super(name, description, weight);
         this.damage = damage;
         this.scaling = scaling;
         this.damageType = damageType;
