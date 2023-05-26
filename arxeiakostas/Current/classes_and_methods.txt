@@ -1,0 +1,85 @@
+RestingPoint :
+ 1. interact()
+
+RestingPointUI :
+ 1.showMessage()
+ 2.showCheckpointMenu()
+ 3.optForSkillTree()
+ 4.exitScreen()
+ 5.choosesSpellSlotMod()
+ 6.chooseSpellSlot()
+ 7.chooseSpell()
+ 8.verifyChanges()
+ 9.chooseSave/Exit()
+ 10. chooseExit()
+ 11.saveChanges()
+ 12.saveAndExitStrategy()
+
+SkillTree :
+ 1.getSkillTree()
+ 2.updateSkillTree()
+
+SkillTreeUI :
+ 1.optedForSkillTree()
+ 2.chooseAvailableSkill()
+ 3.showSkillTree()
+ 4.verifySkillAcquisition()
+ 5.exitSKillScreen()
+
+Skill :
+ 1.CheckIfSkillAvailable()
+ 2.getSkillInfo()
+
+Spells :
+ 1.getSpellInfo()
+
+Inventory :
+ 1.restoreEssentials()
+ 2.getSpells()
+ 3.checkInventoryForSpace()
+ 4.removeItem()
+ 5.addProduct()
+ 6.updateMoney()
+ 7.checkHasEnoughMoney()
+ 8.checkForResourses()
+ 9.removeResoursesAndMoney()
+ 10.upgradeEquipment()
+ 11.checkIfHasItemsInInventory()
+ 12.removeSelledItemFromInventory()
+
+PlayableCharacter :
+ 1.restoreEssentials()
+ 2.checkEnoughSkillPoints()
+ 3.getCharacterId()
+ 4.reduceSkillPoints()
+ 5.changeStats()
+ 6.saveSpellChanges()
+ 7.saveChanges()
+ 8.getReputationWithCharacter()
+ 9.hasEnoughMoney()
+ 10.giveMoney()
+
+Merchant :
+ 1.interact()
+ 2.getRaceAndJobOfMerchant()
+ 3.incReputationWithMerchant()
+ 4.updateMerchantInventory()
+ 5.checkIfOfferAcceptable()
+ 6.incReputationWithMerchant()
+
+Shop :
+ 1.showOptionsForTransactions()
+ 2.choosesBuyUpgrade()
+ 3.showDiscountedItems()
+ 4.showItems()
+ 5.showTransactionsScreen()
+ 6.choosesItemToBuy()
+ 7.showMessage()
+ 8.choosesItemToRemove()
+ 9.showTransactionsScreen()
+ 10.choosesItemForUpgrade()
+ 11.choosesSell()
+ 12.chooseItemToSell()
+ 13.showWindowForOffer()
+ 14.givePrice()
+ 15.confirm()
