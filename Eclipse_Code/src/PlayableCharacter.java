@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PlayableCharacter extends Character{
     private int money;
@@ -52,17 +54,9 @@ public class PlayableCharacter extends Character{
         this.defenceModifier = defenceModifier;
     }
 
-    public List<Double> getPlayerStats(){
-        List<Double> playerStats = new ArrayList<Double>();
-        playerStats.add((double)getHp());
-        playerStats.add((double) getStrength());
-        playerStats.add((double) getDexterity());
-        playerStats.add((double) getVitality());
-        playerStats.add((double) getIntelligence());
-        playerStats.add((double) getWisdom());
-        playerStats.add((double) getLevel());
-        playerStats.add(getEquipLoad());
-        playerStats.add(getDefenceModifier());
+    public Map<String, Integer> getPlayerStats(){
+        Map<String, Integer> playerStats = new HashMap<>();
+        playerStats.put(getName(),getHp());
         return playerStats;
     }
 

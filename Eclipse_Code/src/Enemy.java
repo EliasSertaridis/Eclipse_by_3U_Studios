@@ -82,15 +82,9 @@ public class Enemy extends NonPlayableCharacter{
         this.level = level;
     }
 
-    public List<Double> getEnemyStats(){
-        List<Double> enemyStats = new ArrayList<Double>();
-        enemyStats.add((double)getHp());
-        enemyStats.add((double) getStrength());
-        enemyStats.add((double) getDexterity());
-        enemyStats.add((double) getVitality());
-        enemyStats.add((double) getIntelligence());
-        enemyStats.add((double) getWisdom());
-        enemyStats.add((double) getLevel());
+    public Map<String, Integer> getEnemyStats(){
+        Map<String, Integer> enemyStats = new HashMap<>();
+        enemyStats.put(getName(),getHp());
         return enemyStats;
     }
 
