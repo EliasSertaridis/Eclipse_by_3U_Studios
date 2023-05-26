@@ -25,7 +25,7 @@ public class CurrentEquipment {
     }
 
     public void setHead(Armor head) {
-        updateEquipment(this.head,head);
+        updateEquipment(head,this.head);
         this.head = head;
     }
 
@@ -70,7 +70,7 @@ public class CurrentEquipment {
     }
 
     public void setLeftWeapon(Weapon leftWeapon) {
-        updateEquipment(this.leftWeapon,leftWeapon);
+        updateEquipment(leftWeapon,this.leftWeapon);
         this.leftWeapon = leftWeapon;
     }
 
@@ -131,10 +131,18 @@ public class CurrentEquipment {
     public void addEquipment(Equipment equipment){
         currentEquipment.add(equipment);
     }
-    public void updateEquipment(Equipment oldEquipment,Equipment newEquipment){
+    public void updateEquipment(Equipment newEquipment,Equipment oldEquipment){
         removeEquipment(oldEquipment);
         addEquipment(newEquipment);
     }
+    public int totalWeight(){
+        int weight=0;
+        for (Equipment equipment : currentEquipment) {
+            weight=weight+ equipment.getWeight();
+        }
+        return weight;
+    }
+
 
 
 }

@@ -67,7 +67,7 @@ public class PlayerStatus {
         System.out.println("Leg Piece: " + equipment.getLegs().getName());
         System.out.println("Right Weapon: " + equipment.getRightWeapon().getName());
         System.out.println("Left Weapon: " + equipment.getLeftWeapon().getName());
-        List<QuickItem> items = new ArrayList<>();
+        List<QuickItem> items;//= new ArrayList<>();
         items = equipment.getCurrentQuickItems();
         for (QuickItem item : items) {
             System.out.println("Quick Item Slot " + i + " " + item.getName());
@@ -121,7 +121,8 @@ public class PlayerStatus {
         String input;
         input=scanner.nextLine();
         int position= Integer.parseInt(input);
-        chooseEquipment(armor.get(position));
+        chooseEquipment(armor.get(position-1));
+        compareStats(armor.get(position-1),this.equipment.getHead());
     }
 
     public void chooseChest() {
@@ -137,6 +138,7 @@ public class PlayerStatus {
         input=scanner.nextLine();
         int position= Integer.parseInt(input);
         chooseEquipment(armor.get(position-1));
+        compareStats(armor.get(position-1),this.equipment.getChest());
     }
 
     public void chooseHand() {
@@ -151,6 +153,7 @@ public class PlayerStatus {
         input=scanner.nextLine();
         int position= Integer.parseInt(input);
         chooseEquipment(armor.get(position-1));
+        compareStats(armor.get(position-1),this.equipment.getHands());
 
     }
 
@@ -167,6 +170,7 @@ public class PlayerStatus {
         input=scanner.nextLine();
         int position= Integer.parseInt(input);
         chooseEquipment(armor.get(position));
+        compareStats(armor.get(position-1),this.equipment.getLegs());
     }
 
     public void chooseRightWeapon() {
@@ -199,6 +203,14 @@ public class PlayerStatus {
         int position= Integer.parseInt(input);
         chooseEquipment(equipment.get(position-1));
         compareStats(equipment.get(position-1),this.equipment.getLeftWeapon());
+        System.out.println("You want to equip "+equipment.get(position-1).getName()+" ?");
+        input=scanner.nextLine();
+        if(input.equals("Yes")){
+            if(fitCheck(equipment.get(position-1),this.equipment.getLeftWeapon())){
+                this.equipment.setLeftWeapon(equipment.get(position-1));
+              //  this.equipment.updateEquipment(equipment.get(position-1),this.equipment.leftWeapon);
+            }
+        }
     }
     public void chooseEquipment(Weapon weapon){
         System.out.println("Weapon Name: "+weapon.getName());
@@ -211,7 +223,7 @@ public class PlayerStatus {
         System.out.println(armor.armorType+" Armor Name: "+armor.getName());
         System.out.println(armor.armorType+" Armor Description: "+armor.getDescription());
         System.out.println("Defense: "+armor.getDefense());
-        System.out.println(armor.getWeight()+" Armor Weight: "+armor.getWeight());
+        System.out.println(armor.getName()+" Armor Weight: "+armor.getWeight());
     }
 
     public void compareStats(Weapon newWeapon, Weapon oldWeapon){
@@ -228,22 +240,77 @@ public class PlayerStatus {
         }else if(totalDamage(oldWeapon)==totalDamage(newWeapon)) {
             System.out.println("Both "+oldWeapon.getName()+" and "+newWeapon.getName()+" have the same damage of "+totalDamage(oldWeapon));
         }
-            if(oldWeapon.getWeight()< newWeapon.getWeight()){
+        if(oldWeapon.getWeight()< newWeapon.getWeight()){
                 diffWeight= newWeapon.getWeight()- oldWeapon.getWeight();
-                System.out.println("The "+newWeapon.getName()+" has "+diffWeight+" more Weight than "+oldWeapon.getName());
-            }
-            else if(newWeapon.getWeight()< oldWeapon.getWeight()){
+                System.out.println("The "+oldWeapon.getName()+" has "+diffWeight+" less Weight than "+newWeapon.getName());
+        }
+        else if(newWeapon.getWeight()< oldWeapon.getWeight()){
                 diffWeight= oldWeapon.getWeight()- newWeapon.getWeight();
-                System.out.println("The "+oldWeapon.getName()+" has "+diffWeight+" more Weight than "+newWeapon.getName());
-            }
-            else if(newWeapon.getWeight()== oldWeapon.getWeight()){
+                System.out.println("The "+newWeapon.getName()+" has "+diffWeight+" less Weight than "+oldWeapon.getName());
+        }
+        else if(newWeapon.getWeight()== oldWeapon.getWeight()){
                 System.out.println("Both "+oldWeapon.getName()+" and "+newWeapon.getName()+" have the same Weight of "+oldWeapon.getWeight());
 
-            }
+        }
     }
     public void compareStats(Armor oldArmor, Armor newArmor){
+        int diff=0;
+        int diffWeight=0;
+        System.out.println("The Current "+oldArmor.getArmorType()+" Armor has "+oldArmor.getDefense()+" Defense");
+
+        if(oldArmor.getDefense()<newArmor.getDefense()){
+            diff=newArmor.getDefense()-oldArmor.getDefense();
+            System.out.println("The "+newArmor.getName()+" has "+diff+" more Defense than "+ oldArmor.getName());
+        }else if(oldArmor.getDefense()>newArmor.getDefense()){
+            diff=oldArmor.getDefense()-newArmor.getDefense();
+            System.out.println("The "+oldArmor.getName()+" has "+diff+" more Defense than "+ newArmor.getName());
+        }else if(oldArmor.getDefense()==newArmor.getDefense()){
+            System.out.println("Both "+oldArmor.getName()+" and "+newArmor.getName()+" have the same Defense of "+oldArmor.getDefense());
+
+        }
+
+        if(oldArmor.getWeight()< newArmor.getWeight()){
+            diffWeight= newArmor.getWeight()- oldArmor.getWeight();
+            System.out.println("The "+oldArmor.getName()+" has "+diffWeight+" less Weight than "+newArmor.getName());
+        }
+        else if(newArmor.getWeight()< oldArmor.getWeight()){
+            diffWeight= oldArmor.getWeight()- newArmor.getWeight();
+            System.out.println("The "+newArmor.getName()+" has "+diffWeight+" less Weight than "+oldArmor.getName());
+        }
+        else if(newArmor.getWeight()== oldArmor.getWeight()){
+            System.out.println("Both "+oldArmor.getName()+" and "+newArmor.getName()+" have the same Weight of "+oldArmor.getWeight());
+
+        }
+
 
     }
+    public boolean fitCheck(Weapon newWeapon,Weapon oldWeapon){
+        if(checkCompatibility(newWeapon,oldWeapon)){
+            return true;
+        }else{
+            System.out.println("You can not wear this piece yet");
+            return false;
+        }
+    }
+    public void fitCheck(Armor newArmor,Armor oldArmor){
+        checkCompatibility(newArmor,oldArmor);
+    }
+    public boolean checkCompatibility(Weapon newWeapon, Weapon oldWeapon){
+        int newWeight;
+        newWeight= equipment.totalWeight() - oldWeapon.getWeight()+newWeapon.getWeight();
+        if(newWeight<player.getEquipLoad()){
+            return true;
+        }else return false;
+    }
+    public boolean checkCompatibility(Armor newArmor,Armor oldArmor){
+        int newWeight;
+        newWeight= equipment.totalWeight() - oldArmor.getWeight()+newArmor.getWeight();
+        if(newWeight<player.getEquipLoad()){
+            return true;
+        }else return false;
+    }
+
+
 }
 
 // System.out.println(enemy.get(i-1).getName());
