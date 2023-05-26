@@ -8,14 +8,15 @@ import java.util.Scanner;
 public class Combat {
     private boolean turn;
     private double block = 0;
+    private boolean chosenBlock;
     private double dodge = 0;
+    private boolean chosenDodge;
     private double attackDamage = 0;
-    private String attackType;
+    private int finalDamage = 0;
 
     PlayerStatus playerStatus;
     Enemy enemy;
     SpellSlot spellSlot;
-    Spell spell;
     Map<String, Integer> playerStats;
     Map<String, Integer> enemyStats;
     Map<Enemy.Type,Double> enemyInfo;
@@ -53,20 +54,24 @@ public class Combat {
         double dexMod = (double) playerStatus.player.getDexterity();
         double equipLoad = playerStatus.player.getEquipLoad();
         double totalWeight = playerStatus.equipment.totalWeight();
-        int equiploadMod = 0;
+        int equipLoadMod = 0;
         if(totalWeight/equipLoad<3.3){
-            equiploadMod = 1;
+            equipLoadMod = 1;
         } else if (totalWeight/equipLoad<6.6 && totalWeight/equipLoad>3.3) {
-            equiploadMod = 0;
+            equipLoadMod = 0;
         } else if (totalWeight/equipLoad>6.6) {
-            equiploadMod = -1;
+            equipLoadMod = -1;
         }
-        this.dodge = (dexMod+(double) equiploadMod)/100;
+        this.dodge = (dexMod+(double) equipLoadMod)/100;
+        this.chosenDodge = true;
+        this.chosenBlock = false;
     }
 
     public void chooseBlock(){
         if(playerStatus.equipment.hasShield()==true){
             this.block = playerStatus.equipment.getShieldDefence();
+            this.chosenBlock = true;
+            this.chosenDodge = false;
         }
     }
 
@@ -77,11 +82,9 @@ public class Combat {
         System.out.println(i + ". " + playerStatus.equipment.getRightWeapon());
         i++;
         System.out.println(i+ ". " + playerStatus.equipment.getLeftWeapon());
-        List<Spell> spells;
-        spells = spellSlot.getSpellSlots();
-        for(Spell spell: spells){
+        for(Spell spell: spellSlot.getSpellSlots()){
             i++;
-            System.out.println(i+ ", " + spells.get(i-3));
+            System.out.println(i+ ", " + spellSlot.getSpellSlots().get(i-3));
         }
         System.out.println("Choose your attack!");
         int attackChosen = attack.nextInt();
@@ -93,16 +96,40 @@ public class Combat {
                 this.attackDamage = playerStatus.totalDamage(playerStatus.equipment.leftWeapon);
                 break;
             case 3:
-                this.attackDamage = spells.get(0).totalSpellDamage(spells.get(0));
+                this.attackDamage = spellSlot.getSpellSlots().get(0).totalSpellDamage(spellSlot.getSpellSlots().get(0));
                 break;
             case 4:
-                this.attackDamage = spells.get(1).totalSpellDamage(spells.get(1));
+                this.attackDamage = spellSlot.getSpellSlots().get(1).totalSpellDamage(spellSlot.getSpellSlots().get(1));
                 break;
             case 5:
-                this.attackDamage = spells.get(2).totalSpellDamage(spells.get(2));
+                this.attackDamage = spellSlot.getSpellSlots().get(2).totalSpellDamage(spellSlot.getSpellSlots().get(2));
                 break;
             case 6:
-                this.attackDamage = spells.get(3).totalSpellDamage(spells.get(3));
+                this.attackDamage = spellSlot.getSpellSlots().get(3).totalSpellDamage(spellSlot.getSpellSlots().get(3));
+                break;
+        }
+    }
+
+    public void calcPlayerDamage(){
+        double resistMod=0;
+        double weakMod=0;
+        int i=0;
+        for(Spell spell: spellSlot.getSpellSlots()) {
+            if (enemy.getResistance().equals(playerStatus.equipment.getRightWeapon().getDamageType()) || enemy.getResistance().equals(spellSlot.getSpellSlots().get(i).getDamageType())) {
+                resistMod = enemy.getResistMod();
+            } else if (enemy.getWeakness().equals(playerStatus.equipment.getLeftWeapon().getDamageType()) || enemy.getWeakness().equals(spellSlot.getSpellSlots().get(i).getDamageType())) {
+                weakMod = enemy.getWeakMod();
+            }
+            i++;
+        }
+        this.finalDamage = (int) (attackDamage + attackDamage*weakMod - attackDamage*resistMod);
+    }
+
+    public void calcEnemyDamage(){
+        if (chosenDodge==true){
+            this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * dodge));
+        } else if (chosenBlock==true) {
+            this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * block));
         }
     }
 }
