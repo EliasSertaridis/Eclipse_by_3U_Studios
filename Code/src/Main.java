@@ -10,7 +10,8 @@ public class Main {
         Item flask = new Item("takhs"," he is not here");
          Weapon sword= new Weapon("excalibur","The sword of king Arthur",13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword, Weapon.TypeOfScaling.INT);
          Weapon sword2= new Weapon("Zangetse","The sword of Ichigo",13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword,Weapon.TypeOfScaling.DEX);
-
+        HealthPotion hp1=new HealthPotion("Flask","very old",12);
+        BuffPotion bp1=new BuffPotion("Milk","makes you stronger",3, BuffPotion.StatForModifing.STR);
         Armor head1= new Armor("kefali","its noice",13, Armor.TypeOfArmor.Head,1);
         Armor head2= new Armor("KARANIO","its HUGE",13, Armor.TypeOfArmor.Head,1);
         Armor chest1= new Armor("sti8os","its noice",13, Armor.TypeOfArmor.Chest,1);
@@ -22,6 +23,8 @@ public class Main {
         playerStatus.inventory.addItemToInventory(head2);
         playerStatus.inventory.addItemToInventory(sword2);
         playerStatus.inventory.addItemToInventory(sword);
+        playerStatus.inventory.addItemToInventory(bp1);
+        playerStatus.inventory.addItemToInventory(hp1);
         playerStatus.setPlayer(takhs);
         CurrentEquipment eq1=new CurrentEquipment(head1,chest1,hands1,legs1,sword,sword);
         playerStatus.setEquipment(eq1);
@@ -43,12 +46,11 @@ public class Main {
         System.out.println(playerStatus.player.getName()+" "+playerStatus.player.getHp());
         */
         playerStatus.openPlayerStatus();
-        System.out.println(playerStatus.equipment.getLeftWeapon().getName());
-        List<Equipment> equipment1 = eq1.getCurrentEquipment();
+       /* List<Equipment> equipment1 = eq1.getCurrentEquipment();
         System.out.println("Equipment of the player:");
         for (Equipment head : equipment1) {
             System.out.println("- " + head.getName() + ", Disc: " + head.getDescription());
-        }
+        }*/
 
 
     }

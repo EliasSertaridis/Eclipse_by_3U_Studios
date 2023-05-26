@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -54,41 +55,50 @@ public class PlayerStatus {
     }
 
     public void openPlayerStatus() {
-        int i = 0;
-        boolean madeChoice = false;
-        Scanner scanner = new Scanner(System.in);
+        boolean on=true;
+        while(on) {
+            int i = 0;
+            boolean madeChoice = false;
+            Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Hp: " + player.getHp());
-        System.out.println("Level: " + player.getLevel());
-        System.out.println("Equiped Armor: ");
-        System.out.println("Head Piece: " + equipment.getHead().getName());
-        System.out.println("Chest Piece: " + equipment.getChest().getName());
-        System.out.println("Hand Piece: " + equipment.getHands().getName());
-        System.out.println("Leg Piece: " + equipment.getLegs().getName());
-        System.out.println("Right Weapon: " + equipment.getRightWeapon().getName());
-        System.out.println("Left Weapon: " + equipment.getLeftWeapon().getName());
-        List<QuickItem> items;//= new ArrayList<>();
-        items = equipment.getCurrentQuickItems();
-        for (QuickItem item : items) {
-            System.out.println("Quick Item Slot " + i + " " + item.getName());
-            i++;
-        }
-        while (i < 5) {
-            System.out.println("Quick Item Slot " + i + " Empty");
-            i++;
-        }
-        System.out.println("Enter which Field you want to change: ");
-        String input = scanner.nextLine();
-        while (!madeChoice) {
-            if (input.equals("Head") || input.equals("Chest") || input.equals("Hand") || input.equals("Leg") || input.equals("Right") || input.equals("Left")) {
-                madeChoice = true;
-                chooseEquipmentType(input);
-            } else {
-                System.out.println("You typed it wrong. Try again");
-                input = scanner.nextLine();
+            System.out.println("Hp: " + player.getHp());
+            System.out.println("Level: " + player.getLevel());
+            System.out.println("Equiped Armor: ");
+            System.out.println("Head Piece: " + equipment.getHead().getName());
+            System.out.println("Chest Piece: " + equipment.getChest().getName());
+            System.out.println("Hand Piece: " + equipment.getHands().getName());
+            System.out.println("Leg Piece: " + equipment.getLegs().getName());
+            System.out.println("Right Weapon: " + equipment.getRightWeapon().getName());
+            System.out.println("Left Weapon: " + equipment.getLeftWeapon().getName());
+            List<QuickItem> items;//= new ArrayList<>();
+            items = equipment.getCurrentQuickItems();
+            for (QuickItem item : items) {
+                System.out.println("Quick Item Slot " + (i+1) + " " + item.getName());
+                i++;
+            }
+            while (i < 5) {
+                System.out.println("Quick Item Slot " + (i+1) + " Empty");
+                i++;
+            }
+            System.out.println("Enter which Field you want to change: ");
+            String input = scanner.nextLine();
+            while (!madeChoice) {
+                if (input.equals("Head") || input.equals("Chest") || input.equals("Hand") || input.equals("Leg") || input.equals("Right") || input.equals("Left")) {
+                    madeChoice = true;
+                    chooseEquipmentType(input);
+                }else if(input.equals("Slot1") || input.equals("Slot2") || input.equals("Slot3") || input.equals("Slot4")|| input.equals("Slot5")){
+                    madeChoice= true;
+                    chooseQuickItems(input);
+                }else if(input.equals("Exit")){
+                    on=false;
+                    madeChoice=true;
+                }
+                else {
+                    System.out.println("You typed it wrong. Try again");
+                    input = scanner.nextLine();
+                }
             }
         }
-
     }
 
     public void chooseEquipmentType(String choice) {
@@ -109,140 +119,319 @@ public class PlayerStatus {
 
     }
 
-    public void chooseHead() {
-        int i = 1;
-        List<Armor> armor = inventory.getAllEquipmentOfType(Armor.TypeOfArmor.Head);
-        System.out.println("All the Head Armor  of the player:");
-        for (Armor head : armor) {
-            System.out.println(i + ".  " + head.getName());
-            i++;
-        }
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        input=scanner.nextLine();
-        int position= Integer.parseInt(input);
-        chooseEquipment(armor.get(position-1));
-        compareStats(armor.get(position-1),this.equipment.getHead());
-        System.out.println("You want to equip "+armor.get(position-1).getName()+" ?");
-        input=scanner.nextLine();
-        if(input.equals("Yes")){
-            if(fitCheck(armor.get(position-1),this.equipment.getHead())){
-                this.equipment.setHead(armor.get(position-1));
+
+
+
+
+
+
+    public void chooseQuickItems(String choice) {
+        if (choice.equals("Slot1")) {
+            chooseQuickItem(0);
+        } else if (choice.equals("Slot2")) {
+            chooseQuickItem(1);
+        } else if (choice.equals("Slot3")) {
+            chooseQuickItem(2);
+        } else if (choice.equals("Slot4")) {
+            chooseQuickItem(3);
+        }else if(choice.equals("Slot5")) {
+            chooseQuickItem(4);
+        }else
+            System.out.println("Nothing");
+
+    }
+
+    public void chooseQuickItem(int slot) {
+        boolean on = true;
+        while (on) {
+            int i = 1;
+            boolean option = false;
+            List<QuickItem> quickItem = inventory.getAllQuickItems();
+            System.out.println("All the Quick Items of the player:");
+            for (QuickItem item : quickItem) {
+                System.out.println(i + ".  " + item.getName());
+                i++;
+            }
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            input = scanner.nextLine();
+            if (input.equals("Exit")) {
+                on = false;
+            } else {
+                int position = Integer.parseInt(input);
+                showQuickItemInfo(quickItem.get(position - 1));
+                System.out.println("You want to equip " + quickItem.get(position - 1).getName() + " ?");
+                input = scanner.nextLine();
+                while (!option) {
+                    if (input.equals("Yes")) {
+                        if(this.equipment.getCurrentQuickItems().size()>slot){
+                        this.equipment.changeQuickItem(this.equipment.getCurrentQuickItems().get(slot),quickItem.get(position-1));
+                        }else{
+                            this.equipment.addQuickItem(quickItem.get(position-1));
+                        }
+                        on = false;
+                        option = true;
+                    } else if (input.equals("No")) {
+                        option = true;
+                    } else if (input.equals("Exit")) {
+                        option = true;
+                        on = false;
+                    } else {
+                        System.out.println("You typed it wrong. Try again ");
+                    }
+                }
             }
         }
     }
 
-    public void chooseChest() {
-        int i = 1;
-        List<Armor> armor = inventory.getAllEquipmentOfType(Armor.TypeOfArmor.Chest);
-        System.out.println("All the Chest Armor  of the player:");
-        for (Armor chest : armor) {
-            System.out.println(i + ".  " + chest.getName());
-            i++;
+    public void chooseHead() {
+        boolean on=true;
+        while(on) {
+            int i = 1;
+            boolean option=false;
+            List<Armor> armor = inventory.getAllEquipmentOfType(Armor.TypeOfArmor.Head);
+            System.out.println("All the Head Armor  of the player:");
+            for (Armor head : armor) {
+                System.out.println(i + ".  " + head.getName());
+                i++;
+            }
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            input = scanner.nextLine();
+            if(input.equals("Exit")){
+                on=false;
+            }else{
+            int position = Integer.parseInt(input);
+            chooseEquipment(armor.get(position - 1));
+            compareStats(armor.get(position - 1), this.equipment.getHead());
+            System.out.println("You want to equip " + armor.get(position - 1).getName() + " ?");
+            input = scanner.nextLine();
+            while(!option){
+            if (input.equals("Yes")) {
+                if (fitCheck(armor.get(position - 1), this.equipment.getHead())) {
+                    this.equipment.setHead(armor.get(position - 1));
+                    on=false;
+                    option=true;
+                }
+                }else if(input.equals("No")){
+                    option=true;
+                }else if(input.equals("Exit")){
+                    option=true;
+                    on=false;
+                }else {
+                    System.out.println("You typed it wrong. Try again ");
+                }
+            }}
         }
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        input=scanner.nextLine();
-        int position= Integer.parseInt(input);
-        chooseEquipment(armor.get(position-1));
-        compareStats(armor.get(position-1),this.equipment.getChest());
-        System.out.println("You want to equip "+armor.get(position-1).getName()+" ?");
-        input=scanner.nextLine();
-        if(input.equals("Yes")){
-            if(fitCheck(armor.get(position-1),this.equipment.getChest())){
-                this.equipment.setChest(armor.get(position-1));
+
+}
+
+    public void chooseChest() {
+        boolean on = true;
+        while (on) {
+            int i = 1;
+            boolean option = false;
+            List<Armor> armor = inventory.getAllEquipmentOfType(Armor.TypeOfArmor.Chest);
+            System.out.println("All the Chest Armor  of the player:");
+            for (Armor chest : armor) {
+                System.out.println(i + ".  " + chest.getName());
+                i++;
+            }
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            input = scanner.nextLine();
+            if (input.equals("Exit")) {
+                on = false;
+            } else {
+                int position = Integer.parseInt(input);
+                chooseEquipment(armor.get(position - 1));
+                compareStats(armor.get(position - 1), this.equipment.getChest());
+                System.out.println("You want to equip " + armor.get(position - 1).getName() + " ?");
+                input = scanner.nextLine();
+                while (!option) {
+                    if (input.equals("Yes")) {
+                        if (fitCheck(armor.get(position - 1), this.equipment.getChest())) {
+                            this.equipment.setChest(armor.get(position - 1));
+                            on = false;
+                            option = true;
+                        }
+                    } else if (input.equals("No")) {
+                        option = true;
+                    } else if (input.equals("Exit")) {
+                        option = true;
+                        on = false;
+                    } else {
+                        System.out.println("You typed it wrong. Try again ");
+                    }
+                }
             }
         }
     }
 
     public void chooseHand() {
-        int i = 1;
-        List<Armor> armor = inventory.getAllEquipmentOfType(Armor.TypeOfArmor.Hands);
-        System.out.println("All the Hand Armor  of the player:");
-        for (Armor hand : armor) {
-            System.out.println(i + ".  " + hand.getName());
-            i++;
-        }Scanner scanner = new Scanner(System.in);
-        String input;
-        input=scanner.nextLine();
-        int position= Integer.parseInt(input);
-        chooseEquipment(armor.get(position-1));
-        compareStats(armor.get(position-1),this.equipment.getHands());
-        System.out.println("You want to equip "+armor.get(position-1).getName()+" ?");
-        input=scanner.nextLine();
-        if(input.equals("Yes")){
-            if(fitCheck(armor.get(position-1),this.equipment.getHands())){
-                this.equipment.setHands(armor.get(position-1));
+        boolean on=true;
+        while(on) {
+            int i = 1;
+            boolean option = false;
+            List<Armor> armor = inventory.getAllEquipmentOfType(Armor.TypeOfArmor.Hands);
+            System.out.println("All the Hand Armor  of the player:");
+            for (Armor hand : armor) {
+                System.out.println(i + ".  " + hand.getName());
+                i++;
+            }
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            input = scanner.nextLine();
+            if (input.equals("Exit")) {
+                on = false;
+            } else {
+                int position = Integer.parseInt(input);
+                chooseEquipment(armor.get(position - 1));
+                compareStats(armor.get(position - 1), this.equipment.getHands());
+                System.out.println("You want to equip " + armor.get(position - 1).getName() + " ?");
+                input = scanner.nextLine();
+                while (!option) {
+                    if (input.equals("Yes")) {
+                        if (fitCheck(armor.get(position - 1), this.equipment.getHands())) {
+                            this.equipment.setHands(armor.get(position - 1));
+                            on = false;
+                            option = true;
+                        }
+                    } else if (input.equals("No")) {
+                        option = true;
+                    } else if (input.equals("Exit")) {
+                        option = true;
+                        on = false;
+                    } else {
+                        System.out.println("You typed it wrong. Try again ");
+                    }
+                }
             }
         }
-
     }
 
     public void chooseLeg() {
-        int i = 1;
-        List<Armor> armor = inventory.getAllEquipmentOfType(Armor.TypeOfArmor.Legs);
-        System.out.println("All the Leg Armor  of the player:");
-        for (Armor leg : armor) {
-            System.out.println(i + ".  " + leg.getName());
-            i++;
-        }
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        input=scanner.nextLine();
-        int position= Integer.parseInt(input);
-        chooseEquipment(armor.get(position));
-        compareStats(armor.get(position-1),this.equipment.getLegs());
-        System.out.println("You want to equip "+armor.get(position-1).getName()+" ?");
-        input=scanner.nextLine();
-        if(input.equals("Yes")){
-            if(fitCheck(armor.get(position-1),this.equipment.getLegs())){
-                this.equipment.setLegs(armor.get(position-1));
+        boolean on = true;
+        while (on) {
+            int i = 1;
+            boolean option = false;
+            List<Armor> armor = inventory.getAllEquipmentOfType(Armor.TypeOfArmor.Legs);
+            System.out.println("All the Leg Armor  of the player:");
+            for (Armor leg : armor) {
+                System.out.println(i + ".  " + leg.getName());
+                i++;
+            }
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            input = scanner.nextLine();
+            if (input.equals("Exit")) {
+                on = false;
+            } else {
+                int position = Integer.parseInt(input);
+                chooseEquipment(armor.get(position));
+                compareStats(armor.get(position - 1), this.equipment.getLegs());
+                System.out.println("You want to equip " + armor.get(position - 1).getName() + " ?");
+                input = scanner.nextLine();
+                while (!option) {
+                    if (input.equals("Yes")) {
+                        if (fitCheck(armor.get(position - 1), this.equipment.getLegs())) {
+                            this.equipment.setLegs(armor.get(position - 1));
+                            on = false;
+                            option = true;
+                        }
+                    } else if (input.equals("No")) {
+                        option = true;
+                    } else if (input.equals("Exit")) {
+                        option = true;
+                        on = false;
+                    } else {
+                        System.out.println("You typed it wrong. Try again ");
+                    }
+                }
             }
         }
     }
 
     public void chooseRightWeapon() {
-        int i = 1;
-        List<Weapon> equipment = inventory.getAllEquipmentOfType();
-        System.out.println("All the Weapons of the player:");
-        for (Equipment weapon : equipment) {
-            System.out.println(i + ".  " + weapon.getName());
-            i++;
-        }
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        input=scanner.nextLine();
-        int position= Integer.parseInt(input);
-        chooseEquipment(equipment.get(position-1));
-        compareStats(equipment.get(position-1),this.equipment.getRightWeapon());
-        System.out.println("You want to equip "+equipment.get(position-1).getName()+" ?");
-        input=scanner.nextLine();
-        if(input.equals("Yes")){
-            if(fitCheck(equipment.get(position-1),this.equipment.getRightWeapon())){
-                this.equipment.setRightWeapon(equipment.get(position-1));
+        boolean on=true;
+        while(on) {
+            int i = 1;
+            boolean option = false;
+            List<Weapon> equipment = inventory.getAllEquipmentOfType();
+            System.out.println("All the Weapons of the player:");
+            for (Equipment weapon : equipment) {
+                System.out.println(i + ".  " + weapon.getName());
+                i++;
+            }
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            input = scanner.nextLine();
+            if (input.equals("Exit")) {
+                on = false;
+            } else {
+                int position = Integer.parseInt(input);
+                chooseEquipment(equipment.get(position - 1));
+                compareStats(equipment.get(position - 1), this.equipment.getRightWeapon());
+                System.out.println("You want to equip " + equipment.get(position - 1).getName() + " ?");
+                input = scanner.nextLine();
+                while (!option) {
+                    if (input.equals("Yes")) {
+                        if (fitCheck(equipment.get(position - 1), this.equipment.getRightWeapon())) {
+                            this.equipment.setRightWeapon(equipment.get(position - 1));
+                            on = false;
+                            option = true;
+                        }
+                    } else if (input.equals("No")) {
+                        option = true;
+                    } else if (input.equals("Exit")) {
+                        option = true;
+                        on = false;
+                    } else {
+                        System.out.println("You typed it wrong. Try again ");
+                    }
+                }
             }
         }
-    }
+}
 
     public void chooseLeftWeapon() {
-        int i = 1;
-        List<Weapon> equipment = inventory.getAllEquipmentOfType();
-        System.out.println("All the Weapons of the player:");
-        for (Equipment weapon : equipment) {
-            System.out.println(i + ".  " + weapon.getName());
-            i++;
-        }
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        input=scanner.nextLine();
-        int position= Integer.parseInt(input);
-        chooseEquipment(equipment.get(position-1));
-        compareStats(equipment.get(position-1),this.equipment.getLeftWeapon());
-        System.out.println("You want to equip "+equipment.get(position-1).getName()+" ?");
-        input=scanner.nextLine();
-        if(input.equals("Yes")){
-            if(fitCheck(equipment.get(position-1),this.equipment.getLeftWeapon())){
-                this.equipment.setLeftWeapon(equipment.get(position-1));
+        boolean on = true;
+        while (on) {
+            int i = 1;
+            boolean option = false;
+            List<Weapon> equipment = inventory.getAllEquipmentOfType();
+            System.out.println("All the Weapons of the player:");
+            for (Equipment weapon : equipment) {
+                System.out.println(i + ".  " + weapon.getName());
+                i++;
+            }
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            input = scanner.nextLine();
+            if (input.equals("Exit")) {
+                on = false;
+            } else {
+                int position = Integer.parseInt(input);
+                chooseEquipment(equipment.get(position - 1));
+                compareStats(equipment.get(position - 1), this.equipment.getLeftWeapon());
+                System.out.println("You want to equip " + equipment.get(position - 1).getName() + " ?");
+                input = scanner.nextLine();
+                while (!option) {
+                    if (input.equals("Yes")) {
+                        if (fitCheck(equipment.get(position - 1), this.equipment.getLeftWeapon())) {
+                            this.equipment.setLeftWeapon(equipment.get(position - 1));
+                            on = false;
+                            option = true;
+                        }
+                    } else if (input.equals("No")) {
+                        option = true;
+                    } else if (input.equals("Exit")) {
+                        option = true;
+                        on = false;
+                    } else {
+                        System.out.println("You typed it wrong. Try again ");
+                    }
+                }
             }
         }
     }
@@ -258,6 +447,15 @@ public class PlayerStatus {
         System.out.println(armor.armorType+" Armor Description: "+armor.getDescription());
         System.out.println("Defense: "+armor.getDefense());
         System.out.println(armor.getName()+" Armor Weight: "+armor.getWeight());
+    }
+    public void showQuickItemInfo(QuickItem quickItem){
+        System.out.println("Quick Item Name: "+quickItem.getName());
+        System.out.println("Quick Item Description: "+quickItem.getDescription());
+        if(quickItem instanceof HealthPotion){
+            System.out.println("Healing Effect: "+((HealthPotion) quickItem).getRegenPoints());
+        }else if(quickItem instanceof BuffPotion){
+            System.out.println("This Potion Buff"+((BuffPotion) quickItem).getStatToBeModified()+" By: "+((BuffPotion) quickItem).statModifier);
+        }
     }
 
     public void compareStats(Weapon newWeapon, Weapon oldWeapon){

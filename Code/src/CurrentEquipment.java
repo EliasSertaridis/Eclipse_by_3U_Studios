@@ -5,7 +5,6 @@ public class CurrentEquipment {
 
 
     Armor head, chest, hands, legs;
-
     Weapon rightWeapon, leftWeapon;
     List<QuickItem> currentQuickItems = new ArrayList<QuickItem>();
     List<Equipment> currentEquipment= new ArrayList<Equipment>();
@@ -141,6 +140,11 @@ public class CurrentEquipment {
             weight=weight+ equipment.getWeight();
         }
         return weight;
+    }
+    public boolean hasShield(){
+        if((rightWeapon instanceof Shield)||(leftWeapon instanceof Shield)){
+            return true;
+        }else {return false;}
     }
 
 
