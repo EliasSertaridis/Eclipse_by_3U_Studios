@@ -123,6 +123,13 @@ public class PlayerStatus {
         int position= Integer.parseInt(input);
         chooseEquipment(armor.get(position-1));
         compareStats(armor.get(position-1),this.equipment.getHead());
+        System.out.println("You want to equip "+armor.get(position-1).getName()+" ?");
+        input=scanner.nextLine();
+        if(input.equals("Yes")){
+            if(fitCheck(armor.get(position-1),this.equipment.getHead())){
+                this.equipment.setHead(armor.get(position-1));
+            }
+        }
     }
 
     public void chooseChest() {
@@ -139,6 +146,13 @@ public class PlayerStatus {
         int position= Integer.parseInt(input);
         chooseEquipment(armor.get(position-1));
         compareStats(armor.get(position-1),this.equipment.getChest());
+        System.out.println("You want to equip "+armor.get(position-1).getName()+" ?");
+        input=scanner.nextLine();
+        if(input.equals("Yes")){
+            if(fitCheck(armor.get(position-1),this.equipment.getChest())){
+                this.equipment.setChest(armor.get(position-1));
+            }
+        }
     }
 
     public void chooseHand() {
@@ -154,6 +168,13 @@ public class PlayerStatus {
         int position= Integer.parseInt(input);
         chooseEquipment(armor.get(position-1));
         compareStats(armor.get(position-1),this.equipment.getHands());
+        System.out.println("You want to equip "+armor.get(position-1).getName()+" ?");
+        input=scanner.nextLine();
+        if(input.equals("Yes")){
+            if(fitCheck(armor.get(position-1),this.equipment.getHands())){
+                this.equipment.setHands(armor.get(position-1));
+            }
+        }
 
     }
 
@@ -171,6 +192,13 @@ public class PlayerStatus {
         int position= Integer.parseInt(input);
         chooseEquipment(armor.get(position));
         compareStats(armor.get(position-1),this.equipment.getLegs());
+        System.out.println("You want to equip "+armor.get(position-1).getName()+" ?");
+        input=scanner.nextLine();
+        if(input.equals("Yes")){
+            if(fitCheck(armor.get(position-1),this.equipment.getLegs())){
+                this.equipment.setLegs(armor.get(position-1));
+            }
+        }
     }
 
     public void chooseRightWeapon() {
@@ -187,6 +215,13 @@ public class PlayerStatus {
         int position= Integer.parseInt(input);
         chooseEquipment(equipment.get(position-1));
         compareStats(equipment.get(position-1),this.equipment.getRightWeapon());
+        System.out.println("You want to equip "+equipment.get(position-1).getName()+" ?");
+        input=scanner.nextLine();
+        if(input.equals("Yes")){
+            if(fitCheck(equipment.get(position-1),this.equipment.getRightWeapon())){
+                this.equipment.setRightWeapon(equipment.get(position-1));
+            }
+        }
     }
 
     public void chooseLeftWeapon() {
@@ -208,7 +243,6 @@ public class PlayerStatus {
         if(input.equals("Yes")){
             if(fitCheck(equipment.get(position-1),this.equipment.getLeftWeapon())){
                 this.equipment.setLeftWeapon(equipment.get(position-1));
-              //  this.equipment.updateEquipment(equipment.get(position-1),this.equipment.leftWeapon);
             }
         }
     }
@@ -292,8 +326,13 @@ public class PlayerStatus {
             return false;
         }
     }
-    public void fitCheck(Armor newArmor,Armor oldArmor){
-        checkCompatibility(newArmor,oldArmor);
+    public boolean fitCheck(Armor newArmor,Armor oldArmor){
+        if(checkCompatibility(newArmor,oldArmor)){
+            return true;
+        }else{
+            System.out.println("You can not wear this piece yet");
+            return false;
+        }
     }
     public boolean checkCompatibility(Weapon newWeapon, Weapon oldWeapon){
         int newWeight;

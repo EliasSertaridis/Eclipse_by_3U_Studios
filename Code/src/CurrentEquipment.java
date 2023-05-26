@@ -34,7 +34,7 @@ public class CurrentEquipment {
     }
 
     public void setChest(Armor chest) {
-        updateEquipment(this.chest,chest);
+        updateEquipment(chest,this.chest);
         this.chest = chest;
     }
 
@@ -43,7 +43,7 @@ public class CurrentEquipment {
     }
 
     public void setHands(Armor hands) {
-        updateEquipment(this.hands,hands);
+        updateEquipment(hands,this.hands);
         this.hands = hands;
     }
 
@@ -52,7 +52,7 @@ public class CurrentEquipment {
     }
 
     public void setLegs(Armor legs) {
-        updateEquipment(this.legs,legs);
+        updateEquipment(legs,this.legs);
         this.legs = legs;
     }
 
@@ -61,7 +61,7 @@ public class CurrentEquipment {
     }
 
     public void setRightWeapon(Weapon rightWeapon) {
-        updateEquipment(this.rightWeapon,rightWeapon);
+        updateEquipment(rightWeapon,this.rightWeapon);
         this.rightWeapon = rightWeapon;
     }
 

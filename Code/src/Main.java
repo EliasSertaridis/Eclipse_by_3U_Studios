@@ -28,7 +28,6 @@ public class Main {
 
     //    System.out.println(eq1.getCurrentEquipment()+" phase 1");
 
-        eq1.updateEquipment(head2,head1);
        List<Equipment> equipment = eq1.getCurrentEquipment();
         System.out.println("Equipment of the player:");
         for (Equipment head : equipment) {
