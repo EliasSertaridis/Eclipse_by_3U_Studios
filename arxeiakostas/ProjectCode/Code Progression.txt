@@ -1,0 +1,7 @@
+class Race:
+	1. Changed the data type of the parameter name from String to enum, because there are certain names a race can get
+	2.Added a map between the available races and the reputation of the character with them.
+
+class PlayableCharacter:
+	1.Added a Race object in the playableCharacter class 
+	2.Implemented the method to return the reputation of the playable character with the race of the merchant.
