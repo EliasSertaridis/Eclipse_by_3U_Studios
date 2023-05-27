@@ -8,7 +8,8 @@ public class PlayableCharacter extends Character{
     private int level;
     private double equipLoad;
     private double defenceModifier;
-
+    private CurrentEquipment currentEquipment;
+    private PlayerStatus playerStatus;
     public PlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad, double defenceModifier) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom);
         this.money = money;
@@ -52,6 +53,22 @@ public class PlayableCharacter extends Character{
 
     public void setDefenceModifier(double defenceModifier) {
         this.defenceModifier = defenceModifier;
+    }
+
+    public CurrentEquipment getCurrentEquipment() {
+        return currentEquipment;
+    }
+
+    public void setCurrentEquipment(CurrentEquipment currentEquipment) {
+        this.currentEquipment = currentEquipment;
+    }
+
+    public PlayerStatus getPlayerStatus() {
+        return playerStatus;
+    }
+
+    public void setPlayerStatus(PlayerStatus playerStatus) {
+        this.playerStatus = playerStatus;
     }
 
     public Map<String, Integer> getPlayerStats(){
