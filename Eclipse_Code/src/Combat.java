@@ -1,8 +1,7 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Combat {
@@ -130,6 +129,24 @@ public class Combat {
             this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * dodge));
         } else if (chosenBlock==true) {
             this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * block));
+        }
+    }
+
+    private void acquireLoot(){
+        Random rand = new Random();
+        int rand_int = rand.nextInt(100);
+        if (enemy.getLoot().getMinDropRateValue()<=rand_int || rand_int<=enemy.getLoot().getMaxDropRateValue()){
+            System.out.println("The enemy has left behind the following loot: ");
+            System.out.println("Name: " + enemy.getLoot().getName());
+            System.out.println("Description: " + enemy.getLoot().getDescription());
+            System.out.println("Rarity: " + enemy.getLoot().getRarity());
+            System.out.println("Would you like to pick it up: Yes(1) or No(2)");
+            Scanner scanner = new Scanner(System.in);
+            int loot = scanner.nextInt();
+            if (loot==1){
+                playerStatus.inventory.addItemToInventory(enemy.getLoot());
+            }
+
         }
     }
 }

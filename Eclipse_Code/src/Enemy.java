@@ -29,6 +29,7 @@ public class Enemy extends NonPlayableCharacter{
     private Spell spell1;
     private Spell spell2;
     private double enemyAttackDamage;
+    private Item loot;
 
     public Enemy(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, Type resistance, Type weakness, double resistMod, double weakMod, boolean facedBefore, int level) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom, dialogue, reputation);
@@ -102,6 +103,14 @@ public class Enemy extends NonPlayableCharacter{
 
     public void setRightHandWeapon(Weapon rightHandWeapon) {
         this.rightHandWeapon = rightHandWeapon;
+    }
+
+    public Item getLoot() {
+        return loot;
+    }
+
+    public void setLoot(Item loot) {
+        this.loot = loot;
     }
 
     public Map<String, Integer> getEnemyStats(){
