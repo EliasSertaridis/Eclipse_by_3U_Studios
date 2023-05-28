@@ -8,8 +8,8 @@ public class Blueprint extends Item{
     private float xDimension;
     private float yDimension;
 
-    public Blueprint(String name, String description, Construction construction, Item resource1, Item resource2, Item resource3, float xDimension, float yDimension) {
-        super(name, description);
+    public Blueprint(String name, String description, rarityType rarity, Construction construction, Item resource1, Item resource2, Item resource3, float xDimension, float yDimension) {
+        super(name, description, rarity);
         this.construction = construction;
         this.resource1 = resource1;
         this.resource2 = resource2;

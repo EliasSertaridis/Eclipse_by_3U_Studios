@@ -2,9 +2,9 @@ public class Equipment extends Item{
 
     private int weight;
 
-    public Equipment(String name, String description, int  weigh) {
-        super(name, description);
-        this.weight =weight;
+    public Equipment(String name, String description, rarityType rarity, int weight) {
+        super(name, description, rarity);
+        this.weight = weight;
     }
 
     public int getWeight() {

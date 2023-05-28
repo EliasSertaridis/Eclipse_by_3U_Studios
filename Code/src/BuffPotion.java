@@ -12,10 +12,10 @@ public class BuffPotion extends QuickItem{
     }
 
 
-    public BuffPotion(String name, String description,int statModifier,StatForModifing statToBeModified) {
+    public BuffPotion(String name, String description, int statModifier, StatForModifing statToBeModified) {
         super(name, description);
-        this.statModifier=statModifier;
-        this.statToBeModified=statToBeModified;
+        this.statModifier = statModifier;
+        this.statToBeModified = statToBeModified;
     }
 
     public int getStatModifier() {

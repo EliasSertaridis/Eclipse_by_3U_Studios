@@ -82,4 +82,11 @@ public class Character {
     public void setMaxHP(int maxHP) {
         this.maxHP = maxHP;
     }
+    public boolean checkIfAlive(Character obj){
+        if(obj.hp==0){
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

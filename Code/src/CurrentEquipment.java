@@ -146,6 +146,14 @@ public class CurrentEquipment {
             return true;
         }else {return false;}
     }
+    public int getShieldDefence(){
+        if (rightWeapon instanceof Shield){
+            return ((Shield) rightWeapon).getDefense();
+        }else if (leftWeapon instanceof Shield){
+            return ((Shield) leftWeapon).getDefense();
+        }
+        return 0;
+    }
 
 
 

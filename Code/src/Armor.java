@@ -7,7 +7,7 @@ public class Armor extends Equipment{
         Hands,
         Legs
     }
-    int defense;
+     private  int defense;
 
     public Armor(String name, String description, int weight,TypeOfArmor armorType,int defense) {
         super(name, description, weight);

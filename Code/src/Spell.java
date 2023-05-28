@@ -17,13 +17,13 @@ public class Spell extends Item{
     }
     private   int statPrerequisite;
 
-    public Spell(String name, String description,float scaling,int damage,TypeOfDamage damageType,PrerequisiteStat statPrerequisiteName,int statPrerequisite) {
-        super(name, description);
-        this.damage=damage;
-        this.scaling=scaling;
-        this.damageType=damageType;
-        this.statPrerequisite=statPrerequisite;
-        this.statPrerequisiteName=statPrerequisiteName;
+    public Spell(String name, String description, rarityType rarity, TypeOfDamage damageType, float scaling, int damage, PrerequisiteStat statPrerequisiteName, int statPrerequisite) {
+        super(name, description, rarity);
+        this.damageType = damageType;
+        this.scaling = scaling;
+        this.damage = damage;
+        this.statPrerequisiteName = statPrerequisiteName;
+        this.statPrerequisite = statPrerequisite;
     }
 
     public TypeOfDamage getDamageType() {
