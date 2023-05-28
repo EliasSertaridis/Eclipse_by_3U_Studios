@@ -45,4 +45,7 @@ public class Merchant extends NonPlayableCharacter{
     public void setInventory(String[] inventory) {
         this.inventory = inventory;
     }
+    public void getReputationWithCharacter(){
+
+    }
 }
