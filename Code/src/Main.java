@@ -25,17 +25,21 @@ public class Main {
         playerStatus.inventory.addItemToInventory(sword);
         playerStatus.inventory.addItemToInventory(bp1);
         playerStatus.inventory.addItemToInventory(hp1);
+        playerStatus.inventory.addItemToInventory(hp1);
+        System.out.println(playerStatus.inventory.getItems());
+        playerStatus.inventory.removeItemFromInventory(hp1);
+        System.out.println(playerStatus.inventory.getItems());
         playerStatus.setPlayer(takhs);
         CurrentEquipment eq1=new CurrentEquipment(head1,chest1,hands1,legs1,sword,sword);
         playerStatus.setEquipment(eq1);
 
     //    System.out.println(eq1.getCurrentEquipment()+" phase 1");
 
-       List<Equipment> equipment = eq1.getCurrentEquipment();
+    /*   List<Equipment> equipment = eq1.getCurrentEquipment();
         System.out.println("Equipment of the player:");
         for (Equipment head : equipment) {
             System.out.println("- " + head.getName() + ", Disc: " + head.getDescription());
-        }
+        }*/
         /*System.out.println("-----------------------------------------------");
         List<Armor> armor = eq1.getCurrentArmor();
         System.out.println("Armor of the player:");
@@ -45,7 +49,9 @@ public class Main {
         System.out.println("-----------------------------------------------");
         System.out.println(playerStatus.player.getName()+" "+playerStatus.player.getHp());
         */
-        playerStatus.openPlayerStatus();
+        playerStatus.inventory.openInventory();
+        System.out.println(playerStatus.inventory.getItems());
+      //  playerStatus.openPlayerStatus();
        /* List<Equipment> equipment1 = eq1.getCurrentEquipment();
         System.out.println("Equipment of the player:");
         for (Equipment head : equipment1) {

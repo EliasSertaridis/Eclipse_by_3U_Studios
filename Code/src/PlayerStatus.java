@@ -119,12 +119,6 @@ public class PlayerStatus {
 
     }
 
-
-
-
-
-
-
     public void chooseQuickItems(String choice) {
         if (choice.equals("Slot1")) {
             chooseQuickItem(0);

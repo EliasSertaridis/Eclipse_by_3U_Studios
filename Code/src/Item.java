@@ -3,8 +3,6 @@ public class Item {
    private String name;
    private  String description;
 
-   private  String takhs;
-
     public Item(String name,String description){
         this.name=name;
         this.description=description;
@@ -21,9 +19,16 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
-// we love takhs for ever
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public boolean use(){
+        System.out.println("This Item cannot be used.");
+        return false;
+    }
+    public boolean discard(){
+        System.out.println("This Item can be discarded.");
+        return true;
+    }
 }
