@@ -55,7 +55,7 @@ PlayableCharacter :
  5.changeStats()
  6.saveSpellChanges()
  7.saveChanges()
- 8.getReputationWithCharacter()
+ 8.getReputationWithMerchant()
  9.hasEnoughMoney()
  10.giveMoney()
 
