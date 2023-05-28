@@ -8,14 +8,14 @@ public class Spell extends Item{
         Holy,
         Lightning
     }
-    float scaling;
-    int damage;
+    private float scaling;
+    private int damage;
     PrerequisiteStat statPrerequisiteName;
     enum PrerequisiteStat {
         INT,
         WIS
     }
-    int statPrerequisite;
+    private   int statPrerequisite;
 
     public Spell(String name, String description,float scaling,int damage,TypeOfDamage damageType,PrerequisiteStat statPrerequisiteName,int statPrerequisite) {
         super(name, description);

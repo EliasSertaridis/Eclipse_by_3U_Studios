@@ -19,16 +19,16 @@ public class Main {
         Armor legs1= new Armor("podia","its noice",13, Armor.TypeOfArmor.Legs,1);
         PlayerStatus playerStatus=new PlayerStatus();
         playerStatus.setInventory(inventory);
-        playerStatus.inventory.addItemToInventory(head1);
-        playerStatus.inventory.addItemToInventory(head2);
-        playerStatus.inventory.addItemToInventory(sword2);
-        playerStatus.inventory.addItemToInventory(sword);
-        playerStatus.inventory.addItemToInventory(bp1);
-        playerStatus.inventory.addItemToInventory(hp1);
-        playerStatus.inventory.addItemToInventory(hp1);
-        System.out.println(playerStatus.inventory.getItems());
-        playerStatus.inventory.removeItemFromInventory(hp1);
-        System.out.println(playerStatus.inventory.getItems());
+        playerStatus.getInventory().addItemToInventory(head1);
+        playerStatus.getInventory().addItemToInventory(head2);
+        playerStatus.getInventory().addItemToInventory(sword2);
+        playerStatus.getInventory().addItemToInventory(sword);
+        playerStatus.getInventory().addItemToInventory(bp1);
+        playerStatus.getInventory().addItemToInventory(hp1);
+        playerStatus.getInventory().addItemToInventory(hp1);
+        System.out.println(playerStatus.getInventory().getItems());
+        playerStatus.getInventory().removeItemFromInventory(hp1);
+        System.out.println(playerStatus.getInventory().getItems());
         playerStatus.setPlayer(takhs);
         CurrentEquipment eq1=new CurrentEquipment(head1,chest1,hands1,legs1,sword,sword);
         playerStatus.setEquipment(eq1);
@@ -49,8 +49,8 @@ public class Main {
         System.out.println("-----------------------------------------------");
         System.out.println(playerStatus.player.getName()+" "+playerStatus.player.getHp());
         */
-        playerStatus.inventory.openInventory();
-        System.out.println(playerStatus.inventory.getItems());
+        playerStatus.getInventory().openInventory();
+        System.out.println(playerStatus.getInventory().getItems());
       //  playerStatus.openPlayerStatus();
        /* List<Equipment> equipment1 = eq1.getCurrentEquipment();
         System.out.println("Equipment of the player:");

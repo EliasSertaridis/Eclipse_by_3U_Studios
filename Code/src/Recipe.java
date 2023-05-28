@@ -1,7 +1,7 @@
 public class Recipe extends Item{
 
-    Item creation;
-    Item resource1,resource2,resource3;
+    private Item creation;
+    private Item resource1,resource2,resource3;
 
 
     public Recipe(String name, String description,Item creation,Item resource1,Item resource2,Item resource3) {

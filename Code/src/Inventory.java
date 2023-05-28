@@ -3,8 +3,8 @@ import java.util.*;
 public class Inventory {
 
     private static final int inventorySize = 100000;
-    List<Item> items = new ArrayList<Item>();
-    Map<Item, Integer> itemStock = new HashMap<Item, Integer>();
+    private List<Item> items = new ArrayList<Item>();
+    private Map<Item, Integer> itemStock = new HashMap<Item, Integer>();
 
     public Inventory() {
     }

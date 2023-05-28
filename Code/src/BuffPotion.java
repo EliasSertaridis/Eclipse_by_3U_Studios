@@ -1,6 +1,6 @@
 public class BuffPotion extends QuickItem{
 
-    int statModifier;
+   private int statModifier;
     StatForModifing statToBeModified;
     enum StatForModifing{
         STR,
@@ -30,7 +30,7 @@ public class BuffPotion extends QuickItem{
         return statToBeModified;
     }
 
-    public void setStatToBeModified(StatForModifing statToBeModified) {
+    public void setStatToBeModified(StatForModifing  statToBeModified) {
         this.statToBeModified = statToBeModified;
     }
 }

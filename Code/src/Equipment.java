@@ -1,8 +1,8 @@
 public class Equipment extends Item{
 
-    int weight;
+    private int weight;
 
-    public Equipment(String name, String description, int  weight) {
+    public Equipment(String name, String description, int  weigh) {
         super(name, description);
         this.weight =weight;
     }
