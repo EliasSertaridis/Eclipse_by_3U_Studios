@@ -84,16 +84,16 @@ public class Combat {
                 this.attackDamage = pc.getPlayerStatus().totalDamage(pc.getCurrentEquipment().getLeftWeapon());
                 break;
             case 3:
-                this.attackDamage = spellSlot.getSpellSlots().get(0).totalSpellDamage(spellSlot.getSpellSlots().get(0));
+                this.attackDamage = spellSlot.totalSpellDamage(spellSlot.getSpellSlots().get(0));
                 break;
             case 4:
-                this.attackDamage = spellSlot.getSpellSlots().get(1).totalSpellDamage(spellSlot.getSpellSlots().get(1));
+                this.attackDamage = spellSlot.totalSpellDamage(spellSlot.getSpellSlots().get(1));
                 break;
             case 5:
-                this.attackDamage = spellSlot.getSpellSlots().get(2).totalSpellDamage(spellSlot.getSpellSlots().get(2));
+                this.attackDamage = spellSlot.totalSpellDamage(spellSlot.getSpellSlots().get(2));
                 break;
             case 6:
-                this.attackDamage = spellSlot.getSpellSlots().get(3).totalSpellDamage(spellSlot.getSpellSlots().get(3));
+                this.attackDamage = spellSlot.totalSpellDamage(spellSlot.getSpellSlots().get(3));
                 break;
         }
     }
