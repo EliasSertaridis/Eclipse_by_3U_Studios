@@ -3,8 +3,8 @@ public class HealthPotion extends QuickItem{
 
     private int regenPoints;
 
-    public HealthPotion(String name, String description, int regenPoints) {
-        super(name, description);
+    public HealthPotion(String name, String description, rarityType rarity, int regenPoints) {
+        super(name, description, rarity);
         this.regenPoints = regenPoints;
     }
 
