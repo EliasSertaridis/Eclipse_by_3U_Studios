@@ -1,17 +1,15 @@
-import java.util.HashMap;
-import java.util.Map;
 
 public class Item {
 
     private String name;
     private  String description;
-    private enum rarityType{
+    enum rarityType{
         Common,
         Rare,
         Unique,
         Legendary
     }
-    private rarityType rarity;
+    protected static Item.rarityType rarity;
     private int minDropRateValue;
     private int maxDropRateValue;
     public Item(String name,String description, rarityType rarity){
@@ -39,9 +37,6 @@ public class Item {
         return rarity;
     }
 
-    public void setRarity(rarityType rarity) {
-        this.rarity = rarity;
-    }
 
     public int getMinDropRateValue() {
         return minDropRateValue;

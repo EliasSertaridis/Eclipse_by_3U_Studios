@@ -9,8 +9,8 @@ public class Armor extends Equipment{
     }
     int defense;
 
-    public Armor(String name, String description, int weight,TypeOfArmor armorType,int defense) {
-        super(name, description, weight);
+    public Armor(String name, String description, Item.rarityType rarity, int weight,TypeOfArmor armorType,int defense) {
+        super(name, description, rarity, weight);
         this.armorType=armorType;
         this.defense=defense;
     }

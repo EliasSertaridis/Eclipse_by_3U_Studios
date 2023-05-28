@@ -1,4 +1,3 @@
-import javax.management.ListenerNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -192,9 +191,11 @@ public class Combat {
             }
         }
         if(!(pc.checkIfAlive(pc))){
+            System.out.println("YOU DIED");
             pc.setHp(pc.getMaxHP());
             //resting point
         }else if (!(enemy.checkIfAlive(enemy))){
+            System.out.println("ENEMY FELLED");
             acquireLoot(enemy);
         }
         enemy.setHp(enemy.getMaxHP());

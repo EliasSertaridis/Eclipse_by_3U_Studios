@@ -19,8 +19,8 @@ public class Spell extends Item{
 
     PlayerStatus playerStatus;
 
-    public Spell(String name, String description,float scaling,int damage,TypeOfDamage damageType,PrerequisiteStat statPrerequisiteName,int statPrerequisite) {
-        super(name, description);
+    public Spell(String name, String description, Item.rarityType rarity, float scaling,int damage,TypeOfDamage damageType,PrerequisiteStat statPrerequisiteName,int statPrerequisite) {
+        super(name, description, rarity);
         this.damage=damage;
         this.scaling=scaling;
         this.damageType=damageType;
