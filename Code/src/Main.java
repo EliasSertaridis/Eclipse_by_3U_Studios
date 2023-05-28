@@ -11,7 +11,7 @@ public class Main {
          Weapon sword= new Weapon("excalibur","The sword of king Arthur", Item.rarityType.Common,13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword, Weapon.TypeOfScaling.INT);
          Weapon sword2= new Weapon("Zangetsu","The sword of Ichigo", Item.rarityType.Legendary,13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword,Weapon.TypeOfScaling.DEX);
         HealthPotion hp1=new HealthPotion("Flask","very old", Item.rarityType.Rare,12);
-        BuffPotion bp1=new BuffPotion("Milk","makes you stronger",3, BuffPotion.StatForModifing.STR);
+        BuffPotion bp1=new BuffPotion("Milk","makes you stronger", Item.rarityType.Unique,3, BuffPotion.StatForModifing.STR);
         Armor head1= new Armor("kefali","its noice", Item.rarityType.Common,13, Armor.TypeOfArmor.Head,1);
         Armor head2= new Armor("KARANIO","its HUGE", Item.rarityType.Legendary,13, Armor.TypeOfArmor.Head,1);
         Armor chest1= new Armor("sti8os","its noice", Item.rarityType.Rare,13, Armor.TypeOfArmor.Chest,1);

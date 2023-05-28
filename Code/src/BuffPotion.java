@@ -12,8 +12,8 @@ public class BuffPotion extends QuickItem{
     }
 
 
-    public BuffPotion(String name, String description, int statModifier, StatForModifing statToBeModified) {
-        super(name, description);
+    public BuffPotion(String name, String description, rarityType rarity, int statModifier, StatForModifing statToBeModified) {
+        super(name, description, rarity);
         this.statModifier = statModifier;
         this.statToBeModified = statToBeModified;
     }
