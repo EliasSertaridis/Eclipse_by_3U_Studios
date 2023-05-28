@@ -148,6 +148,11 @@ public class Combat {
         }
         obj.setHp(newHP);
     }
+
+    public void changeTurn(){
+        if(turn) this.turn = false;
+        else this.turn = true;
+    }
     public void triggerCombat(PlayableCharacter pc, Enemy enemy){
         playerStats = new HashMap<>(pc.getPlayerStats());
         enemyStats = new HashMap<>(enemy.getEnemyStats());
@@ -178,7 +183,7 @@ public class Combat {
                 reduceHP(pc);
                 System.out.println("Your remaining HP is: " + pc.getHp());
                 pc.checkIfAlive(pc);
-                this.turn = false;
+                changeTurn();
             } else if (!turn) {
                 System.out.println("It is your turn");
                 chooseAttack(pc);
@@ -187,7 +192,7 @@ public class Combat {
                 reduceHP(enemy);
                 System.out.println("The Enemy's remaining Hp is: " + enemy.getHp());
                 enemy.checkIfAlive(enemy);
-                this.turn = true;
+                changeTurn();
             }
         }
         if(!(pc.checkIfAlive(pc))){
