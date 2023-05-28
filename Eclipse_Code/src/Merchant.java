@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Merchant extends NonPlayableCharacter{
 
     private enum MerchantType{
@@ -44,5 +49,9 @@ public class Merchant extends NonPlayableCharacter{
 
     public void setInventory(String[] inventory) {
         this.inventory = inventory;
+    }
+
+    public void getReputationWithCharacter(){
+
     }
 }

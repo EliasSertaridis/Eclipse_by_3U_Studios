@@ -1,6 +1,6 @@
 public class BuffPotion extends QuickItem{
 
-    int statModifier;
+    private int statModifier;
     StatForModifing statToBeModified;
     enum StatForModifing{
         STR,

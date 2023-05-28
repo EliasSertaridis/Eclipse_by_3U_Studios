@@ -66,6 +66,13 @@ public class Item {
                 break;
         }
     }
-
+    public boolean use(){
+        System.out.println("This Item cannot be used.");
+        return false;
+    }
+    public boolean discard(){
+        System.out.println("This Item can be discarded.");
+        return true;
+    }
 
 }

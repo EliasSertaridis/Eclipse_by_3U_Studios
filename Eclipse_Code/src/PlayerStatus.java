@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class PlayerStatus {
 
-    PlayableCharacter player;
-    CurrentEquipment equipment;
-    Inventory inventory;
+    private PlayableCharacter player;
+    private CurrentEquipment equipment;
+    private Inventory inventory;
 
     public PlayerStatus() {
     }
@@ -118,12 +118,6 @@ public class PlayerStatus {
             System.out.println("Nothing");
 
     }
-
-
-
-
-
-
 
     public void chooseQuickItems(String choice) {
         if (choice.equals("Slot1")) {
@@ -454,7 +448,7 @@ public class PlayerStatus {
         if(quickItem instanceof HealthPotion){
             System.out.println("Healing Effect: "+((HealthPotion) quickItem).getRegenPoints());
         }else if(quickItem instanceof BuffPotion){
-            System.out.println("This Potion Buff"+((BuffPotion) quickItem).getStatToBeModified()+" By: "+((BuffPotion) quickItem).statModifier);
+            System.out.println("This Potion Buff"+((BuffPotion) quickItem).getStatToBeModified()+" By: "+((BuffPotion) quickItem).getStatModifier());
         }
     }
 

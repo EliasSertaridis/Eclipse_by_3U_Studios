@@ -4,11 +4,11 @@ import java.util.List;
 public class CurrentEquipment {
 
 
-    Armor head, chest, hands, legs;
+    private Armor head, chest, hands, legs;
 
-    Weapon rightWeapon, leftWeapon;
-    List<QuickItem> currentQuickItems = new ArrayList<QuickItem>();
-    List<Equipment> currentEquipment= new ArrayList<Equipment>();
+    private Weapon rightWeapon, leftWeapon;
+    private List<QuickItem> currentQuickItems = new ArrayList<QuickItem>();
+    private List<Equipment> currentEquipment= new ArrayList<Equipment>();
 
     public CurrentEquipment(Armor head, Armor chest, Armor hands, Armor legs, Weapon rightWeapon, Weapon leftWeapon) {
         this.head = head;

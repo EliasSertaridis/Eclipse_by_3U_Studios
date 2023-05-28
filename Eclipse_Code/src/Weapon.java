@@ -2,9 +2,9 @@ import java.util.Arrays;
 
 public class Weapon extends Equipment {
 
-    int damage;
-    double scaling;
-    TypeOfDamage damageType;
+    private int damage;
+    private double scaling;
+    private TypeOfDamage damageType;
 
     enum TypeOfDamage {
         Slashing,
