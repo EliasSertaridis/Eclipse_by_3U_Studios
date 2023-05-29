@@ -24,7 +24,6 @@ public class CurrentEquipment {
     }
 
     public void setHead(Armor head) {
-        updateEquipment(head,this.head);
         this.head = head;
     }
 
@@ -33,7 +32,6 @@ public class CurrentEquipment {
     }
 
     public void setChest(Armor chest) {
-        updateEquipment(chest,this.chest);
         this.chest = chest;
     }
 
@@ -42,7 +40,6 @@ public class CurrentEquipment {
     }
 
     public void setHands(Armor hands) {
-        updateEquipment(hands,this.hands);
         this.hands = hands;
     }
 
@@ -51,7 +48,6 @@ public class CurrentEquipment {
     }
 
     public void setLegs(Armor legs) {
-        updateEquipment(legs,this.legs);
         this.legs = legs;
     }
 
@@ -112,6 +108,19 @@ public class CurrentEquipment {
         currentEquipment.add(leftWeapon);
     }
 
+    public void setArmor(Armor armor){
+        if(armor.getArmorType()== Armor.TypeOfArmor.Chest){
+            setChest(armor);
+        }else if(armor.getArmorType()== Armor.TypeOfArmor.Head){
+            setHead(armor);
+        }else if(armor.getArmorType()== Armor.TypeOfArmor.Hands){
+            setHands(armor);
+        }else if(armor.getArmorType()== Armor.TypeOfArmor.Legs){
+            setLegs(armor);
+        }
+
+    }
+
     public void removeQuickItem(QuickItem quickItem){
         currentQuickItems.remove(quickItem);
     }
@@ -130,9 +139,18 @@ public class CurrentEquipment {
     public void addEquipment(Equipment equipment){
         currentEquipment.add(equipment);
     }
+    public void updateArmor(Armor newArmor,Armor oldArmor){
+        removeEquipment(oldArmor);
+        addEquipment(newArmor);
+        setArmor(newArmor);
+    }
     public void updateEquipment(Equipment newEquipment,Equipment oldEquipment){
-        removeEquipment(oldEquipment);
-        addEquipment(newEquipment);
+        if(newEquipment instanceof Armor){
+            updateArmor((Armor) newEquipment,(Armor) oldEquipment);
+        }else {
+            removeEquipment(oldEquipment);
+            addEquipment(newEquipment);
+        }
     }
     public int totalWeight(){
         int weight=0;
@@ -153,6 +171,18 @@ public class CurrentEquipment {
             return ((Shield) leftWeapon).getDefense();
         }
         return 0;
+    }
+
+    public Armor getArmorByType(Armor.TypeOfArmor typeOfArmor) {
+        if (typeOfArmor == Armor.TypeOfArmor.Chest) {
+            return getChest();
+        } else if (typeOfArmor == Armor.TypeOfArmor.Hands) {
+            return getHands();
+        } else if (typeOfArmor == Armor.TypeOfArmor.Head) {
+            return getHead();
+        } else if (typeOfArmor == Armor.TypeOfArmor.Legs) {
+            return getLegs();
+        }return null;
     }
 
     public int getTotalDefense(){
