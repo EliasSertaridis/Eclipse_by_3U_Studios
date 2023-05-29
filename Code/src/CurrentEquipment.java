@@ -121,6 +121,7 @@ public class CurrentEquipment {
 
     }
 
+
     public void removeQuickItem(QuickItem quickItem){
         currentQuickItems.remove(quickItem);
     }
@@ -145,11 +146,20 @@ public class CurrentEquipment {
         setArmor(newArmor);
     }
     public void updateEquipment(Equipment newEquipment,Equipment oldEquipment){
-        if(newEquipment instanceof Armor){
-            updateArmor((Armor) newEquipment,(Armor) oldEquipment);
-        }else {
+        if(newEquipment instanceof Armor) {
+            updateArmor((Armor) newEquipment, (Armor) oldEquipment);
+
+        }
+    }
+    public void updateEquipment(Equipment newEquipment,Equipment oldEquipment,String weaponLocation){
+        if(newEquipment instanceof Weapon){
             removeEquipment(oldEquipment);
             addEquipment(newEquipment);
+            if(weaponLocation.equals("Right")){
+                setRightWeapon((Weapon) newEquipment);
+            }else if(weaponLocation.equals("Left")){
+                setLeftWeapon((Weapon) newEquipment);
+            }
         }
     }
     public int totalWeight(){
@@ -182,6 +192,13 @@ public class CurrentEquipment {
             return getHead();
         } else if (typeOfArmor == Armor.TypeOfArmor.Legs) {
             return getLegs();
+        }return null;
+    }
+    public Weapon getWeaponByLocation(String location){
+        if(location.equals("Left")){
+            return getLeftWeapon();
+        }else if (location.equals("Right")){
+            return getRightWeapon();
         }return null;
     }
 
