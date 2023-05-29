@@ -155,6 +155,16 @@ public class CurrentEquipment {
         return 0;
     }
 
+    public int getTotalDefense(){
+        int deffense=0;
+        deffense=deffense+getHands().getDefense();
+        deffense=deffense+getHead().getDefense();
+        deffense=deffense+getLegs().getDefense();
+        deffense=deffense+getChest().getDefense();
+        return deffense;
+
+    }
+
 
 
 }

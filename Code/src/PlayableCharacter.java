@@ -95,5 +95,8 @@ public class PlayableCharacter extends Character{
         }
         return 0;
     }
+    public void setDefenceMod(){
+        this.defenceModifier = currentEquipment.getTotalDefense();
+    }
 
 }

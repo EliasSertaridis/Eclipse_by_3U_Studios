@@ -204,6 +204,7 @@ public class PlayerStatus {
             if (input.equals("Yes")) {
                 if (fitCheck(armor.get(position - 1), this.equipment.getHead())) {
                     this.equipment.setHead(armor.get(position - 1));
+                    player.setDefenceMod();
                     on=false;
                     option=true;
                 }
@@ -246,6 +247,7 @@ public class PlayerStatus {
                     if (input.equals("Yes")) {
                         if (fitCheck(armor.get(position - 1), this.equipment.getChest())) {
                             this.equipment.setChest(armor.get(position - 1));
+                            player.setDefenceMod();
                             on = false;
                             option = true;
                         }
@@ -288,6 +290,7 @@ public class PlayerStatus {
                     if (input.equals("Yes")) {
                         if (fitCheck(armor.get(position - 1), this.equipment.getHands())) {
                             this.equipment.setHands(armor.get(position - 1));
+                            player.setDefenceMod();
                             on = false;
                             option = true;
                         }
@@ -330,6 +333,7 @@ public class PlayerStatus {
                     if (input.equals("Yes")) {
                         if (fitCheck(armor.get(position - 1), this.equipment.getLegs())) {
                             this.equipment.setLegs(armor.get(position - 1));
+                            player.setDefenceMod();
                             on = false;
                             option = true;
                         }
