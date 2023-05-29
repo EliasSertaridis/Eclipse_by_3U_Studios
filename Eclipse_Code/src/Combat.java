@@ -113,11 +113,11 @@ public class Combat {
         this.finalDamage = (int) (attackDamage + attackDamage*weakMod - attackDamage*resistMod);
     }
 
-    public void calcEnemyDamage(Enemy enemy){
+    public void calcEnemyDamage(PlayableCharacter pc,Enemy enemy){
         if (chosenDodge==true){
-            this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * dodge));
+            this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * (dodge + pc.getDefenceModifier()/10)));
         } else if (chosenBlock==true) {
-            this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * block));
+            this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * (block + pc.getDefenceModifier()/10)));
         }
     }
 
@@ -178,7 +178,7 @@ public class Combat {
                 } else if (choice==2){
                     chooseDodge(pc);
                 }
-                calcEnemyDamage(enemy);
+                calcEnemyDamage(pc,enemy);
                 System.out.println("You take " + finalDamage + " Damage");
                 reduceHP(pc);
                 System.out.println("Your remaining HP is: " + pc.getHp());

@@ -135,6 +135,16 @@ public class CurrentEquipment {
     public void updateEquipment(Equipment newEquipment,Equipment oldEquipment){
         removeEquipment(oldEquipment);
         addEquipment(newEquipment);
+
+    }
+    public int getTotalDefense(){
+        int deffense=0;
+        deffense=deffense+getHands().getDefense();
+        deffense=deffense+getHead().getDefense();
+        deffense=deffense+getLegs().getDefense();
+        deffense=deffense+getChest().getDefense();
+        return deffense;
+
     }
     public int totalWeight(){
         int weight=0;
