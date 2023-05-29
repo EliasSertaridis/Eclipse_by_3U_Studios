@@ -7,16 +7,15 @@ public class PlayableCharacter extends Character{
     private int money;
     private int level;
     private double equipLoad;
-    private double defenceModifier;
+    private int defenceModifier;
     private CurrentEquipment currentEquipment;
     private PlayerStatus playerStatus;
     private Race race;
-    public PlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad, double defenceModifier) {
+    public PlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom);
         this.money = money;
         this.level = level;
         this.equipLoad = equipLoad;
-        this.defenceModifier = defenceModifier;
     }
 
     public PlayableCharacter(){
@@ -48,11 +47,11 @@ public class PlayableCharacter extends Character{
         this.equipLoad = equipLoad;
     }
 
-    public double getDefenceModifier() {
+    public int getDefenceModifier() {
         return defenceModifier;
     }
 
-    public void setDefenceModifier(double defenceModifier) {
+    public void setDefenceModifier(int defenceModifier) {
         this.defenceModifier = defenceModifier;
     }
 
@@ -91,5 +90,9 @@ public class PlayableCharacter extends Character{
             }
         }
         return 0;
+    }
+
+    public void setDefenceMod(){
+        this.defenceModifier = currentEquipment.getTotalDefense();
     }
 }
