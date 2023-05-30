@@ -18,9 +18,9 @@ public class Merchant extends NonPlayableCharacter{
         Ork
     }
     private RaceType race;
-    private String[] inventory;
+    private List<Item> inventory;
 
-    public Merchant(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, MerchantType merchantType, RaceType race, String[] inventory) {
+    public Merchant(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, MerchantType merchantType, RaceType race, List<Item> inventory) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom, dialogue, reputation);
         this.merchantType = merchantType;
         this.race = race;
@@ -43,15 +43,15 @@ public class Merchant extends NonPlayableCharacter{
         this.race = race;
     }
 
-    public String[] getInventory() {
+    public List<Item> getInventory() {
         return inventory;
     }
 
-    public void setInventory(String[] inventory) {
+    public void setInventory(List<Item> inventory) {
         this.inventory = inventory;
     }
 
     public void getReputationWithCharacter(){
-
+        
     }
 }

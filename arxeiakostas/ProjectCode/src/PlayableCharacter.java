@@ -59,6 +59,15 @@ public class PlayableCharacter extends Character{
         playerStats.put(getName(),getHp());
         return playerStats;
     }
+    public Map<String, Integer> getReputationWithMerchantRaces(){
+        Map<String,Integer> repWithMerch = new HashMap<>();
+        repWithMerch.put(Race.raceType.Human.toString(), 1);
+        repWithMerch.put(Race.raceType.Ork.toString(),1);
+        repWithMerch.put(Race.raceType.Elf.toString(),1);
+        repWithMerch.put(Race.raceType.Dwarf.toString(),1);
+        repWithMerch.put(Race.raceType.Halfling.toString(),1);
 
+        return repWithMerch;
+    }
 
 }
