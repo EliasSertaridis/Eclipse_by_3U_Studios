@@ -53,7 +53,7 @@ public class Inventory {
         List<Weapon> weapon = new ArrayList<Weapon>();
         for(Equipment equipment: getAllEquipment()){
             if(equipment instanceof Weapon){
-                    weapon.add((Weapon) equipment);
+                weapon.add((Weapon) equipment);
             }
         }
         return weapon;

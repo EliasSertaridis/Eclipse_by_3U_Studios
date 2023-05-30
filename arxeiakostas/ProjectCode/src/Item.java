@@ -1,9 +1,7 @@
 public class Item {
 
-   private String name;
-   private  String description;
-
-   private  String takhs;
+    private String name;
+    private  String description;
 
     public Item(String name,String description){
         this.name=name;
@@ -21,7 +19,6 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
-// we love takhs for ever
     public void setDescription(String description) {
         this.description = description;
     }
