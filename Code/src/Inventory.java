@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Inventory {
@@ -126,8 +127,7 @@ public class Inventory {
 
     public void openInventory() {
         showInventory();
-        chooseItem();
-
+        choose();
     }
 
 
@@ -138,12 +138,56 @@ public class Inventory {
             System.out.println("- " + item.getName() + ", Description: " + item.getDescription() + ", Stock: " + stock);
         }
     }
-
-    public void chooseItem() {
-        System.out.println("Type the name of the Item that you want to choose: ");
+    public void optCrafting() {
+        Scanner scanner= new Scanner(System.in);
+      //  List<Recipe> recipes= new ArrayList<Recipe>();
+        String input;
+        for (Item item : itemStock.keySet()) {
+            int flag = 0;
+            boolean checked1 = true;
+            boolean checked2 = true;
+            boolean checked3 = true;
+            if (item instanceof Recipe) {
+                for (Item resources : itemStock.keySet()) {
+                    int stock = itemStock.get(resources);
+                    if (((Recipe) item).getResource1() == resources && stock >= 1 && checked1) {
+                        checked1 = false;
+                        flag++;
+                        stock--;
+                    }
+                    if (((Recipe) item).getResource2() == resources && stock >= 1 && checked2) {
+                        checked2 = false;
+                        flag++;
+                        stock--;
+                    }
+                    if (((Recipe) item).getResource3() == resources && stock >= 1 && checked3) {
+                        checked3 = false;
+                        flag++;
+                        //stock--;
+                    }
+                }
+                if (flag == 3) {
+                    System.out.println("- " + item.getName() + " is craftable and it gives you the " + ((Recipe) item).getCreation().getName() + " Item.");
+                   // recipes.add((Recipe) item);
+                } else System.out.println("- " + item.getName() + " is not craftable.");
+            }
+        }
+        System.out.println("Type the name of the Recipe you want to use or type Exit to go back");
+        input = scanner.nextLine();
+        Item item = getItemByName(input);
+        optUse(item);
+    }
+    public void choose(){
+        System.out.println("Type the name of the Item that you want to choose or type Crafting to only see the crafting recipes: ");
         Scanner scanner = new Scanner(System.in);
         String input;
         input = scanner.nextLine();
+        if(input.equals("Crafting")){
+            optCrafting();
+        }else chooseItem(input);
+    }
+    public void chooseItem(String input) {
+        Scanner scanner = new Scanner(System.in);
         Item item = getItemByName(input);
         if (input.equals("Exit")) {
         } else {
@@ -160,12 +204,40 @@ public class Inventory {
         }
     }
     public void optUse(Item item){
+        int flag=0;
+        boolean checked1=true;
+        boolean checked2=true;
+        boolean checked3=true;
         if(item.use()){
-            removeItemFromInventory(item);
             if(item instanceof Recipe){
+                for (Item resources : itemStock.keySet()) {
+                    int stock = itemStock.get(resources);
+                    if(((Recipe) item).getResource1()==resources && stock>=1 && checked1){
+                        checked1=false;
+                       flag++;
+                       stock--;
+                    }if(((Recipe) item).getResource2()==resources && stock>=1 && checked2) {
+                        checked2=false;
+                        flag++;
+                        stock--;
+                    }if(((Recipe) item).getResource3()==resources && stock>=1 && checked3) {
+                        checked3=false;
+                        flag++;
+                        //stock--;
+                    }
+                }
+            }if(flag==3 &&item instanceof Recipe ) removeItemFromInventory(item);
+            else if(item instanceof Recipe && flag!=3) System.out.println("This item can not be used");
+            else removeItemFromInventory(item);
+            if(item instanceof Recipe){
+                removeItemFromInventory(((Recipe) item).getResource1());
+                removeItemFromInventory(((Recipe) item).getResource2());
+                removeItemFromInventory(((Recipe) item).getResource3());
                 addItemToInventory(((Recipe) item).getCreation());
             }else if(item instanceof BuffPotion){
                 player.consumes((BuffPotion) item);
+            }else if(item instanceof HealthPotion){
+                player.consumes((HealthPotion) item);
             }
         }else{
 

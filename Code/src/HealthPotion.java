@@ -15,4 +15,10 @@ public class HealthPotion extends QuickItem{
     public void setRegenPoints(int regenPoints) {
         this.regenPoints = regenPoints;
     }
+
+    @Override
+    public boolean use() {
+        System.out.println("You just used the item "+getName());
+        return true;
+    }
 }

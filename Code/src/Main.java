@@ -13,15 +13,19 @@ public class Main {
         HealthPotion hp1=new HealthPotion("Flask","very old", Item.rarityType.Rare,12);
         BuffPotion bp2=new BuffPotion("Chad Juice","You get stronger", Item.rarityType.Rare,10, BuffPotion.StatForModifing.STR);
         BuffPotion bp1=new BuffPotion("Milk","makes you stronger", Item.rarityType.Unique,3, BuffPotion.StatForModifing.STR);
+        Recipe recipe1=new Recipe("MAKE A TOAST","Gives you MILK just to troll you", Item.rarityType.Common,bp1,flask,hp1,bp2);
         Armor head1= new Armor("kefali","its noice", Item.rarityType.Common,13, Armor.TypeOfArmor.Head,1);
         Armor head2= new Armor("KARANIO","its HUGE", Item.rarityType.Legendary,13, Armor.TypeOfArmor.Head,1);
         Armor chest1= new Armor("sti8os","its noice", Item.rarityType.Rare,13, Armor.TypeOfArmor.Chest,1);
         Armor hands1= new Armor("xeria","its noice", Item.rarityType.Legendary,13, Armor.TypeOfArmor.Hands,1);
         Armor legs1= new Armor("podia","its noice", Item.rarityType.Unique,13, Armor.TypeOfArmor.Legs,1);
         PlayerStatus playerStatus=new PlayerStatus();
+        takhs.setMaxHP(20);
         playerStatus.setInventory(inventory);
         inventory.setPlayer(takhs);
+        playerStatus.getInventory().addItemToInventory(flask);
         playerStatus.getInventory().addItemToInventory(head1);
+        playerStatus.getInventory().addItemToInventory(recipe1);
         playerStatus.getInventory().addItemToInventory(head2);
         playerStatus.getInventory().addItemToInventory(hands1);
         playerStatus.getInventory().addItemToInventory(sword2);
@@ -54,10 +58,9 @@ public class Main {
         System.out.println("-----------------------------------------------");
         System.out.println(playerStatus.player.getName()+" "+playerStatus.player.getHp());
         */
-        System.out.println("The STR OF TAKHS IS "+takhs.getStrength());
+        System.out.println("The hp OF TAKHS IS "+takhs.getHp());
         playerStatus.getInventory().openInventory();
-
-        System.out.println("The STR OF TAKHS IS "+takhs.getStrength());
+        playerStatus.getInventory().openInventory();
       //  System.out.println(playerStatus.getInventory().getItems());
        // playerStatus.openPlayerStatus();
        /* List<Equipment> equipment1 = eq1.getCurrentEquipment();

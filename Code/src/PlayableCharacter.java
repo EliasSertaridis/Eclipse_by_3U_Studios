@@ -150,5 +150,10 @@ public class PlayableCharacter extends Character{
 
         }
     }
+    public void consumes(HealthPotion healthPotion){
+        if(getHp()+ healthPotion.getRegenPoints()>=getMaxHP()){
+            setHp(getMaxHP());
+        }else setHp(getHp()+healthPotion.getRegenPoints());
+    }
 
 }
