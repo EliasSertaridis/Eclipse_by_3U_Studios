@@ -115,7 +115,14 @@ public class Combat {
 
     public void calcEnemyDamage(PlayableCharacter pc,Enemy enemy){
         if (chosenDodge==true){
-            this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * (dodge + pc.getDefenceModifier()/10)));
+            Random rand = new Random();
+            double rand_doub = rand.nextDouble();
+            if (rand_doub<=dodge){
+                this.finalDamage= 0;
+                System.out.println("You successfully dodged the enemy attack!");
+            } else {
+                this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * (pc.getDefenceModifier()/10)));
+            }
         } else if (chosenBlock==true) {
             this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * (block + pc.getDefenceModifier()/10)));
         }
