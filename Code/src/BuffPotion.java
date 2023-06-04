@@ -33,4 +33,10 @@ public class BuffPotion extends QuickItem{
     public void setStatToBeModified(StatForModifing  statToBeModified) {
         this.statToBeModified = statToBeModified;
     }
+
+    @Override
+    public boolean use() {
+        System.out.println("You just used the item "+getName());
+        return true;
+    }
 }

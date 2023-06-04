@@ -6,6 +6,8 @@ public class Inventory {
     private List<Item> items = new ArrayList<Item>();
     private Map<Item, Integer> itemStock = new HashMap<Item, Integer>();
 
+    private PlayableCharacter player;
+
     public Inventory() {
     }
 
@@ -25,6 +27,15 @@ public class Inventory {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+
+    public PlayableCharacter getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(PlayableCharacter player) {
+        this.player = player;
     }
 
     public void addItemToInventory(Item item) {
@@ -151,6 +162,11 @@ public class Inventory {
     public void optUse(Item item){
         if(item.use()){
             removeItemFromInventory(item);
+            if(item instanceof Recipe){
+                addItemToInventory(((Recipe) item).getCreation());
+            }else if(item instanceof BuffPotion){
+                player.consumes((BuffPotion) item);
+            }
         }else{
 
         }

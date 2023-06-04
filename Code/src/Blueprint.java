@@ -72,4 +72,10 @@ public class Blueprint extends Item{
         resources.add(getResource3());
         return resources;
     }
+
+    @Override
+    public boolean discard() {
+        System.out.println("This item can not be discarded");
+        return false;
+    }
 }

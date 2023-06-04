@@ -11,6 +11,7 @@ public class Main {
          Weapon sword= new Weapon("excalibur","The sword of king Arthur", Item.rarityType.Common,13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword, Weapon.TypeOfScaling.INT);
          Weapon sword2= new Weapon("Zangetsu","The sword of Ichigo", Item.rarityType.Legendary,13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword,Weapon.TypeOfScaling.DEX);
         HealthPotion hp1=new HealthPotion("Flask","very old", Item.rarityType.Rare,12);
+        BuffPotion bp2=new BuffPotion("Chad Juice","You get stronger", Item.rarityType.Rare,10, BuffPotion.StatForModifing.STR);
         BuffPotion bp1=new BuffPotion("Milk","makes you stronger", Item.rarityType.Unique,3, BuffPotion.StatForModifing.STR);
         Armor head1= new Armor("kefali","its noice", Item.rarityType.Common,13, Armor.TypeOfArmor.Head,1);
         Armor head2= new Armor("KARANIO","its HUGE", Item.rarityType.Legendary,13, Armor.TypeOfArmor.Head,1);
@@ -19,6 +20,7 @@ public class Main {
         Armor legs1= new Armor("podia","its noice", Item.rarityType.Unique,13, Armor.TypeOfArmor.Legs,1);
         PlayerStatus playerStatus=new PlayerStatus();
         playerStatus.setInventory(inventory);
+        inventory.setPlayer(takhs);
         playerStatus.getInventory().addItemToInventory(head1);
         playerStatus.getInventory().addItemToInventory(head2);
         playerStatus.getInventory().addItemToInventory(hands1);
@@ -27,6 +29,7 @@ public class Main {
         playerStatus.getInventory().addItemToInventory(bp1);
         playerStatus.getInventory().addItemToInventory(hp1);
         playerStatus.getInventory().addItemToInventory(hp1);
+        playerStatus.getInventory().addItemToInventory(bp2);
         System.out.println(playerStatus.getInventory().getItems());
         playerStatus.getInventory().removeItemFromInventory(hp1);
         System.out.println(playerStatus.getInventory().getItems());
@@ -51,9 +54,12 @@ public class Main {
         System.out.println("-----------------------------------------------");
         System.out.println(playerStatus.player.getName()+" "+playerStatus.player.getHp());
         */
-      //  playerStatus.getInventory().openInventory();
+        System.out.println("The STR OF TAKHS IS "+takhs.getStrength());
+        playerStatus.getInventory().openInventory();
+
+        System.out.println("The STR OF TAKHS IS "+takhs.getStrength());
       //  System.out.println(playerStatus.getInventory().getItems());
-        playerStatus.openPlayerStatus();
+       // playerStatus.openPlayerStatus();
        /* List<Equipment> equipment1 = eq1.getCurrentEquipment();
         System.out.println("Equipment of the player:");
         for (Equipment head : equipment1) {

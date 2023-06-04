@@ -98,5 +98,57 @@ public class PlayableCharacter extends Character{
     public void setDefenceMod(){
         this.defenceModifier = currentEquipment.getTotalDefense();
     }
+    public void consumes(BuffPotion buffPotion){
+
+        switch(buffPotion.getStatToBeModified()) {
+            case INT:
+                setIntelligence(getIntelligence()+buffPotion.getStatModifier());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setIntelligence(getIntelligence()-buffPotion.getStatModifier());
+                break;
+            case STR:
+                setStrength(getStrength()+buffPotion.getStatModifier());
+                System.out.println("THE STR NOW IS "+getStrength());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setStrength(getStrength()-buffPotion.getStatModifier());
+                System.out.println("THE STR IS BACK AT"+getStrength());
+                break;
+            case DEX:
+                setDexterity(getDexterity()+buffPotion.getStatModifier());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setDexterity(getDexterity()-buffPotion.getStatModifier());
+                break;
+            case WIS:
+                setWisdom(getWisdom()+buffPotion.getStatModifier());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setDexterity(getDexterity()-buffPotion.getStatModifier());
+                break;
+            case VIT:
+                setVitality(getVitality()+buffPotion.getStatModifier());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }setVitality(getVitality()-buffPotion.getStatModifier());
+                break;
+
+        }
+    }
 
 }

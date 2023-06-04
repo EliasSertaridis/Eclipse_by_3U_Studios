@@ -43,4 +43,10 @@ public class Recipe extends Item{
     public void setResource3(Item resource3) {
         this.resource3 = resource3;
     }
+
+    @Override
+    public boolean use() {
+        System.out.println("You just used the item "+getName());
+        return true;
+    }
 }
