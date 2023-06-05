@@ -3,8 +3,8 @@ public class NonPlayableCharacter extends Character{
     private String dialogue;
     private int reputation;
 
-    public NonPlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation) {
-        super(name, hp, strength, dexterity, vitality, intelligence, wisdom);
+    public NonPlayableCharacter(String name, String gender, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation) {
+        super(name, gender, hp, strength, dexterity, vitality, intelligence, wisdom);
         this.dialogue = dialogue;
         this.reputation = reputation;
     }

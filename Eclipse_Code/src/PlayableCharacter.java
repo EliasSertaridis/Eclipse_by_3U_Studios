@@ -8,8 +8,8 @@ public class PlayableCharacter extends Character{
     private CurrentEquipment currentEquipment;
     private PlayerStatus playerStatus;
     private Race race;
-    public PlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad) {
-        super(name, hp, strength, dexterity, vitality, intelligence, wisdom);
+    public PlayableCharacter(String name, String gender, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad) {
+        super(name, gender, hp, strength, dexterity, vitality, intelligence, wisdom);
         this.money = money;
         this.level = level;
         this.equipLoad = equipLoad;
@@ -103,13 +103,13 @@ public class PlayableCharacter extends Character{
         int count=0;
         System.out.println("You have 55 points to distribute between the following 5 stats:");
         System.out.println("1. Strength: affects your equipload and the ability to use some weapons");
-        System.out.println("2. Dexterity: affects your speed");
+        System.out.println("2. Dexterity: affects your speed and the ability to use some weapons");
         System.out.println("3. Vitality: affects your resistance to status effects");
         System.out.println("4. Intelligence: affects your ability to use spells that scale with this stat");
         System.out.println("5. Wisdom: affects your ability to use spells that scale with this stat");
         System.out.println("To add a point first write 'add' and then the number associated with the stat as presented above.");
         System.out.println("To remove a point first write 'remove' and then the number associated with the stat as presented above.");
-        System.out.println("Whenever you feel satisfied with your stats, type 'done'.");
+        System.out.println("Whenever you feel satisfied and wish to finalize your stats, type 'done'.");
         System.out.println("If you wish to see how you have distributed your points type 'show'.");
         Scanner scanner = new Scanner(System.in);
         while (!setStats){
@@ -149,29 +149,49 @@ public class PlayableCharacter extends Character{
                 int stat = scanner.nextInt();
                 switch (stat){
                     case 1:
-                        str = str - 1;
-                        count--;
-                        pc.setStrength(str);
+                        if(pc.getStrength()==0){
+                            System.out.println("Your Strength is already at 0.");
+                        } else {
+                            str = str - 1;
+                            count--;
+                            pc.setStrength(str);
+                        }
                         break;
                     case 2:
-                        dex = dex - 1;
-                        count--;
-                        pc.setDexterity(dex);
+                        if(pc.getDexterity()==0){
+                            System.out.println("Your Dexterity is already at 0.");
+                        } else {
+                            dex = dex - 1;
+                            count--;
+                            pc.setDexterity(dex);
+                        }
                         break;
                     case 3:
-                        vit = vit - 1;
-                        count--;
-                        pc.setVitality(vit);
+                        if (pc.getVitality()==0){
+                            System.out.println("Your Vitality is already at 0.");
+                        } else {
+                            vit = vit - 1;
+                            count--;
+                            pc.setVitality(vit);
+                        }
                         break;
                     case 4:
-                        intel = intel - 1;
-                        count--;
-                        pc.setIntelligence(intel);
+                        if (pc.getIntelligence()==0){
+                            System.out.println("Your Intelligence is already at 0.");
+                        } else {
+                            intel = intel - 1;
+                            count--;
+                            pc.setIntelligence(intel);
+                        }
                         break;
                     case 5:
-                        wis = wis - 1;
-                        count--;
-                        pc.setWisdom(wis);
+                        if (pc.getWisdom()==0){
+                            System.out.println("Your Wisdom is already at 0.");
+                        } else {
+                            wis = wis - 1;
+                            count--;
+                            pc.setWisdom(wis);
+                        }
                         break;
                     default:
                         System.out.println("You typed a false number. please try again, and make sure to type 'remove' first.");
@@ -214,4 +234,44 @@ public class PlayableCharacter extends Character{
             }
         }
     }
+
+    public void setNameGender(PlayableCharacter pc){
+        boolean name_check = false;
+        boolean gender_check = false;
+        System.out.println("Please type your name.");
+        Scanner scanner = new Scanner(System.in);
+        while (!name_check){
+            String name = scanner.nextLine();
+            System.out.println("Are you sure you want your name to be " + name + " ?");
+            System.out.println("For Yes type 'y', for No type 'n'.");
+            String affirm = scanner.nextLine();
+            if (affirm=="y"){
+                name_check = true;
+                pc.setName(name);
+                System.out.println("Your name is " + pc.getName());
+            } else if (affirm=="n") {
+                System.out.println("What would you like your name to be?");
+            } else {
+                System.out.println("You typed the wrong letter. Please enter your name again.");
+            }
+        }
+        System.out.println("Please type your gender.");
+        while (!gender_check){
+            String gender = scanner.nextLine();
+            System.out.println("Are you sure you want your gender to be " + gender + " ?");
+            System.out.println("For Yes type 'y', for No type 'n'.");
+            String affirm = scanner.nextLine();
+            if (affirm=="y"){
+                gender_check = true;
+                pc.setGender(gender);
+                System.out.println("Your gender is " + pc.getGender());
+            } else if (affirm=="n") {
+                System.out.println("What would you like your gender to be?");
+            } else {
+                System.out.println("You typed the wrong letter. Please enter your gender again.");
+            }
+        }
+    }
+
+    
 }

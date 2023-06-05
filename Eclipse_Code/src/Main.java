@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Inventory inventory=new Inventory();
 
-        PlayableCharacter takhs = new PlayableCharacter("Takhs",12,20,9,40,80,7,3009,19,230.4);
+        PlayableCharacter takhs = new PlayableCharacter("Takhs","male",12,20,9,40,80,7,3009,19,230.4);
         Item flask = new Item("takhs"," he is not here", Item.rarityType.Common);
         Weapon sword= new Weapon("excalibur","The sword of king Arthur", Item.rarityType.Common,13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword, Weapon.TypeOfScaling.INT);
         Weapon sword2= new Weapon("Zangetsu","The sword of Ichigo", Item.rarityType.Legendary,13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword,Weapon.TypeOfScaling.DEX);
