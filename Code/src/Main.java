@@ -58,11 +58,11 @@ public class Main {
         System.out.println("-----------------------------------------------");
         System.out.println(playerStatus.player.getName()+" "+playerStatus.player.getHp());
         */
-        System.out.println("The hp OF TAKHS IS "+takhs.getHp());
+        //System.out.println("The hp OF TAKHS IS "+takhs.getHp());
         playerStatus.getInventory().openInventory();
-        playerStatus.getInventory().openInventory();
+     //   playerStatus.getInventory().openInventory();
       //  System.out.println(playerStatus.getInventory().getItems());
-       // playerStatus.openPlayerStatus();
+      // playerStatus.openPlayerStatus();
        /* List<Equipment> equipment1 = eq1.getCurrentEquipment();
         System.out.println("Equipment of the player:");
         for (Equipment head : equipment1) {

@@ -1,5 +1,7 @@
 import java.sql.SQLOutput;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Inventory {
 
@@ -235,13 +237,26 @@ public class Inventory {
                 removeItemFromInventory(((Recipe) item).getResource3());
                 addItemToInventory(((Recipe) item).getCreation());
             }else if(item instanceof BuffPotion){
-                player.consumes((BuffPotion) item);
+                ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+                executorService.execute(() -> {
+                    player.consumes((BuffPotion) item);
+                    System.out.println("The buff is no more");
+                });
+
+                System.out.println("I was here");
+
+                // Shutdown the executor service when it's no longer needed
+                executorService.shutdown();
+
+
             }else if(item instanceof HealthPotion){
                 player.consumes((HealthPotion) item);
             }
         }else{
 
         }
+        System.out.println("I was here");
     }
     public void optDiscard(Item item){
         if(item.discard()) {
