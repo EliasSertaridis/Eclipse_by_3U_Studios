@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         Inventory inventory=new Inventory();
-
+        RestingPoint restingPoint1= new RestingPoint();
         PlayableCharacter takhs = new PlayableCharacter("Takhs",12,20,9,40,80,7,3009,19,230.4,0.9);
         Item flask = new Item("takhs"," he is not here", Item.rarityType.Common);
          Weapon sword= new Weapon("excalibur","The sword of king Arthur", Item.rarityType.Common,13 ,10,0.3,Weapon.TypeOfDamage.Slashing,Weapon.TypeOfWeapon.Sword, Weapon.TypeOfScaling.INT);
@@ -19,8 +19,13 @@ public class Main {
         Armor chest1= new Armor("sti8os","its noice", Item.rarityType.Rare,13, Armor.TypeOfArmor.Chest,1);
         Armor hands1= new Armor("xeria","its noice", Item.rarityType.Legendary,13, Armor.TypeOfArmor.Hands,1);
         Armor legs1= new Armor("podia","its noice", Item.rarityType.Unique,13, Armor.TypeOfArmor.Legs,1);
+        restingPoint1.setPlayableCharacter(takhs);
+        restingPoint1.setMain(hp1);
+        restingPoint1.setRestoreAmount(5);
+
         PlayerStatus playerStatus=new PlayerStatus();
         takhs.setMaxHP(20);
+        takhs.setPlayerStatus(playerStatus);
         playerStatus.setInventory(inventory);
         inventory.setPlayer(takhs);
         playerStatus.getInventory().addItemToInventory(flask);
@@ -41,6 +46,7 @@ public class Main {
         CurrentEquipment eq1=new CurrentEquipment(head1,chest1,hands1,legs1,sword,sword);
         takhs.setCurrentEquipment(eq1);
         playerStatus.setEquipment(eq1);
+        restingPoint1.interact();
 
     //    System.out.println(eq1.getCurrentEquipment()+" phase 1");
 

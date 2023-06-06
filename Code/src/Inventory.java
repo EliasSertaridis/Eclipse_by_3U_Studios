@@ -142,7 +142,7 @@ public class Inventory {
     }
     public void optCrafting() {
         Scanner scanner= new Scanner(System.in);
-      //  List<Recipe> recipes= new ArrayList<Recipe>();
+      //List<Recipe> recipes= new ArrayList<Recipe>();
         String input;
         for (Item item : itemStock.keySet()) {
             int flag = 0;
@@ -263,6 +263,16 @@ public class Inventory {
             removeItemFromInventory(item);
         }else{
 
+        }
+    }
+    public void restoreEssentials(HealthPotion healthPotion,int amount){
+        addItemToInventory(healthPotion);
+        int stock =  itemStock.get(healthPotion);
+        if(stock>=amount){removeItemFromInventory(healthPotion);}
+        if(stock<amount){
+            for(int i = stock;i<amount;i++){
+                addItemToInventory(healthPotion);
+            }
         }
     }
 }
