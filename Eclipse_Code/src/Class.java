@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Class {
 
@@ -22,14 +24,15 @@ public class Class {
 
     public void setName(classType name) {
         this.name = name;
+        setDescription(name);
     }
 
-    public List<classType> getClassTypes(){
-        List <classType> classTypes = new ArrayList<>();
-        classTypes.add(classType.Knight);
-        classTypes.add(classType.Barbarian);
-        classTypes.add(classType.Assassin);
-        classTypes.add(classType.Wizard);
+    public LinkedHashMap<classType,String> getClassTypes(){
+        LinkedHashMap<classType,String> classTypes= new LinkedHashMap<>();
+        classTypes.put(classType.Knight , "Melee Class, usually wears heavy armor, wielding a longsword and a shield.");
+        classTypes.put(classType.Barbarian, "Melee Class, usually wears medium armor, wielding a battle-axe.");
+        classTypes.put(classType.Assassin, "Melee & Ranged Class, usually wears light armor, wielding a shortsword and a bow.");
+        classTypes.put(classType.Wizard, "Ranged Class, usually wears light armor, wielding a staff");
         return classTypes;
     }
 
@@ -48,5 +51,9 @@ public class Class {
                 this.description = "Ranged Class, usually wears light armor, wielding a staff";
                 break;
         }
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

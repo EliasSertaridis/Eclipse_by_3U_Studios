@@ -276,8 +276,43 @@ public class PlayableCharacter extends Character{
 
 
     public void setClass(PlayableCharacter pc){
-        for (Class.classType classType: pc_class.getClassTypes()){
-
+        System.out.println("The Game has 4 starting Classes, from which you must choose 1 to start your adventure.");
+        int i = 1;
+        Set<Map.Entry<Class.classType,String>> classTypes = pc_class.getClassTypes().entrySet();
+        for (Map.Entry<Class.classType,String> classType: classTypes){
+            System.out.println(i + ". " + classType.getKey() + ": " + classType.getValue());
+            i++;
+        }
+        System.out.println("Please choose the Class you want by typing the number [1-4] according to the order it was presented.");
+        boolean class_check = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!class_check){
+            int class_chosen = scanner.nextInt();
+            System.out.println("Are you sure you want your Class to be number " + class_chosen + " ?");
+            System.out.println("For Yes type 'y', for No type 'n'.");
+            String affirm = scanner.nextLine();
+            if (affirm=="y"){
+                switch (class_chosen){
+                    case 1:
+                        pc_class.setName(Class.classType.Knight);
+                        break;
+                    case 2:
+                        pc_class.setName(Class.classType.Barbarian);
+                        break;
+                    case 3:
+                        pc_class.setName(Class.classType.Assassin);
+                        break;
+                    case 4:
+                        pc_class.setName(Class.classType.Wizard);
+                        break;
+                }
+                class_check = true;
+                System.out.println("Your Class is " + pc_class.getName());
+            } else if (affirm=="n") {
+                System.out.println("What would you like your Class to be?");
+            } else {
+                System.out.println("You typed the wrong number. Please enter your Class again.");
+            }
         }
     }
 }
