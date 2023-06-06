@@ -8,6 +8,7 @@ public class PlayableCharacter extends Character{
     private CurrentEquipment currentEquipment;
     private PlayerStatus playerStatus;
     private Race race;
+    private Class pc_class;
     public PlayableCharacter(String name, String gender, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad) {
         super(name, gender, hp, strength, dexterity, vitality, intelligence, wisdom);
         this.money = money;
@@ -273,5 +274,10 @@ public class PlayableCharacter extends Character{
         }
     }
 
-    
+
+    public void setClass(PlayableCharacter pc){
+        for (Class.classType classType: pc_class.getClassTypes()){
+
+        }
+    }
 }
