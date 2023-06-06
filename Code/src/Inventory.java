@@ -138,12 +138,15 @@ public class Inventory {
         for (Item item : itemStock.keySet()) {
             int stock = itemStock.get(item);
             System.out.println("- " + item.getName() + ", Description: " + item.getDescription() + ", Stock: " + stock);
-        }
+        }System.out.println("Type the name of the Item that you want to choose or type Crafting to only see the crafting recipes: ");
     }
     public void optCrafting() {
-        Scanner scanner= new Scanner(System.in);
-      //List<Recipe> recipes= new ArrayList<Recipe>();
+        Scanner scanner = new Scanner(System.in);
+        List<Recipe> recipes = new ArrayList<Recipe>();
         String input;
+        boolean on = true;
+        boolean check=true;
+        while (on) {
         for (Item item : itemStock.keySet()) {
             int flag = 0;
             boolean checked1 = true;
@@ -170,39 +173,77 @@ public class Inventory {
                 }
                 if (flag == 3) {
                     System.out.println("- " + item.getName() + " is craftable and it gives you the " + ((Recipe) item).getCreation().getName() + " Item.");
-                   // recipes.add((Recipe) item);
-                } else System.out.println("- " + item.getName() + " is not craftable.");
+                    recipes.add((Recipe) item);
+                } else {
+                    System.out.println("- " + item.getName() + " is not craftable.");
+                    recipes.add((Recipe) item);
+                }
             }
         }
         System.out.println("Type the name of the Recipe you want to use or type Exit to go back");
-        input = scanner.nextLine();
-        Item item = getItemByName(input);
-        optUse(item);
+
+            input = scanner.nextLine();
+            if (input.equals("Exit")) {
+                on=false;
+            }
+            for (int j = 0; j < recipes.size(); j++) {
+                if (input.equals(recipes.get(j).getName())) {
+                    Item item = getItemByName(input);
+                    optUse(item);
+                    check=false;
+                }
+            }if(check){
+                System.out.println("Your input is not valid. Please try again");
+            }
+        }
     }
     public void choose(){
-        System.out.println("Type the name of the Item that you want to choose or type Crafting to only see the crafting recipes: ");
+        boolean on=true;
         Scanner scanner = new Scanner(System.in);
         String input;
         input = scanner.nextLine();
-        if(input.equals("Crafting")){
-            optCrafting();
-        }else chooseItem(input);
+        while(on) {
+            if (input.equals("Crafting")) {
+                optCrafting();
+                showInventory();
+                input=scanner.nextLine();
+            } else {
+                chooseItem(input);
+                on=false;
+            }
+        }
     }
     public void chooseItem(String input) {
-        Scanner scanner = new Scanner(System.in);
-        Item item = getItemByName(input);
-        if (input.equals("Exit")) {
-        } else {
-            System.out.println("Item Name: " + item.getName() + "/n Item Description: " + item.getDescription());
-            System.out.println("You want to Use or Discard this Item?");
-            input = scanner.nextLine();
-            if (input.equals("Use")) {
-                optUse(item);
-            }else if (input.equals("Discard")) {
-                optDiscard(item);
-            } else if (input.equals("Exit")) {
+        boolean on=true;
+        while(on) {
+            Scanner scanner = new Scanner(System.in);
+            Item item = getItemByName(input);
+            if (input.equals("Exit")) {
+                on = false;
+            }else if(input.equals("Crafting")){
+                    optCrafting();
+                    showInventory();
+                    input=scanner.nextLine();
+            } else if (item != null) {
+                System.out.println("Item Name: " + item.getName() + "/n Item Description: " + item.getDescription());
+                System.out.println("You want to Use or Discard this Item?");
+                input = scanner.nextLine();
+                if (input.equals("Use")) {
+                    optUse(item);
+                    showInventory();
+                    input=scanner.nextLine();
+                } else if (input.equals("Discard")) {
+                    optDiscard(item);
+                    showInventory();
+                    input=scanner.nextLine();
+                } else if (input.equals("Exit")) {
+                    showInventory();
+                    input=scanner.nextLine();
 
-            }
+                }else
+                    System.out.println("Your input doesn't match any of the choices you have. Please try again. The options you have are \"Use\", \"Discard\" and \"Exit\"");
+            } else {System.out.println("Your input doesn't match any of the items. Please try again.");
+            input=scanner.nextLine();}
         }
     }
     public void optUse(Item item){
