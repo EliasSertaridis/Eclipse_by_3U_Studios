@@ -71,7 +71,7 @@ public class Inventory {
             } else {
                 itemStock.remove(item);
             }
-            System.out.println("Item removed: " + item.getName());
+           // System.out.println("Item removed: " + item.getName());
         } else {
             System.out.println("Item not found: " + item.getName());
         }

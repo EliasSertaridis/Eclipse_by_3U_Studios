@@ -19,6 +19,17 @@ public class Main {
         Armor chest1= new Armor("sti8os","its noice", Item.rarityType.Rare,13, Armor.TypeOfArmor.Chest,1);
         Armor hands1= new Armor("xeria","its noice", Item.rarityType.Legendary,13, Armor.TypeOfArmor.Hands,1);
         Armor legs1= new Armor("podia","its noice", Item.rarityType.Unique,13, Armor.TypeOfArmor.Legs,1);
+        Skill skill1= new Skill("STRONGER", Skill.TypeOfBoosting.STR,1);
+        Skill skill2= new Skill("STRONGER+1", Skill.TypeOfBoosting.STR,1);
+        Skill skill3= new Skill("STRONGER+2", Skill.TypeOfBoosting.STR,1);
+        skill2.addDependency(skill1);
+        skill3.addDependency(skill2);
+        SkillTree skillTree=new SkillTree();
+        skillTree.addSkill(skill1);
+        skillTree.addSkill(skill2);
+        skillTree.addSkill(skill3);
+        skillTree.unlockSkill(skill1);
+        restingPoint1.setSkillTree(skillTree);
         restingPoint1.setPlayableCharacter(takhs);
         restingPoint1.setMain(hp1);
         restingPoint1.setRestoreAmount(5);
@@ -46,7 +57,6 @@ public class Main {
         CurrentEquipment eq1=new CurrentEquipment(head1,chest1,hands1,legs1,sword,sword);
         takhs.setCurrentEquipment(eq1);
         playerStatus.setEquipment(eq1);
-        restingPoint1.interact();
 
     //    System.out.println(eq1.getCurrentEquipment()+" phase 1");
 
@@ -65,7 +75,8 @@ public class Main {
         System.out.println(playerStatus.player.getName()+" "+playerStatus.player.getHp());
         */
         //System.out.println("The hp OF TAKHS IS "+takhs.getHp());
-        playerStatus.getInventory().openInventory();
+        restingPoint1.interact();
+      //  playerStatus.getInventory().openInventory();
      //   playerStatus.getInventory().openInventory();
       //  System.out.println(playerStatus.getInventory().getItems());
       // playerStatus.openPlayerStatus();
