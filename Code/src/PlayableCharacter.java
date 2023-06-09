@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PlayableCharacter extends Character{
+    private int skillPoints;
     private int money;
     private int level;
     private double equipLoad;
@@ -17,6 +18,14 @@ public class PlayableCharacter extends Character{
         this.level = level;
         this.equipLoad = equipLoad;
         this.defenceModifier = defenceModifier;
+    }
+
+    public int getSkillPoints() {
+        return skillPoints;
+    }
+
+    public void setSkillPoints(int skillPoints) {
+        this.skillPoints = skillPoints;
     }
 
     public Race getRace() {

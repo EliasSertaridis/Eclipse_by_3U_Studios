@@ -4,6 +4,7 @@ import java.util.List;
 public class Skill {
     private String name;
     private int level;
+    private int skillPointNeeded;
     private List<Skill> dependencies;
     public TypeOfBoosting statForBoosting;
     private int amountOfBoosting;
@@ -11,12 +12,21 @@ public class Skill {
         INT,DEX,VIT,WIS,STR
     }
 
-    public Skill(String name,TypeOfBoosting statForBoosting,int amountOfBoosting) {
+    public Skill(String name,TypeOfBoosting statForBoosting,int amountOfBoosting,int skillPointNeeded) {
+        this.skillPointNeeded=skillPointNeeded;
         this.amountOfBoosting=amountOfBoosting;
         this.statForBoosting=statForBoosting;
         this.name = name;
         this.level = 0;
         this.dependencies = new ArrayList<>();
+    }
+
+    public int getSkillPointNeeded() {
+        return skillPointNeeded;
+    }
+
+    public void setSkillPointNeeded(int skillPointNeeded) {
+        this.skillPointNeeded = skillPointNeeded;
     }
 
     public String getName() {
