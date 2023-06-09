@@ -275,7 +275,7 @@ public class PlayableCharacter extends Character{
     }
 
 
-    public void setClass(PlayableCharacter pc){
+    public void setClass(){
         System.out.println("The Game has 4 starting Classes, from which you must choose 1 to start your adventure.");
         int i = 1;
         Set<Map.Entry<Class.classType,String>> classTypes = pc_class.getClassTypes().entrySet();
@@ -312,6 +312,49 @@ public class PlayableCharacter extends Character{
                 System.out.println("What would you like your Class to be?");
             } else {
                 System.out.println("You typed the wrong number. Please enter your Class again.");
+            }
+        }
+    }
+
+    public void setRace(){
+        System.out.println("The Game has 5 starting Races, from which you must choose 1 to start your adventure.");
+        int i = 1;
+        Set<Map.Entry<Race.raceType,String>> raceTypes = race.getRaceTypes().entrySet();
+        for (Map.Entry<Race.raceType,String> raceType: raceTypes){
+            System.out.println(i + ". " + raceType.getKey() + ": " + raceType.getValue());
+            i++;
+        }
+        System.out.println("Please choose the Race you want by typing the number [1-5] according to the order it was presented.");
+        boolean race_check = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!race_check){
+            int race_chosen = scanner.nextInt();
+            System.out.println("Are you sure you want your Race to be number " + race_chosen + " ?");
+            System.out.println("For Yes type 'y', for No type 'n'.");
+            String affirm = scanner.nextLine();
+            if (affirm=="y"){
+                switch (race_chosen){
+                    case 1:
+                        race.setRace(Race.raceType.Human);
+                        break;
+                    case 2:
+                        race.setRace(Race.raceType.Elf);
+                        break;
+                    case 3:
+                        race.setRace(Race.raceType.Dwarf);
+                        break;
+                    case 4:
+                        race.setRace(Race.raceType.Halfling);
+                        break;
+                    case 5:
+                        race.setRace(Race.raceType.Ork);
+                }
+                race_check = true;
+                System.out.println("Your Race is " + race.getRace());
+            } else if (affirm=="n") {
+                System.out.println("What would you like your Race to be?");
+            } else {
+                System.out.println("You typed the wrong number. Please enter your Race again.");
             }
         }
     }
