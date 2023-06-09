@@ -30,8 +30,6 @@ public class Main {
         skillTree.addSkill(skill2);
         skillTree.addSkill(skill3);
         skillTree.unlockSkill(skill1,takhs);
-        skillTree.unlockSkill(skill2,takhs);
-        skillTree.unlockSkill(skill3,takhs);
         restingPoint1.setSkillTree(skillTree);
         restingPoint1.setPlayableCharacter(takhs);
         restingPoint1.setMain(hp1);
