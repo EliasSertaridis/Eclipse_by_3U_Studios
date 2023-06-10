@@ -1,13 +1,15 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PlayableCharacter extends Character{
+    private int skillPoints;
     private int money;
     private int level;
     private double equipLoad;
     private double defenceModifier;
+    private CurrentEquipment currentEquipment;
+    private PlayerStatus playerStatus;
+    private Race race;
+    private Map <String, Integer> reputation;
 
     public PlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad, double defenceModifier) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom);
@@ -17,10 +19,21 @@ public class PlayableCharacter extends Character{
         this.defenceModifier = defenceModifier;
     }
 
-    public PlayableCharacter(){
-        super();
+    public int getSkillPoints() {
+        return skillPoints;
     }
 
+    public void setSkillPoints(int skillPoints) {
+        this.skillPoints = skillPoints;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
+    }
 
     public int getMoney() {
         return money;
@@ -54,20 +67,113 @@ public class PlayableCharacter extends Character{
         this.defenceModifier = defenceModifier;
     }
 
+    public CurrentEquipment getCurrentEquipment() {
+        return currentEquipment;
+    }
+
+    public void setCurrentEquipment(CurrentEquipment currentEquipment) {
+        this.currentEquipment = currentEquipment;
+    }
+
+    public PlayerStatus getPlayerStatus() {
+        return playerStatus;
+    }
+
+    public void setPlayerStatus(PlayerStatus playerStatus) {
+        this.playerStatus = playerStatus;
+    }
+
     public Map<String, Integer> getPlayerStats(){
         Map<String, Integer> playerStats = new HashMap<>();
         playerStats.put(getName(),getHp());
         return playerStats;
     }
-    public Map<String, Integer> getReputationWithMerchantRaces(){
+    public void setReputation(){
         Map<String,Integer> repWithMerch = new HashMap<>();
         repWithMerch.put(Race.raceType.Human.toString(), 1);
         repWithMerch.put(Race.raceType.Ork.toString(),1);
         repWithMerch.put(Race.raceType.Elf.toString(),1);
         repWithMerch.put(Race.raceType.Dwarf.toString(),1);
         repWithMerch.put(Race.raceType.Halfling.toString(),1);
+        this.reputation = repWithMerch;
+    }
+    public Map getReputation(){
+        return reputation;
+    }
 
-        return repWithMerch;
+    //function that takes the race of a merchant and returns the reputation of the character with that merchant
+    public int getReputationWithTypeOfMerchant(Merchant merchant){
+        String raceOfMerch = String.valueOf(merchant.getRace());
+        //loop for accessing the map with the reputation of the character with the different races of merchants
+        //and when it finds the one we want it returns it
+        for(Map.Entry<String,Integer> entry : getReputation().entrySet()){
+            // if the key value of the map is the same with the race of the merchant,return the reputation with that
+            //race, else return 0
+            if(Objects.equals(raceOfMerch, entry.getKey())){
+                return entry.getValue();
+            }
+        }
+        return 0;
+    }
+    public void setDefenceMod(){
+        this.defenceModifier = currentEquipment.getTotalDefense();
+    }
+    public void consumes(BuffPotion buffPotion){
+
+        switch(buffPotion.getStatToBeModified()) {
+            case INT:
+                setIntelligence(getIntelligence()+buffPotion.getStatModifier());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setIntelligence(getIntelligence()-buffPotion.getStatModifier());
+                break;
+            case STR:
+                setStrength(getStrength()+buffPotion.getStatModifier());
+                System.out.println("THE STR NOW IS "+getStrength());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setStrength(getStrength()-buffPotion.getStatModifier());
+                System.out.println("THE STR IS BACK AT"+getStrength());
+                break;
+            case DEX:
+                setDexterity(getDexterity()+buffPotion.getStatModifier());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setDexterity(getDexterity()-buffPotion.getStatModifier());
+                break;
+            case WIS:
+                setWisdom(getWisdom()+buffPotion.getStatModifier());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setDexterity(getDexterity()-buffPotion.getStatModifier());
+                break;
+            case VIT:
+                setVitality(getVitality()+buffPotion.getStatModifier());
+                try {
+                    Thread.sleep(120000);  // Sleep for 2 minutes (2 * 60,000 milliseconds)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }setVitality(getVitality()-buffPotion.getStatModifier());
+                break;
+
+        }
+    }
+    public void consumes(HealthPotion healthPotion){
+        if(getHp()+ healthPotion.getRegenPoints()>=getMaxHP()){
+            setHp(getMaxHP());
+        }else setHp(getHp()+healthPotion.getRegenPoints());
     }
 
 }

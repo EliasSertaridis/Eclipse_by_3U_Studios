@@ -1,8 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class Merchant extends NonPlayableCharacter{
 
     private enum MerchantType{
@@ -18,9 +13,9 @@ public class Merchant extends NonPlayableCharacter{
         Ork
     }
     private RaceType race;
-    private List<Item> inventory;
+    private String[] inventory;
 
-    public Merchant(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, MerchantType merchantType, RaceType race, List<Item> inventory) {
+    public Merchant(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, MerchantType merchantType, RaceType race, String[] inventory) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom, dialogue, reputation);
         this.merchantType = merchantType;
         this.race = race;
@@ -43,15 +38,12 @@ public class Merchant extends NonPlayableCharacter{
         this.race = race;
     }
 
-    public List<Item> getInventory() {
+    public String[] getInventory() {
         return inventory;
     }
 
-    public void setInventory(List<Item> inventory) {
+    public void setInventory(String[] inventory) {
         this.inventory = inventory;
     }
 
-    public void getReputationWithCharacter(){
-        
-    }
 }

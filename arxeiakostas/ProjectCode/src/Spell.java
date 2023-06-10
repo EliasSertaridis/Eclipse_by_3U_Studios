@@ -15,17 +15,15 @@ public class Spell extends Item{
         INT,
         WIS
     }
-    private int statPrerequisite;
+    private   int statPrerequisite;
 
-    PlayerStatus playerStatus;
-
-    public Spell(String name, String description,float scaling,int damage,TypeOfDamage damageType,PrerequisiteStat statPrerequisiteName,int statPrerequisite) {
-        super(name, description);
-        this.damage=damage;
-        this.scaling=scaling;
-        this.damageType=damageType;
-        this.statPrerequisite=statPrerequisite;
-        this.statPrerequisiteName=statPrerequisiteName;
+    public Spell(String name, String description, rarityType rarity, TypeOfDamage damageType, float scaling, int damage, PrerequisiteStat statPrerequisiteName, int statPrerequisite) {
+        super(name, description, rarity);
+        this.damageType = damageType;
+        this.scaling = scaling;
+        this.damage = damage;
+        this.statPrerequisiteName = statPrerequisiteName;
+        this.statPrerequisite = statPrerequisite;
     }
 
     public TypeOfDamage getDamageType() {
@@ -66,18 +64,6 @@ public class Spell extends Item{
 
     public void setStatPrerequisite(int statPrerequisite) {
         this.statPrerequisite = statPrerequisite;
-    }
-
-    public int totalSpellDamage(Spell spell) {
-        double totalDamage;
-        double scalingDamage = 0;
-        if (spell.getStatPrerequisiteName() == PrerequisiteStat.INT) {
-            scalingDamage = (spell.getScaling() + 1) * (playerStatus.player.getIntelligence());
-        } else if (spell.getStatPrerequisiteName() == PrerequisiteStat.WIS) {
-            scalingDamage = (spell.getScaling() + 1) * (playerStatus.player.getWisdom());
-        }
-        totalDamage = spell.getDamage() + scalingDamage;
-        return (int) totalDamage;
     }
 }
 

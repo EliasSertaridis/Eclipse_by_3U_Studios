@@ -1,6 +1,6 @@
 public class BuffPotion extends QuickItem{
 
-    int statModifier;
+   private int statModifier;
     StatForModifing statToBeModified;
     enum StatForModifing{
         STR,
@@ -12,10 +12,10 @@ public class BuffPotion extends QuickItem{
     }
 
 
-    public BuffPotion(String name, String description,int statModifier,StatForModifing statToBeModified) {
-        super(name, description);
-        this.statModifier=statModifier;
-        this.statToBeModified=statToBeModified;
+    public BuffPotion(String name, String description, rarityType rarity, int statModifier, StatForModifing statToBeModified) {
+        super(name, description, rarity);
+        this.statModifier = statModifier;
+        this.statToBeModified = statToBeModified;
     }
 
     public int getStatModifier() {
@@ -30,7 +30,13 @@ public class BuffPotion extends QuickItem{
         return statToBeModified;
     }
 
-    public void setStatToBeModified(StatForModifing statToBeModified) {
+    public void setStatToBeModified(StatForModifing  statToBeModified) {
         this.statToBeModified = statToBeModified;
+    }
+
+    @Override
+    public boolean use() {
+        System.out.println("You just used the item "+getName());
+        return true;
     }
 }

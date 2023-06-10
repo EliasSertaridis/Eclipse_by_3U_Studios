@@ -1,9 +1,9 @@
 public class Construction {
 
-    String name;
-    String description;
-    int timeNeeded;
-    Item reward;
+    private String name;
+    private String description;
+    private int timeNeeded;
+    private Item reward;
 
     public Construction(String name, String description, int timeNeeded, Item reward) {
         this.name = name;

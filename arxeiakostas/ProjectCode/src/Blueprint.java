@@ -1,12 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Blueprint extends Item{
 
-    Construction construction;
-    Item resource1,resource2,resource3;
-    float xDimension;
-    float yDimension;
+    private Construction construction;
+    private Item resource1,resource2,resource3;
+    private float xDimension;
+    private float yDimension;
 
-    public Blueprint(String name, String description, Construction construction, Item resource1, Item resource2, Item resource3, float xDimension, float yDimension) {
-        super(name, description);
+    public Blueprint(String name, String description, rarityType rarity, Construction construction, Item resource1, Item resource2, Item resource3, float xDimension, float yDimension) {
+        super(name, description, rarity);
         this.construction = construction;
         this.resource1 = resource1;
         this.resource2 = resource2;
@@ -61,5 +64,18 @@ public class Blueprint extends Item{
 
     public void setyDimension(float yDimension) {
         this.yDimension = yDimension;
+    }
+    public List<Item> getBlueprintResources(){
+        List<Item>  resources= new ArrayList<Item>();
+        resources.add(getResource1());
+        resources.add(getResource2());
+        resources.add(getResource3());
+        return resources;
+    }
+
+    @Override
+    public boolean discard() {
+        System.out.println("This item can not be discarded");
+        return false;
     }
 }

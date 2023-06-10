@@ -29,8 +29,9 @@ public class Enemy extends NonPlayableCharacter{
     private Spell spell1;
     private Spell spell2;
     private double enemyAttackDamage;
+    private Item loot;
 
-    public Enemy(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, Type resistance, Type weakness, double resistMod, double weakMod, boolean facedBefore, int level) {
+    public Enemy(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, Type resistance, Type weakness, double resistMod, double weakMod, boolean facedBefore, int level, Weapon leftHandWeapon, Weapon rightHandWeapon, Spell spell1, Spell spell2) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom, dialogue, reputation);
         this.resistance = resistance;
         this.weakness = weakness;
@@ -104,6 +105,14 @@ public class Enemy extends NonPlayableCharacter{
         this.rightHandWeapon = rightHandWeapon;
     }
 
+    public Item getLoot() {
+        return loot;
+    }
+
+    public void setLoot(Item loot) {
+        this.loot = loot;
+    }
+
     public Map<String, Integer> getEnemyStats(){
         Map<String, Integer> enemyStats = new HashMap<>();
         enemyStats.put(getName(),getHp());
@@ -119,17 +128,47 @@ public class Enemy extends NonPlayableCharacter{
         return enemyInfo;
     }
 
+    public int totalSpellDamage(Spell spell) {
+        double totalDamage;
+        double scalingDamage = 0;
+        if (spell.getStatPrerequisiteName() == Spell.PrerequisiteStat.INT) {
+            scalingDamage = (spell.getScaling() + 1) * (getIntelligence());
+        } else if (spell.getStatPrerequisiteName() == Spell.PrerequisiteStat.WIS) {
+            scalingDamage = (spell.getScaling() + 1) * (getWisdom());
+        }
+        totalDamage = spell.getDamage() + scalingDamage;
+        return (int) totalDamage;
+    }
+
+    public int totalWeaponDamage(Weapon weapon){
+        double totalDamage;
+        double scalingDamage = 0;
+        if(weapon.getScalingType()== Weapon.TypeOfScaling.DEX) {
+            scalingDamage = (weapon.getScaling() + 1)*(getDexterity());
+        }else if(weapon.getScalingType()== Weapon.TypeOfScaling.STR) {
+            scalingDamage = (weapon.getScaling() + 1)*(getStrength());
+        }
+        else if(weapon.getScalingType()== Weapon.TypeOfScaling.INT) {
+            scalingDamage = (weapon.getScaling() + 1)*(getIntelligence());
+        }
+        else if(weapon.getScalingType()== Weapon.TypeOfScaling.WIS) {
+            scalingDamage = (weapon.getScaling() + 1)*(getWisdom());
+        }
+        totalDamage= weapon.getDamage()+scalingDamage;
+        return (int)totalDamage;
+    }
+
     public double getEnemyAttack(){
         Random rand = new Random();
         int rand_int = rand.nextInt(4);
         if(rand_int==0){
-            this.enemyAttackDamage = rightHandWeapon.getDamage();
+            this.enemyAttackDamage = totalWeaponDamage(rightHandWeapon);
         } else if (rand_int==1) {
-            this.enemyAttackDamage = leftHandWeapon.getDamage();
+            this.enemyAttackDamage = totalWeaponDamage(leftHandWeapon);
         } else if (rand_int==2) {
-            this.enemyAttackDamage = spell1.getDamage();
+            this.enemyAttackDamage = totalSpellDamage(spell1);
         } else if (rand_int==3) {
-            this.enemyAttackDamage = spell2.getDamage();
+            this.enemyAttackDamage = totalSpellDamage(spell2);
         }
         return enemyAttackDamage;
     }

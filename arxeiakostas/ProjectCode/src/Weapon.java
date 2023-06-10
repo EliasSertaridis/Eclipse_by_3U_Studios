@@ -2,8 +2,8 @@ import java.util.Arrays;
 
 public class Weapon extends Equipment {
 
-    int damage;
-    double scaling;
+    private int damage;
+    private double scaling;
     TypeOfDamage damageType;
 
     enum TypeOfDamage {
@@ -29,8 +29,8 @@ public class Weapon extends Equipment {
     }
     TypeOfScaling scalingType;
 
-    public Weapon(String name, String description, int weight, int damage, double scaling, TypeOfDamage damageType, TypeOfWeapon weaponType,TypeOfScaling scalingType) {
-        super(name, description, weight);
+    public Weapon(String name, String description, rarityType rarity, int weight, int damage, double scaling, TypeOfDamage damageType, TypeOfWeapon weaponType, TypeOfScaling scalingType) {
+        super(name, description, rarity, weight);
         this.damage = damage;
         this.scaling = scaling;
         this.damageType = damageType;

@@ -1,9 +1,9 @@
 public class Shield extends Weapon{
 
-    int defense;
+    private int defense;
 
-    public Shield(String name, String description, int weight, int damage, double scaling, TypeOfDamage damageType, TypeOfWeapon weaponType, TypeOfScaling scalingType, int defense) {
-        super(name, description, weight, damage, scaling, damageType, weaponType, scalingType);
+    public Shield(String name, String description, rarityType rarity, int weight, int damage, double scaling, TypeOfDamage damageType, TypeOfWeapon weaponType, TypeOfScaling scalingType, int defense) {
+        super(name, description, rarity, weight, damage, scaling, damageType, weaponType, scalingType);
         this.defense = defense;
     }
 
