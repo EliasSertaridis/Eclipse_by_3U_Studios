@@ -12,12 +12,30 @@ public class PlayableCharacter extends Character{
     private CurrentEquipment currentEquipment;
     private PlayerStatus playerStatus;
     private Race race;
+    private Inventory inventory;
+    private SpellSlot spellSlot;
     public PlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad, double defenceModifier) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom);
         this.money = money;
         this.level = level;
         this.equipLoad = equipLoad;
         this.defenceModifier = defenceModifier;
+    }
+
+    public SpellSlot getSpellSlot() {
+        return spellSlot;
+    }
+
+    public void setSpellSlot(SpellSlot spellSlot) {
+        this.spellSlot = spellSlot;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     public int getSkillPoints() {

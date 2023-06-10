@@ -87,6 +87,15 @@ public class Inventory {
         return quickItems;
     }
 
+    public List<Spell> getAllSpells(){
+        List<Spell> spells = new ArrayList<Spell>();
+        for (Item item : items) {
+            if (item instanceof Spell) {
+                spells.add((Spell) item);
+            }
+        }
+        return spells;
+    }
     public List<Equipment> getAllEquipment() {
         List<Equipment> equipment = new ArrayList<Equipment>();
         for (Item item : items) {

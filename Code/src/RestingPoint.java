@@ -90,6 +90,57 @@ public class RestingPoint {
         }
     }
     public  void optForSpellSlotMod(){
+        Spell currentSpell = null;
+        boolean on;
+        boolean check=true;
+        List<Spell> spells= playableCharacter.getInventory().getAllSpells();
+        playableCharacter.getSpellSlot().currentSpells();
+        System.out.println("All the spells That you own are:");
+        if(spells==null){
+            System.out.println("You currently don't own any spells");
+        }else {
+            for (Spell spell : spells) {
+                System.out.println("- " + spell.getName());
+            }
+            System.out.println("Type the name of the spell you want to check out.");
+        }
+        Scanner scanner= new Scanner(System.in);
+        String input;
+        input=scanner.nextLine();
+        if(input.equals("Exit")){}
+        for(Spell spell: spells){
+            if(input.equals(spell.getName())){
+                System.out.println("The "+spell.getName()+" is a " + spell.getDamageType() + " Type damage spell that does " + spell.getDamage() + " base damage. If you equip it the total damage is going to be "+playableCharacter.getSpellSlot().totalSpellDamage(spell));
+                currentSpell=spell;
+                check=false;
+            }
+        }
+        if(check){
+            System.out.println("Your input was incorrect. Please try again.");
+        }else if(playableCharacter.getSpellSlot().spellIsEquiped(currentSpell)){
+            System.out.println("This Spell is already equiped.");
+        }
+        else{
+            System.out.println("Do you want to equip this spell?");
+            input=scanner.nextLine();
+            if(input.equals("Yes")){
+                if(playableCharacter.getSpellSlot().getNumberOfSpellsEquiped()<4) {
+                    playableCharacter.getSpellSlot().addSpell(currentSpell);
+                }else {System.out.println("Your Spell Slots are full.");
+                    for(Spell spell : playableCharacter.getSpellSlot().getSpellSlots()) {
+                        System.out.println("- "+spell.getName());
+                    }
+                    System.out.println("Please type the spell you want to remove in order to add:");
+                    input=scanner.nextLine();
+                    System.out.println(playableCharacter.getSpellSlot().getSpellByName(input).getName());
+                    if(playableCharacter.getSpellSlot().getSpellByName(input)!=null){
+                        playableCharacter.getSpellSlot().changeSpell(currentSpell,playableCharacter.getSpellSlot().getSpellByName(input));
+                    }
+                }
+                System.out.println(playableCharacter.getSpellSlot().getNumberOfSpellsEquiped());
+            }else if(input.equals("No")){
+            }else System.out.println("Your input was incorrect. Please type \"Yes\" or \"No\"");
+        }
 
     }
 }

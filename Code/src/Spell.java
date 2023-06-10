@@ -8,7 +8,7 @@ public class Spell extends Item{
         Holy,
         Lightning
     }
-    private float scaling;
+    private double scaling;
     private int damage;
     PrerequisiteStat statPrerequisiteName;
     enum PrerequisiteStat {
@@ -17,7 +17,7 @@ public class Spell extends Item{
     }
     private   int statPrerequisite;
 
-    public Spell(String name, String description, rarityType rarity, TypeOfDamage damageType, float scaling, int damage, PrerequisiteStat statPrerequisiteName, int statPrerequisite) {
+    public Spell(String name, String description, rarityType rarity, TypeOfDamage damageType, double scaling, int damage, PrerequisiteStat statPrerequisiteName, int statPrerequisite) {
         super(name, description, rarity);
         this.damageType = damageType;
         this.scaling = scaling;
@@ -34,7 +34,7 @@ public class Spell extends Item{
         this.damageType = damageType;
     }
 
-    public float getScaling() {
+    public double getScaling() {
         return scaling;
     }
 
@@ -58,6 +58,8 @@ public class Spell extends Item{
         this.statPrerequisiteName = statPrerequisiteName;
     }
 
+
+
     public int getStatPrerequisite() {
         return statPrerequisite;
     }
@@ -65,5 +67,6 @@ public class Spell extends Item{
     public void setStatPrerequisite(int statPrerequisite) {
         this.statPrerequisite = statPrerequisite;
     }
+
 }
 

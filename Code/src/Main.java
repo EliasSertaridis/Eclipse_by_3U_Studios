@@ -4,6 +4,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        SpellSlot spellSlot=new SpellSlot();
         Inventory inventory=new Inventory();
         RestingPoint restingPoint1= new RestingPoint();
         PlayableCharacter takhs = new PlayableCharacter("Takhs",12,20,9,40,80,7,3009,19,230.4,0.9);
@@ -22,6 +23,20 @@ public class Main {
         Skill skill1= new Skill("STRONGER", Skill.TypeOfBoosting.STR,1,1);
         Skill skill2= new Skill("STRONGER+1", Skill.TypeOfBoosting.STR,1,2);
         Skill skill3= new Skill("STRONGER+2", Skill.TypeOfBoosting.STR,1,3);
+        Spell spell1= new Spell("Fire Ball","A normal sized ball of fire", Item.rarityType.Rare, Spell.TypeOfDamage.Fire,1.2,90, Spell.PrerequisiteStat.INT,1);
+        Spell spell2= new Spell("Arcane Ball","A normal sized ball of arcane", Item.rarityType.Rare, Spell.TypeOfDamage.Arcane,1.2,90, Spell.PrerequisiteStat.WIS,1);
+        Spell spell3= new Spell("Ice Ball","A normal sized ball of ice", Item.rarityType.Rare, Spell.TypeOfDamage.Ice,1.2,90, Spell.PrerequisiteStat.INT,1);
+        Spell spell4= new Spell("Holy Ball","A normal sized ball of holy", Item.rarityType.Rare, Spell.TypeOfDamage.Holy,1.2,90, Spell.PrerequisiteStat.INT,1);
+        Spell spell5= new Spell("Lightning Ball","A normal sized ball of lightning", Item.rarityType.Rare, Spell.TypeOfDamage.Lightning,1.2,90, Spell.PrerequisiteStat.INT,1);
+        inventory.addItemToInventory(spell1);
+        inventory.addItemToInventory(spell2);
+        inventory.addItemToInventory(spell3);
+        inventory.addItemToInventory(spell4);
+        inventory.addItemToInventory(spell5);
+        inventory.setPlayer(takhs);
+        spellSlot.setPlayableCharacter(takhs);
+        takhs.setSpellSlot(spellSlot);
+        takhs.setInventory(inventory);
         takhs.setSkillPoints(3);
         skill2.addDependency(skill1);
         skill3.addDependency(skill2);
