@@ -1,7 +1,10 @@
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Map;
 public class Shop{
-   //cool idea: maybe based on the reputation, the greeting of the merchant changes?
+
+    // method that starts a dialogue with the player in order to choose the type of transaction he wants to make
     public int showOptionsForTransactions(){
         int choice = 0;
         System.out.println("Welcome traveller! How can I be of service today? \n");
@@ -29,4 +32,20 @@ public class Shop{
             return -1;
         }
     }
+
+    //function that takes the map of items and their prices and does a 50% discount on all items and returns the
+    // discounted items
+    public Map<Item, Float> showDiscountedItems(Merchant merchant){
+        Map<Item, Float> discountedPrices = new HashMap<>();
+        for (Map.Entry<Item, Float> entry : merchant.getPrices().entrySet()) {
+            Item item = entry.getKey();
+            float originalPrice = entry.getValue();
+            float discountedPrice = (float) originalPrice / 2;
+            discountedPrices.put(item, discountedPrice);
+        }
+
+        return discountedPrices;
+    }
+
+    
 }
