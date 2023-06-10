@@ -278,7 +278,7 @@ public class PlayableCharacter extends Character{
     public void setClass(){
         System.out.println("The Game has 4 starting Classes, from which you must choose 1 to start your adventure.");
         int i = 1;
-        Set<Map.Entry<Class.classType,String>> classTypes = pc_class.getClassTypes().entrySet();
+        Set<Map.Entry<Class.classType,String>> classTypes = pc_class.getClasses().entrySet();
         for (Map.Entry<Class.classType,String> classType: classTypes){
             System.out.println(i + ". " + classType.getKey() + ": " + classType.getValue());
             i++;
@@ -319,7 +319,7 @@ public class PlayableCharacter extends Character{
     public void setRace(){
         System.out.println("The Game has 5 starting Races, from which you must choose 1 to start your adventure.");
         int i = 1;
-        Set<Map.Entry<Race.raceType,String>> raceTypes = race.getRaceTypes().entrySet();
+        Set<Map.Entry<Race.raceType,String>> raceTypes = race.getRaces().entrySet();
         for (Map.Entry<Race.raceType,String> raceType: raceTypes){
             System.out.println(i + ". " + raceType.getKey() + ": " + raceType.getValue());
             i++;

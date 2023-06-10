@@ -81,7 +81,7 @@ public class Race {
         return repWithMerch;
     }
 
-    public LinkedHashMap<raceType,String> getRaceTypes(){
+    public LinkedHashMap<raceType,String> getRaces(){
         LinkedHashMap<raceType,String> raceTypes= new LinkedHashMap<>();
         raceTypes.put(raceType.Human , "Jack of all trades");
         raceTypes.put(raceType.Elf, "Nimble, and Elegant");
