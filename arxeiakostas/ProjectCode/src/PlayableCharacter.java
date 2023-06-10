@@ -106,7 +106,7 @@ public class PlayableCharacter extends Character{
         String raceOfMerch = String.valueOf(merchant.getRace());
         //loop for accessing the map with the reputation of the character with the different races of merchants
         //and when it finds the one we want it returns it
-        for(Map.Entry<String,Integer> entry : getReputation().entrySet()){
+        for(Map.Entry<String, Integer> entry : reputation.entrySet()){
             // if the key value of the map is the same with the race of the merchant,return the reputation with that
             //race, else return 0
             if(Objects.equals(raceOfMerch, entry.getKey())){

@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Map;
+
 public class Merchant extends NonPlayableCharacter{
 
     private enum MerchantType{
@@ -13,15 +16,19 @@ public class Merchant extends NonPlayableCharacter{
         Ork
     }
     private RaceType race;
-    private String[] inventory;
+    private List<Item> merchantInventory;
+    private Map<Item, Integer> prices;
 
-    public Merchant(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, MerchantType merchantType, RaceType race, String[] inventory) {
+
+    //constructor for merchant
+    public Merchant(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, MerchantType merchantType, RaceType race) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom, dialogue, reputation);
         this.merchantType = merchantType;
         this.race = race;
-        this.inventory = inventory;
     }
 
+
+    //setters, getters
     public MerchantType getMerchantType() {
         return merchantType;
     }
@@ -38,12 +45,31 @@ public class Merchant extends NonPlayableCharacter{
         this.race = race;
     }
 
-    public String[] getInventory() {
-        return inventory;
+    public List getMerchantInventory() {
+        return merchantInventory;
     }
 
-    public void setInventory(String[] inventory) {
-        this.inventory = inventory;
+    public void setMerchantInventory(List merchantInventory) {
+        this.merchantInventory = merchantInventory;
+    }
+
+    public Map getPrices(){
+        return prices;
+    }
+
+    public void setPrices(Map prices){this.prices = prices;}
+
+    //methods for merchant class
+
+    // method that checks whether this playable character deserves a discount based on his reputation with
+    // the race of this specific merchant
+    public boolean checkForDiscount(PlayableCharacter character, Merchant merchant){
+        if(character.getReputationWithTypeOfMerchant(merchant) < 5){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
 }

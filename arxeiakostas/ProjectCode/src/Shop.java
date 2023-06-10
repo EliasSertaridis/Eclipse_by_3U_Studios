@@ -1,6 +1,6 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-public class Shop {
+public class Shop{
    //cool idea: maybe based on the reputation, the greeting of the merchant changes?
     public int showOptionsForTransactions(){
         int choice = 0;
@@ -28,9 +28,5 @@ public class Shop {
             choice = myObj.nextInt();
             return -1;
         }
-    }
-    //checks the reputation to see if the character deserves a discount or not
-    public void checkForDiscount(){
-        if(){}
     }
 }
