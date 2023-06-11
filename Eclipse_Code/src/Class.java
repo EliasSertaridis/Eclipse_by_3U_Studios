@@ -168,6 +168,7 @@ public class Class {
         WizardWeapons = wizardWeapons;
     }
 
+
     public void setStartingEquipment(armorSetPiece piece, Armor armor, classType type, int set){
         switch (type){
             case Knight:

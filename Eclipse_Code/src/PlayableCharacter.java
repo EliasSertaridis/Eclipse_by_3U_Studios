@@ -842,4 +842,22 @@ public class PlayableCharacter extends Character{
             }
         }
     }
+
+    public void createCharacter(PlayableCharacter pc){
+        setNameGender(pc);
+        setBaseStats(pc);
+        setClass();
+        setEquipment(pc_class.getName());
+        setRace();
+        setAbility(race.getRace());
+        System.out.println("Would you like to finalize your creation?");
+        System.out.println("For Yes type 'y', for No type 'n'.");
+        Scanner scanner = new Scanner(System.in);
+        String affirm = scanner.nextLine();
+        if (affirm=="y"){
+            System.out.println("Have a wonderful adventure.");
+        } else if (affirm=="n") {
+            System.out.println("Close the game, and when you open it again select 'New Game'.");
+        }
+    }
 }

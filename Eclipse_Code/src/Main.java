@@ -4,7 +4,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Inventory inventory=new Inventory();
+        /*Inventory inventory=new Inventory();
 
         PlayableCharacter takhs = new PlayableCharacter("Takhs","male",12,20,9,40,80,7,3009,19,230.4);
         Item flask = new Item("takhs"," he is not here", Item.rarityType.Common);
@@ -51,13 +51,15 @@ public class Main {
         */
         //playerStatus.getInventory().openInventory();
         //System.out.println(playerStatus.getInventory().getItems());
-        playerStatus.openPlayerStatus();
+        //playerStatus.openPlayerStatus();
        /* List<Equipment> equipment1 = eq1.getCurrentEquipment();
         System.out.println("Equipment of the player:");
         for (Equipment head : equipment1) {
             System.out.println("- " + head.getName() + ", Disc: " + head.getDescription());
         }*/
 
+        PlayableCharacter pc = new PlayableCharacter();
+        pc.createCharacter(pc);
 
     }
 }
