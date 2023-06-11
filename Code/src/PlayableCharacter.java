@@ -182,5 +182,8 @@ public class PlayableCharacter extends Character{
             setHp(getMaxHP());
         }else setHp(getHp()+healthPotion.getRegenPoints());
     }
+    public void restoreEssentials(){
+        setHp(getMaxHP());
+    }
 
 }

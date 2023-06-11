@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Skill {
     private String name;
+    private String description;
     private int level;
     private int skillPointNeeded;
     private List<Skill> dependencies;
@@ -12,13 +13,22 @@ public class Skill {
         INT,DEX,VIT,WIS,STR
     }
 
-    public Skill(String name,TypeOfBoosting statForBoosting,int amountOfBoosting,int skillPointNeeded) {
+    public Skill(String name, String description, TypeOfBoosting statForBoosting, int amountOfBoosting, int skillPointNeeded) {
         this.skillPointNeeded=skillPointNeeded;
         this.amountOfBoosting=amountOfBoosting;
         this.statForBoosting=statForBoosting;
         this.name = name;
+        this.description=description;
         this.level = 0;
         this.dependencies = new ArrayList<>();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getSkillPointNeeded() {

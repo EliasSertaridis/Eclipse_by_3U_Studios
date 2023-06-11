@@ -20,9 +20,9 @@ public class Main {
         Armor chest1= new Armor("sti8os","its noice", Item.rarityType.Rare,13, Armor.TypeOfArmor.Chest,1);
         Armor hands1= new Armor("xeria","its noice", Item.rarityType.Legendary,13, Armor.TypeOfArmor.Hands,1);
         Armor legs1= new Armor("podia","its noice", Item.rarityType.Unique,13, Armor.TypeOfArmor.Legs,1);
-        Skill skill1= new Skill("STRONGER", Skill.TypeOfBoosting.STR,1,1);
-        Skill skill2= new Skill("STRONGER+1", Skill.TypeOfBoosting.STR,1,2);
-        Skill skill3= new Skill("STRONGER+2", Skill.TypeOfBoosting.STR,1,3);
+        Skill skill1= new Skill("STRONGER","Gives you a STR stat increase of 1", Skill.TypeOfBoosting.STR,1,1);
+        Skill skill2= new Skill("STRONGER+1","Gives you a STR stat increase of 2", Skill.TypeOfBoosting.STR,2,1);
+        Skill skill3= new Skill("STRONGER+2","Gives you a STR stat increase of 3", Skill.TypeOfBoosting.STR,3,1);
         Spell spell1= new Spell("Fire Ball","A normal sized ball of fire", Item.rarityType.Rare, Spell.TypeOfDamage.Fire,1.2,90, Spell.PrerequisiteStat.INT,1);
         Spell spell2= new Spell("Arcane Ball","A normal sized ball of arcane", Item.rarityType.Rare, Spell.TypeOfDamage.Arcane,1.2,90, Spell.PrerequisiteStat.WIS,1);
         Spell spell3= new Spell("Ice Ball","A normal sized ball of ice", Item.rarityType.Rare, Spell.TypeOfDamage.Ice,1.2,90, Spell.PrerequisiteStat.INT,1);
