@@ -11,7 +11,7 @@ public class PlayableCharacter extends Character{
     private Race race;
     private Inventory inventory;
     private SpellSlot spellSlot;
-    private Class pc_class;
+    private Class pc_class= new Class();
 
     public PlayableCharacter(){
         super();
@@ -216,7 +216,8 @@ public class PlayableCharacter extends Character{
         while (!setStats){
             String choice = scanner.nextLine();
             if (choice.equals("add")){
-                int stat = scanner.nextInt();
+                choice=scanner.nextLine();
+                int stat = Integer.parseInt(choice);
                 switch (stat){
                     case 1:
                         str = str + 1;
@@ -245,6 +246,7 @@ public class PlayableCharacter extends Character{
                         break;
                     default:
                         System.out.println("You typed a false number. please try again, and make sure to type 'add' first.");
+                        System.out.println(getStrength());
                 }
             } else if (choice.equals("remove")) {
                 int stat = scanner.nextInt();
@@ -386,11 +388,12 @@ public class PlayableCharacter extends Character{
         System.out.println("Please choose the Class you want by typing the number [1-4] according to the order it was presented.");
         boolean class_check = false;
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
         while (!class_check){
             int class_chosen = scanner.nextInt();
             System.out.println("Are you sure you want your Class to be number " + class_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
-            String affirm = scanner.nextLine();
+            String affirm = scanner1.nextLine();
             if (affirm.equals("y")){
                 switch (class_chosen){
                     case 1:
@@ -427,11 +430,12 @@ public class PlayableCharacter extends Character{
         System.out.println("Please choose the Race you want by typing the number [1-5] according to the order it was presented.");
         boolean race_check = false;
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
         while (!race_check){
             int race_chosen = scanner.nextInt();
             System.out.println("Are you sure you want your Race to be number " + race_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
-            String affirm = scanner.nextLine();
+            String affirm = scanner1.nextLine();
             if (affirm.equals("y")){
                 switch (race_chosen){
                     case 1:
@@ -467,11 +471,12 @@ public class PlayableCharacter extends Character{
         System.out.println("Type 1 for set1 and 2 for set2.");
         boolean armor_check = false;
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
         while (!armor_check){
             int armor_chosen = scanner.nextInt();
             System.out.println("Are you sure you want set number " + armor_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
-            String affirm = scanner.nextLine();
+            String affirm = scanner1.nextLine();
             if (affirm.equals("y")){
                 switch (type){
                     case Knight:
@@ -576,7 +581,7 @@ public class PlayableCharacter extends Character{
         while (!weap1_check){
             System.out.println("Are you sure you want the weapon number " + weap1_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
-            String affirm = scanner.nextLine();
+            String affirm = scanner1.nextLine();
             if (affirm.equals("y")){
                 switch (type){
                     case Knight:
@@ -657,7 +662,7 @@ public class PlayableCharacter extends Character{
             } else {
                 System.out.println("Are you sure you want the weapon number " + weap2_chosen + " ?");
                 System.out.println("For Yes type 'y', for No type 'n'.");
-                String affirm = scanner.nextLine();
+                String affirm = scanner1.nextLine();
                 if (affirm.equals("y")){
                     switch (type){
                         case Knight:
@@ -739,11 +744,12 @@ public class PlayableCharacter extends Character{
         System.out.println("Type 1 for the first ability and 2 for the second ability.");
         boolean ability_check = false;
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner1  =new Scanner(System.in);
         while (!ability_check){
             int ab_chosen = scanner.nextInt();
             System.out.println("Are you sure you want your Ability to be number " + ab_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
-            String affirm = scanner.nextLine();
+            String affirm = scanner1.nextLine();
             if (affirm.equals("y")){
                 switch (type){
                     case Human:

@@ -18,7 +18,7 @@ public class CurrentEquipment {
         this.leftWeapon = leftWeapon;
         initialize();
     }
-
+    public CurrentEquipment(){}
     public Armor getHead() {
         return head;
     }
@@ -209,6 +209,5 @@ public class CurrentEquipment {
         deffense=deffense+getLegs().getDefense();
         deffense=deffense+getChest().getDefense();
         return deffense;
-
     }
 }

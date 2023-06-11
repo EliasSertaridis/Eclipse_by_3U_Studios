@@ -94,6 +94,10 @@ public class Main {
         //System.out.println("The hp OF TAKHS IS "+takhs.getHp());
       //  restingPoint1.interact();
         PlayableCharacter pc = new PlayableCharacter();
+        CurrentEquipment asdkfj= new CurrentEquipment();
+        Inventory inventory1=new Inventory();
+        pc.setCurrentEquipment(asdkfj);
+        pc.setInventory(inventory1);
         pc.createCharacter(pc);
         //  playerStatus.getInventory().openInventory();
      //   playerStatus.getInventory().openInventory();
