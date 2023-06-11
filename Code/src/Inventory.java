@@ -60,6 +60,7 @@ public class Inventory {
                     madeChoice = true;
                 } else
                     System.out.println("What you typed is not an option. The options you have here are: /n Yes /n No");
+
             }
         }
     }
