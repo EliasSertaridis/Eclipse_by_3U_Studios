@@ -4,7 +4,7 @@ public class Weapon extends Equipment {
 
     private int damage;
     private double scaling;
-    private TypeOfDamage damageType;
+    TypeOfDamage damageType;
 
     enum TypeOfDamage {
         Slashing,
@@ -29,7 +29,7 @@ public class Weapon extends Equipment {
     }
     TypeOfScaling scalingType;
 
-    public Weapon(String name, String description, Item.rarityType rarity, int weight, int damage, double scaling, TypeOfDamage damageType, TypeOfWeapon weaponType,TypeOfScaling scalingType) {
+    public Weapon(String name, String description, rarityType rarity, int weight, int damage, double scaling, TypeOfDamage damageType, TypeOfWeapon weaponType, TypeOfScaling scalingType) {
         super(name, description, rarity, weight);
         this.damage = damage;
         this.scaling = scaling;
@@ -76,9 +76,5 @@ public class Weapon extends Equipment {
 
     public void setWeaponType(TypeOfWeapon weaponType) {
         this.weaponType = weaponType;
-    }
-
-    public void /*Weapon*/ getWeaponStats(){
-        System.out.println("");
     }
 }

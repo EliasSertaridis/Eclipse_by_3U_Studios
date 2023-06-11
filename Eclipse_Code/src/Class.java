@@ -32,6 +32,7 @@ public class Class {
     public Class(classType name) {
         this.name = name;
     }
+    public Class(){}
 
     public classType getName() {
         return name;
@@ -214,7 +215,7 @@ public class Class {
                 System.out.println("Knight set 1 is: ");
                 Set<Map.Entry<armorSetPiece,Armor>> set1 = KnightSet1.entrySet();
                 for (Map.Entry<armorSetPiece,Armor> piece: set1){
-                        System.out.println(piece.getKey() + ", Name: " + piece.getValue().getName() + ", Defence: " + piece.getValue().getDefense());
+                    System.out.println(piece.getKey() + ", Name: " + piece.getValue().getName() + ", Defence: " + piece.getValue().getDefense());
                 }
                 System.out.println("Knight set 2 is :");
                 Set<Map.Entry<armorSetPiece,Armor>> set2 = KnightSet1.entrySet();
@@ -262,25 +263,30 @@ public class Class {
     }
 
     public void getStartWeap(classType type){
+        int i=0;
         switch (type){
             case Knight:
-                for (int i=0; i<4; i++){
-                    System.out.println((i+1) + ". Name:" + KnightWeapons.get(i).getName() + ", DamageType: " + KnightWeapons.get(i).getDamageType() + ", Damage: " + KnightWeapons.get(i).getDamage());
+                for (Weapon weapon: KnightWeapons){
+                    System.out.println((i+1) + ". Name:" + weapon.getName() + ", DamageType: " + weapon.getDamageType() + ", Damage: " + weapon.getDamage());
+                    i++;
                 }
                 break;
             case Barbarian:
-                for (int i=0; i<4; i++){
-                    System.out.println((i+1) + ". Name:" + BarbarianWeapons.get(i).getName() + ", DamageType: " + BarbarianWeapons.get(i).getDamageType() + ", Damage: " + BarbarianWeapons.get(i).getDamage());
+                for (Weapon weapon: BarbarianWeapons){
+                    System.out.println((i+1) + ". Name:" + weapon.getName() + ", DamageType: " + weapon.getDamageType() + ", Damage: " + weapon.getDamage());
+                    i++;
                 }
                 break;
             case Assassin:
-                for (int i=0; i<4; i++){
-                    System.out.println((i+1) + ". Name:" + AssassinWeapons.get(i).getName() + ", DamageType: " + AssassinWeapons.get(i).getDamageType() + ", Damage: " + AssassinWeapons.get(i).getDamage());
+                for (Weapon weapon:AssassinWeapons){
+                    System.out.println((i+1) + ". Name:" + weapon.getName() + ", DamageType: " + weapon.getDamageType() + ", Damage: " + weapon.getDamage());
+                    i++;
                 }
                 break;
             case Wizard:
-                for (int i=0; i<4; i++){
-                    System.out.println((i+1) + ". Name:" + WizardWeapons.get(i).getName() + ", DamageType: " + WizardWeapons.get(i).getDamageType() + ", Damage: " + WizardWeapons.get(i).getDamage());
+                for (Weapon weapon: WizardWeapons){
+                    System.out.println((i+1) + ". Name:" + weapon.getName() + ", DamageType: " + weapon.getDamageType() + ", Damage: " + weapon.getDamage());
+                    i++;
                 }
                 break;
         }

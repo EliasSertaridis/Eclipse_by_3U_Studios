@@ -4,12 +4,12 @@ public class Recipe extends Item{
     private Item resource1,resource2,resource3;
 
 
-    public Recipe(String name, String description, Item.rarityType rarity,Item creation,Item resource1,Item resource2,Item resource3) {
+    public Recipe(String name, String description, rarityType rarity, Item creation, Item resource1, Item resource2, Item resource3) {
         super(name, description, rarity);
-        this.creation=creation;
-        this.resource1=resource1;
-        this.resource2=resource2;
-        this.resource3=resource3;
+        this.creation = creation;
+        this.resource1 = resource1;
+        this.resource2 = resource2;
+        this.resource3 = resource3;
     }
 
     public Item getCreation() {
@@ -42,5 +42,11 @@ public class Recipe extends Item{
 
     public void setResource3(Item resource3) {
         this.resource3 = resource3;
+    }
+
+    @Override
+    public boolean use() {
+        System.out.println("You just used the item "+getName());
+        return true;
     }
 }
