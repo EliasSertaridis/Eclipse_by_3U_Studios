@@ -358,4 +358,10 @@ public class PlayableCharacter extends Character{
             }
         }
     }
+
+    public void setEquipment(Class.classType type){
+        System.out.println("The Class you have chosen comes with two sets of armor.");
+        System.out.println("You must choose one of the two to start your adventure.");
+        pc_class.getStartingEquipment(type);
+    }
 }
