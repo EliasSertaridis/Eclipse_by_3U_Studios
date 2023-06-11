@@ -2,7 +2,7 @@ import java.util.*;
 
 public class PlayableCharacter extends Character{
     private int skillPoints;
-    private int money;
+    private float money;
     private int level;
     private double equipLoad;
     private double defenceModifier;
@@ -10,8 +10,9 @@ public class PlayableCharacter extends Character{
     private PlayerStatus playerStatus;
     private Race race;
     private Map <String, Integer> reputation;
+    private Inventory inventory;
 
-    public PlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad, double defenceModifier) {
+    public PlayableCharacter(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, float money, int level, double equipLoad, double defenceModifier) {
         super(name, hp, strength, dexterity, vitality, intelligence, wisdom);
         this.money = money;
         this.level = level;
@@ -35,12 +36,19 @@ public class PlayableCharacter extends Character{
         this.race = race;
     }
 
-    public int getMoney() {
+    public float getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(float money) {
         this.money = money;
+    }
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     public int getLevel() {
@@ -115,6 +123,22 @@ public class PlayableCharacter extends Character{
         }
         return 0;
     }
+
+    //checks if the character has enough money to buy an item from a merchant
+    public boolean hasEnoughMoney(float price){
+       float playerMoney = getMoney();
+       if(playerMoney < price){
+           return false;
+       }
+       else if(playerMoney > price){
+           return true;
+       }
+       else{
+           System.out.println("Warning: After this purchase you will be broke!");
+           return true;
+       }
+    }
+
     public void setDefenceMod(){
         this.defenceModifier = currentEquipment.getTotalDefense();
     }
