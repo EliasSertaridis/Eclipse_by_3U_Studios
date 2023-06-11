@@ -14,4 +14,5 @@ public class Equipment extends Item{
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
 }

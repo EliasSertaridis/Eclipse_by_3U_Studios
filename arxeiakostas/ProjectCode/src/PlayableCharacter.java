@@ -139,6 +139,28 @@ public class PlayableCharacter extends Character{
        }
     }
 
+    public void reduceMoney(Merchant merchant, Item item){
+        Map<Item, Float> prices = merchant.getPrices();
+        for(Map.Entry<Item, Float> entry : prices.entrySet()){
+            if(item.getName().equals(entry.getKey())){
+                float reducedMoney = getMoney() - entry.getValue();
+                setMoney(reducedMoney);
+                break;
+            }
+        }
+    }
+
+    public void incReputationWithTypeOfMerchant(Merchant merchant){
+        String raceOfMerch = String.valueOf(merchant.getRace());
+        for(Map.Entry<String, Integer> entry : reputation.entrySet()){
+            // if the key value of the map is the same with the race of the merchant,return the reputation with that
+            //race, else return 0
+            if(Objects.equals(raceOfMerch, entry.getKey())){
+                entry.setValue(entry.getValue() + 1);
+            }
+        }
+    }
+
     public void setDefenceMod(){
         this.defenceModifier = currentEquipment.getTotalDefense();
     }

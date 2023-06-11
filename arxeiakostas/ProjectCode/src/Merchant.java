@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Map;
+import java.util.Iterator;
 
 public class Merchant extends NonPlayableCharacter{
 
@@ -71,5 +72,15 @@ public class Merchant extends NonPlayableCharacter{
             return true;
         }
     }
+    public void updateMerchantInventory(Item item){
+        Iterator<Map.Entry<Item, Float>> iterator = prices.entrySet().iterator();
 
+        while (iterator.hasNext()) {
+            Map.Entry<Item, Float> entry = iterator.next();
+            if (entry.getKey().getName().equals(item.getName())) {
+                iterator.remove();
+                break;
+            }
+        }
+    }
 }
