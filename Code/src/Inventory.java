@@ -55,6 +55,7 @@ public class Inventory {
                 if (input.equals("Yes")) {
                     madeChoice = true;
                     openInventory();
+                    addItemToInventory(item);
                 } else if (input.equals("No")) {
                     madeChoice = true;
                 } else
