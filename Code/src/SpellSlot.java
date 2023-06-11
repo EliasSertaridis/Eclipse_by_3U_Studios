@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class SpellSlot extends Inventory {
 
@@ -43,11 +44,15 @@ public class SpellSlot extends Inventory {
         this.playableCharacter = playableCharacter;
     }
     public void currentSpells(){
-        if(spellSlots.size()==0){
-            System.out.println("You dont have any Spells Equiped");
-        }
+        int i=0;
+
         for(Spell spell:spellSlots){
-            System.out.println("- "+spell.getName());
+            i++;
+            System.out.println(i+". "+spell.getName());
+        }
+        while(i<4){
+            i++;
+            System.out.println(i+". No Spell is Equiped in this slot");
         }
         System.out.println("-------------------------------------------");
     }
