@@ -77,8 +77,4 @@ public class Weapon extends Equipment {
     public void setWeaponType(TypeOfWeapon weaponType) {
         this.weaponType = weaponType;
     }
-
-    public void /*Weapon*/ getWeaponStats(){
-        System.out.println("");
-    }
 }
