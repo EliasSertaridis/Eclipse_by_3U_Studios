@@ -35,8 +35,6 @@ public class Item {
     public rarityType getRarity() {
         return rarity;
     }
-
-
     public int getMinDropRateValue() {
         return minDropRateValue;
     }
@@ -65,10 +63,6 @@ public class Item {
                 break;
         }
     }
-
-
-
-
     public boolean use(){
         System.out.println("This Item cannot be used.");
         return false;

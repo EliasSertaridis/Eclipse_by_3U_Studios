@@ -211,7 +211,4 @@ public class CurrentEquipment {
         return deffense;
 
     }
-
-
-
 }
