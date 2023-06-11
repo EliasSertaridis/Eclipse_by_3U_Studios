@@ -8,6 +8,7 @@ public class PlayableCharacter extends Character{
     private CurrentEquipment currentEquipment;
     private PlayerStatus playerStatus;
     private Race race;
+    private Inventory inventory;
     private Class pc_class;
     public PlayableCharacter(String name, String gender, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, int money, int level, double equipLoad) {
         super(name, gender, hp, strength, dexterity, vitality, intelligence, wisdom);
@@ -348,6 +349,7 @@ public class PlayableCharacter extends Character{
                         break;
                     case 5:
                         race.setRace(Race.raceType.Ork);
+                        break;
                 }
                 race_check = true;
                 System.out.println("Your Race is " + race.getRace());
@@ -363,5 +365,271 @@ public class PlayableCharacter extends Character{
         System.out.println("The Class you have chosen comes with two sets of armor.");
         System.out.println("You must choose one of the two to start your adventure.");
         pc_class.getStartingEquipment(type);
+        System.out.println("Type 1 for set1 and 2 for set2.");
+        boolean armor_check = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!armor_check){
+            int armor_chosen = scanner.nextInt();
+            System.out.println("Are you sure you want set number " + armor_chosen + " ?");
+            System.out.println("For Yes type 'y', for No type 'n'.");
+            String affirm = scanner.nextLine();
+            if (affirm=="y"){
+                switch (type){
+                    case Knight:
+                        if (armor_chosen==1) {
+                            currentEquipment.setHead(pc_class.getKnightSet1().get(0));
+                            currentEquipment.setChest(pc_class.getKnightSet1().get(1));
+                            currentEquipment.setHands(pc_class.getKnightSet1().get(2));
+                            currentEquipment.setLegs(pc_class.getKnightSet1().get(3));
+                            inventory.addItemToInventory(pc_class.getKnightSet1().get(0));
+                            inventory.addItemToInventory(pc_class.getKnightSet1().get(1));
+                            inventory.addItemToInventory(pc_class.getKnightSet1().get(2));
+                            inventory.addItemToInventory(pc_class.getKnightSet1().get(3));
+                        } else if (armor_chosen==2) {
+                            currentEquipment.setHead(pc_class.getKnightSet2().get(0));
+                            currentEquipment.setChest(pc_class.getKnightSet2().get(1));
+                            currentEquipment.setHands(pc_class.getKnightSet2().get(2));
+                            currentEquipment.setLegs(pc_class.getKnightSet2().get(3));
+                            inventory.addItemToInventory(pc_class.getKnightSet2().get(0));
+                            inventory.addItemToInventory(pc_class.getKnightSet2().get(1));
+                            inventory.addItemToInventory(pc_class.getKnightSet2().get(2));
+                            inventory.addItemToInventory(pc_class.getKnightSet2().get(3));
+                        }
+                        break;
+                    case Barbarian:
+                        if (armor_chosen==1) {
+                            currentEquipment.setHead(pc_class.getBarbarianSet1().get(0));
+                            currentEquipment.setChest(pc_class.getBarbarianSet1().get(1));
+                            currentEquipment.setHands(pc_class.getBarbarianSet1().get(2));
+                            currentEquipment.setLegs(pc_class.getBarbarianSet1().get(3));
+                            inventory.addItemToInventory(pc_class.getBarbarianSet1().get(0));
+                            inventory.addItemToInventory(pc_class.getBarbarianSet1().get(1));
+                            inventory.addItemToInventory(pc_class.getBarbarianSet1().get(2));
+                            inventory.addItemToInventory(pc_class.getBarbarianSet1().get(3));
+                        } else if (armor_chosen==2) {
+                            currentEquipment.setHead(pc_class.getBarbarianSet2().get(0));
+                            currentEquipment.setChest(pc_class.getBarbarianSet2().get(1));
+                            currentEquipment.setHands(pc_class.getBarbarianSet2().get(2));
+                            currentEquipment.setLegs(pc_class.getBarbarianSet2().get(3));
+                            inventory.addItemToInventory(pc_class.getBarbarianSet2().get(0));
+                            inventory.addItemToInventory(pc_class.getBarbarianSet2().get(1));
+                            inventory.addItemToInventory(pc_class.getBarbarianSet2().get(2));
+                            inventory.addItemToInventory(pc_class.getBarbarianSet2().get(3));
+                        }
+                        break;
+                    case Assassin:
+                        if (armor_chosen==1) {
+                            currentEquipment.setHead(pc_class.getAssassinSet1().get(0));
+                            currentEquipment.setChest(pc_class.getAssassinSet1().get(1));
+                            currentEquipment.setHands(pc_class.getAssassinSet1().get(2));
+                            currentEquipment.setLegs(pc_class.getAssassinSet1().get(3));
+                            inventory.addItemToInventory(pc_class.getAssassinSet1().get(0));
+                            inventory.addItemToInventory(pc_class.getAssassinSet1().get(1));
+                            inventory.addItemToInventory(pc_class.getAssassinSet1().get(2));
+                            inventory.addItemToInventory(pc_class.getAssassinSet1().get(3));
+                        } else if (armor_chosen==2) {
+                            currentEquipment.setHead(pc_class.getAssassinSet2().get(0));
+                            currentEquipment.setChest(pc_class.getAssassinSet2().get(1));
+                            currentEquipment.setHands(pc_class.getAssassinSet2().get(2));
+                            currentEquipment.setLegs(pc_class.getAssassinSet2().get(3));
+                            inventory.addItemToInventory(pc_class.getAssassinSet2().get(0));
+                            inventory.addItemToInventory(pc_class.getAssassinSet2().get(1));
+                            inventory.addItemToInventory(pc_class.getAssassinSet2().get(2));
+                            inventory.addItemToInventory(pc_class.getAssassinSet2().get(3));
+                        }
+                        break;
+                    case Wizard:
+                        if (armor_chosen==1) {
+                            currentEquipment.setHead(pc_class.getWizardSet1().get(0));
+                            currentEquipment.setChest(pc_class.getWizardSet1().get(1));
+                            currentEquipment.setHands(pc_class.getWizardSet1().get(2));
+                            currentEquipment.setLegs(pc_class.getWizardSet1().get(3));
+                            inventory.addItemToInventory(pc_class.getWizardSet1().get(0));
+                            inventory.addItemToInventory(pc_class.getWizardSet1().get(1));
+                            inventory.addItemToInventory(pc_class.getWizardSet1().get(2));
+                            inventory.addItemToInventory(pc_class.getWizardSet1().get(3));
+                        } else if (armor_chosen==2) {
+                            currentEquipment.setHead(pc_class.getWizardSet2().get(0));
+                            currentEquipment.setChest(pc_class.getWizardSet2().get(1));
+                            currentEquipment.setHands(pc_class.getWizardSet2().get(2));
+                            currentEquipment.setLegs(pc_class.getWizardSet2().get(3));
+                            inventory.addItemToInventory(pc_class.getWizardSet2().get(0));
+                            inventory.addItemToInventory(pc_class.getWizardSet2().get(1));
+                            inventory.addItemToInventory(pc_class.getWizardSet2().get(2));
+                            inventory.addItemToInventory(pc_class.getWizardSet2().get(3));
+                        }
+                        break;
+                }
+                armor_check = true;
+                System.out.println("Your Armor set is " + currentEquipment.getCurrentArmor());
+            } else if (affirm=="n") {
+                System.out.println("Which armor set do you prefer?");
+            } else {
+                System.out.println("You typed the wrong number. Please enter your preferred armor set again.");
+            }
+        }
+        System.out.println("Now you must choose your weapons according to your class.");
+        System.out.println("Each class has 4 starting weapons. You must choose 2.");
+        pc_class.getStartWeap(type);
+        System.out.println("Type the number associated with the first weapon of your choice.");
+        boolean weap1_check = false;
+        int weap1_chosen = scanner.nextInt();
+        while (!weap1_check){
+            System.out.println("Are you sure you want the weapon number " + weap1_chosen + " ?");
+            System.out.println("For Yes type 'y', for No type 'n'.");
+            String affirm = scanner.nextLine();
+            if (affirm=="y"){
+                switch (type){
+                    case Knight:
+                        if (weap1_chosen==1) {
+                            currentEquipment.setRightWeapon(pc_class.getKnightWeapons().get(0));
+                            inventory.addItemToInventory(pc_class.getKnightWeapons().get(0));
+                        } else if (weap1_chosen==2) {
+                            currentEquipment.setRightWeapon(pc_class.getKnightWeapons().get(1));
+                            inventory.addItemToInventory(pc_class.getKnightWeapons().get(1));
+                        } else if (weap1_chosen==3) {
+                            currentEquipment.setRightWeapon(pc_class.getKnightWeapons().get(2));
+                            inventory.addItemToInventory(pc_class.getKnightWeapons().get(2));
+                        } else if (weap1_chosen==4) {
+                            currentEquipment.setRightWeapon(pc_class.getKnightWeapons().get(3));
+                            inventory.addItemToInventory(pc_class.getKnightWeapons().get(3));
+                        }
+                        break;
+                    case Barbarian:
+                        if (weap1_chosen==1) {
+                            currentEquipment.setRightWeapon(pc_class.getBarbarianWeapons().get(0));
+                            inventory.addItemToInventory(pc_class.getBarbarianWeapons().get(0));
+                        } else if (weap1_chosen==2) {
+                            currentEquipment.setRightWeapon(pc_class.getBarbarianWeapons().get(1));
+                            inventory.addItemToInventory(pc_class.getBarbarianWeapons().get(1));
+                        } else if (weap1_chosen==3) {
+                            currentEquipment.setRightWeapon(pc_class.getBarbarianWeapons().get(2));
+                            inventory.addItemToInventory(pc_class.getBarbarianWeapons().get(2));
+                        } else if (weap1_chosen==4) {
+                            currentEquipment.setRightWeapon(pc_class.getBarbarianWeapons().get(3));
+                            inventory.addItemToInventory(pc_class.getBarbarianWeapons().get(3));
+                        }
+                        break;
+                    case Assassin:
+                        if (weap1_chosen==1) {
+                            currentEquipment.setRightWeapon(pc_class.getAssassinWeapons().get(0));
+                            inventory.addItemToInventory(pc_class.getAssassinWeapons().get(0));
+                        } else if (weap1_chosen==2) {
+                            currentEquipment.setRightWeapon(pc_class.getAssassinWeapons().get(1));
+                            inventory.addItemToInventory(pc_class.getAssassinWeapons().get(1));
+                        } else if (weap1_chosen==3) {
+                            currentEquipment.setRightWeapon(pc_class.getAssassinWeapons().get(2));
+                            inventory.addItemToInventory(pc_class.getAssassinWeapons().get(2));
+                        } else if (weap1_chosen==4) {
+                            currentEquipment.setRightWeapon(pc_class.getAssassinWeapons().get(3));
+                            inventory.addItemToInventory(pc_class.getAssassinWeapons().get(3));
+                        }
+                        break;
+                    case Wizard:
+                        if (weap1_chosen==1) {
+                            currentEquipment.setRightWeapon(pc_class.getWizardWeapons().get(0));
+                            inventory.addItemToInventory(pc_class.getWizardWeapons().get(0));
+                        } else if (weap1_chosen==2) {
+                            currentEquipment.setRightWeapon(pc_class.getWizardWeapons().get(1));
+                            inventory.addItemToInventory(pc_class.getWizardWeapons().get(1));
+                        } else if (weap1_chosen==3) {
+                            currentEquipment.setRightWeapon(pc_class.getWizardWeapons().get(2));
+                            inventory.addItemToInventory(pc_class.getWizardWeapons().get(2));
+                        } else if (weap1_chosen==4) {
+                            currentEquipment.setRightWeapon(pc_class.getWizardWeapons().get(3));
+                            inventory.addItemToInventory(pc_class.getWizardWeapons().get(3));
+                        }
+                        break;
+                }
+                weap1_check = true;
+                System.out.println("Your right hand weapon is " + currentEquipment.getRightWeapon());
+            } else if (affirm=="n") {
+                System.out.println("Which weapon do you prefer?");
+            } else {
+                System.out.println("You typed the wrong number. Please enter your preferred weapon again.");
+            }
+        }
+        System.out.println("Type the number associated with the second weapon of your choice.");
+        boolean weap2_check = false;
+        int weap2_chosen = scanner.nextInt();
+        while (!weap2_check){
+            if (weap2_chosen == weap1_chosen){
+                System.out.println("You cannot choose the same weapon twice. Please choose another weapon as your second.");
+            } else {
+                System.out.println("Are you sure you want the weapon number " + weap2_chosen + " ?");
+                System.out.println("For Yes type 'y', for No type 'n'.");
+                String affirm = scanner.nextLine();
+                if (affirm=="y"){
+                    switch (type){
+                        case Knight:
+                            if (weap2_chosen==1 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getKnightWeapons().get(0));
+                                inventory.addItemToInventory(pc_class.getKnightWeapons().get(0));
+                            } else if (weap2_chosen==2 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getKnightWeapons().get(1));
+                                inventory.addItemToInventory(pc_class.getKnightWeapons().get(1));
+                            } else if (weap2_chosen==3 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getKnightWeapons().get(2));
+                                inventory.addItemToInventory(pc_class.getKnightWeapons().get(2));
+                            } else if (weap2_chosen==4 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getKnightWeapons().get(3));
+                                inventory.addItemToInventory(pc_class.getKnightWeapons().get(3));
+                            }
+                            break;
+                        case Barbarian:
+                            if (weap2_chosen==1 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getBarbarianWeapons().get(0));
+                                inventory.addItemToInventory(pc_class.getBarbarianWeapons().get(0));
+                            } else if (weap2_chosen==2 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getBarbarianWeapons().get(1));
+                                inventory.addItemToInventory(pc_class.getBarbarianWeapons().get(1));
+                            } else if (weap2_chosen==3 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getBarbarianWeapons().get(2));
+                                inventory.addItemToInventory(pc_class.getBarbarianWeapons().get(2));
+                            } else if (weap2_chosen==4 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getBarbarianWeapons().get(3));
+                                inventory.addItemToInventory(pc_class.getBarbarianWeapons().get(3));
+                            }
+                            break;
+                        case Assassin:
+                            if (weap2_chosen==1 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getAssassinWeapons().get(0));
+                                inventory.addItemToInventory(pc_class.getAssassinWeapons().get(0));
+                            } else if (weap2_chosen==2 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getAssassinWeapons().get(1));
+                                inventory.addItemToInventory(pc_class.getAssassinWeapons().get(1));
+                            } else if (weap2_chosen==3 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getAssassinWeapons().get(2));
+                                inventory.addItemToInventory(pc_class.getAssassinWeapons().get(2));
+                            } else if (weap2_chosen==4 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getAssassinWeapons().get(3));
+                                inventory.addItemToInventory(pc_class.getAssassinWeapons().get(3));
+                            }
+                            break;
+                        case Wizard:
+                            if (weap2_chosen==1 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getWizardWeapons().get(0));
+                                inventory.addItemToInventory(pc_class.getWizardWeapons().get(0));
+                            } else if (weap2_chosen==2 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getWizardWeapons().get(1));
+                                inventory.addItemToInventory(pc_class.getWizardWeapons().get(1));
+                            } else if (weap2_chosen==3 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getWizardWeapons().get(2));
+                                inventory.addItemToInventory(pc_class.getWizardWeapons().get(2));
+                            } else if (weap2_chosen==4 && weap2_chosen != weap1_chosen) {
+                                currentEquipment.setLeftWeapon(pc_class.getWizardWeapons().get(3));
+                                inventory.addItemToInventory(pc_class.getWizardWeapons().get(3));
+                            }
+                            break;
+                    }
+                    weap2_check = true;
+                    System.out.println("Your left hand weapon is " + currentEquipment.getLeftWeapon());
+                } else if (affirm=="n") {
+                    System.out.println("Which weapon do you prefer?");
+                } else {
+                    System.out.println("You typed the wrong number. Please enter your preferred weapon again.");
+                }
+            }
+        }
     }
 }
