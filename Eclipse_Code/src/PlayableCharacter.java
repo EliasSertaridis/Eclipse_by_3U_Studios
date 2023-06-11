@@ -632,4 +632,214 @@ public class PlayableCharacter extends Character{
             }
         }
     }
+
+    public void setAbility(Race.raceType type){
+        System.out.println("The Race you have chosen comes with two abilities.");
+        System.out.println("You must choose one of the two to start your adventure.");
+        race.getAvailableAbilities(type);
+        System.out.println("Type 1 for the first ability and 2 for the second ability.");
+        boolean ability_check = false;
+        Scanner scanner = new Scanner(System.in);
+        while (!ability_check){
+            int ab_chosen = scanner.nextInt();
+            System.out.println("Are you sure you want your Ability to be number " + ab_chosen + " ?");
+            System.out.println("For Yes type 'y', for No type 'n'.");
+            String affirm = scanner.nextLine();
+            if (affirm=="y"){
+                switch (type){
+                    case Human:
+                        if(ab_chosen==1){
+                            if (race.getHumanAbilities().get(1).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getHumanAbilities().get(1).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getHumanAbilities().get(1).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getHumanAbilities().get(1).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getHumanAbilities().get(1).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        } else if (ab_chosen==2) {
+                            if (race.getHumanAbilities().get(2).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getHumanAbilities().get(2).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getHumanAbilities().get(2).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getHumanAbilities().get(2).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getHumanAbilities().get(2).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        }
+                        break;
+                    case Elf:
+                        if(ab_chosen==1){
+                            if (race.getElfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getElfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getElfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getElfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getElfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        } else if (ab_chosen==2) {
+                            if (race.getElfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getElfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getElfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getElfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getElfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        }
+                        break;
+                    case Dwarf:
+                        if(ab_chosen==1){
+                            if (race.getDwarfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getDwarfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getDwarfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getDwarfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getDwarfAbilities().get(1).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        } else if (ab_chosen==2) {
+                            if (race.getDwarfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getDwarfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getDwarfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getDwarfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getDwarfAbilities().get(2).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        }
+                        break;
+                    case Halfling:
+                        if(ab_chosen==1){
+                            if (race.getHalflingAbilities().get(1).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getHalflingAbilities().get(1).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getHalflingAbilities().get(1).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getHalflingAbilities().get(1).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getHalflingAbilities().get(1).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        } else if (ab_chosen==2) {
+                            if (race.getHalflingAbilities().get(2).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getHalflingAbilities().get(2).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getHalflingAbilities().get(2).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getHalflingAbilities().get(2).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getHalflingAbilities().get(2).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        }
+                        break;
+                    case Ork:
+                        if(ab_chosen==1){
+                            if (race.getOrkAbilities().get(1).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getOrkAbilities().get(1).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getOrkAbilities().get(1).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getOrkAbilities().get(1).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getOrkAbilities().get(1).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        } else if (ab_chosen==2) {
+                            if (race.getOrkAbilities().get(2).getAbilityModType()== Ability.AbilityModType.INT){
+                                int intel = getIntelligence();
+                                setIntelligence(intel + 1);
+                            } else if (race.getOrkAbilities().get(2).getAbilityModType()== Ability.AbilityModType.WIS) {
+                                int wis = getWisdom();
+                                setWisdom(wis + 1);
+                            } else if (race.getOrkAbilities().get(2).getAbilityModType()== Ability.AbilityModType.STR) {
+                                int str = getStrength();
+                                setStrength(str + 1);
+                            } else if (race.getOrkAbilities().get(2).getAbilityModType()== Ability.AbilityModType.DEX) {
+                                int dex = getDexterity();
+                                setDexterity(dex + 1);
+                            } else if (race.getOrkAbilities().get(2).getAbilityModType()== Ability.AbilityModType.VIT) {
+                                int vit = getVitality();
+                                setVitality(vit + 1);
+                            }
+                        }
+                        break;
+                }
+                ability_check = true;
+                System.out.println("Your Ability is set.");
+            } else if (affirm=="n") {
+                System.out.println("What would you like your Ability to be?");
+            } else {
+                System.out.println("You typed the wrong number. Please enter your Ability again.");
+            }
+        }
+    }
 }

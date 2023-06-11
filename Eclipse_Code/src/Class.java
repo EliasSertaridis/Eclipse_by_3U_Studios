@@ -17,18 +17,18 @@ public class Class {
         Hands,
         Legs
     }
-    private Map<armorSetPiece,Armor> KnightSet1;
-    private Map<armorSetPiece,Armor> KnightSet2;
-    private List<Weapon> KnightWeapons;
-    private Map<armorSetPiece,Armor> BarbarianSet1;
-    private Map<armorSetPiece,Armor> BarbarianSet2;
-    private List<Weapon> BarbarianWeapons;
-    private Map<armorSetPiece,Armor> AssassinSet1;
-    private Map<armorSetPiece,Armor> AssassinSet2;
-    private List<Weapon> AssassinWeapons;
-    private Map<armorSetPiece,Armor> WizardSet1;
-    private Map<armorSetPiece,Armor> WizardSet2;
-    private List<Weapon> WizardWeapons;
+    private Map<armorSetPiece,Armor> KnightSet1 = new HashMap<>(4);
+    private Map<armorSetPiece,Armor> KnightSet2 = new HashMap<>(4);
+    private List<Weapon> KnightWeapons = new ArrayList<>(4);
+    private Map<armorSetPiece,Armor> BarbarianSet1 = new HashMap<>(4);
+    private Map<armorSetPiece,Armor> BarbarianSet2 = new HashMap<>(4);
+    private List<Weapon> BarbarianWeapons = new ArrayList<>(4);
+    private Map<armorSetPiece,Armor> AssassinSet1 = new HashMap<>(4);
+    private Map<armorSetPiece,Armor> AssassinSet2 = new HashMap<>(4);
+    private List<Weapon> AssassinWeapons = new ArrayList<>(4);
+    private Map<armorSetPiece,Armor> WizardSet1= new HashMap<>(4);
+    private Map<armorSetPiece,Armor> WizardSet2= new HashMap<>(4);
+    private List<Weapon> WizardWeapons = new ArrayList<>(4);
     public Class(classType name) {
         this.name = name;
     }
