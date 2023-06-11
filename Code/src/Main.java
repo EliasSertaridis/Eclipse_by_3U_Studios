@@ -93,7 +93,10 @@ public class Main {
         */
         //System.out.println("The hp OF TAKHS IS "+takhs.getHp());
       //  restingPoint1.interact();
+        Class claSSss=new Class();
         PlayableCharacter pc = new PlayableCharacter();
+        pc.setPc_class(claSSss);
+        claSSss.setKnightSet1();
         CurrentEquipment asdkfj= new CurrentEquipment();
         Inventory inventory1=new Inventory();
         pc.setCurrentEquipment(asdkfj);

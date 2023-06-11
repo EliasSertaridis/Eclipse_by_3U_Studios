@@ -11,7 +11,7 @@ public class PlayableCharacter extends Character{
     private Race race;
     private Inventory inventory;
     private SpellSlot spellSlot;
-    private Class pc_class= new Class();
+    private Class pc_class;
 
     public PlayableCharacter(){
         super();
