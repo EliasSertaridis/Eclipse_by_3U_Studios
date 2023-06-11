@@ -125,7 +125,7 @@ public class PlayableCharacter extends Character{
         for(Map.Entry<String, Integer> entry : race.getReputationWithMerchantRaces().entrySet()){
             // if the key value of the map is the same with the race of the merchant,return the reputation with that
             //race, else return 0
-            if(raceofmerch == entry.getKey()){
+            if(raceofmerch.equals( entry.getKey())){
                 return entry.getValue();
             }
         }
@@ -215,7 +215,7 @@ public class PlayableCharacter extends Character{
         Scanner scanner = new Scanner(System.in);
         while (!setStats){
             String choice = scanner.nextLine();
-            if (choice=="add"){
+            if (choice.equals("add")){
                 int stat = scanner.nextInt();
                 switch (stat){
                     case 1:
@@ -246,7 +246,7 @@ public class PlayableCharacter extends Character{
                     default:
                         System.out.println("You typed a false number. please try again, and make sure to type 'add' first.");
                 }
-            } else if (choice=="remove") {
+            } else if (choice.equals("remove")) {
                 int stat = scanner.nextInt();
                 switch (stat){
                     case 1:
@@ -297,7 +297,7 @@ public class PlayableCharacter extends Character{
                     default:
                         System.out.println("You typed a false number. please try again, and make sure to type 'remove' first.");
                 }
-            } else if (choice=="done") {
+            } else if (choice.equals("done")) {
                 if (count<55){
                     System.out.println("You have not distributed all the available points. Do you wish to end this process?");
                     System.out.println("For 'Yes' type 1, for 'No' type 2.");
@@ -311,7 +311,7 @@ public class PlayableCharacter extends Character{
                 } else {
                     setStats = true;
                 }
-            } else if (choice=="show") {
+            } else if (choice.equals("show")) {
                 System.out.println("Your current stats are: ");
                 System.out.println("Strength: " + pc.getStrength());
                 System.out.println("Dexterity: " + pc.getDexterity());
@@ -330,7 +330,7 @@ public class PlayableCharacter extends Character{
                 System.out.println("Wisdom: " + pc.getWisdom());
                 System.out.println("If you are satisfied with your current stats, type 'done'.");
                 String in = scanner.nextLine();
-                if (in=="done") setStats = true;
+                if (in.equals("done")) setStats = true;
                 else System.out.println("The input you provided is incorrect. Please try again.");
             }
         }
@@ -346,11 +346,11 @@ public class PlayableCharacter extends Character{
             System.out.println("Are you sure you want your name to be " + name + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
             String affirm = scanner.nextLine();
-            if (affirm=="y"){
+            if (affirm.equals("y")){
                 name_check = true;
                 pc.setName(name);
                 System.out.println("Your name is " + pc.getName());
-            } else if (affirm=="n") {
+            } else if (affirm.equals("n")) {
                 System.out.println("What would you like your name to be?");
             } else {
                 System.out.println("You typed the wrong letter. Please enter your name again.");
@@ -362,11 +362,11 @@ public class PlayableCharacter extends Character{
             System.out.println("Are you sure you want your gender to be " + gender + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
             String affirm = scanner.nextLine();
-            if (affirm=="y"){
+            if (affirm.equals("y")){
                 gender_check = true;
                 pc.setGender(gender);
                 System.out.println("Your gender is " + pc.getGender());
-            } else if (affirm=="n") {
+            } else if (affirm.equals("n")) {
                 System.out.println("What would you like your gender to be?");
             } else {
                 System.out.println("You typed the wrong letter. Please enter your gender again.");
@@ -391,7 +391,7 @@ public class PlayableCharacter extends Character{
             System.out.println("Are you sure you want your Class to be number " + class_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
             String affirm = scanner.nextLine();
-            if (affirm=="y"){
+            if (affirm.equals("y")){
                 switch (class_chosen){
                     case 1:
                         pc_class.setName(Class.classType.Knight);
@@ -408,7 +408,7 @@ public class PlayableCharacter extends Character{
                 }
                 class_check = true;
                 System.out.println("Your Class is " + pc_class.getName());
-            } else if (affirm=="n") {
+            } else if (affirm.equals("n")) {
                 System.out.println("What would you like your Class to be?");
             } else {
                 System.out.println("You typed the wrong number. Please enter your Class again.");
@@ -432,7 +432,7 @@ public class PlayableCharacter extends Character{
             System.out.println("Are you sure you want your Race to be number " + race_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
             String affirm = scanner.nextLine();
-            if (affirm=="y"){
+            if (affirm.equals("y")){
                 switch (race_chosen){
                     case 1:
                         race.setRace(Race.raceType.Human);
@@ -452,7 +452,7 @@ public class PlayableCharacter extends Character{
                 }
                 race_check = true;
                 System.out.println("Your Race is " + race.getRace());
-            } else if (affirm=="n") {
+            } else if (affirm.equals("n")) {
                 System.out.println("What would you like your Race to be?");
             } else {
                 System.out.println("You typed the wrong number. Please enter your Race again.");
@@ -472,7 +472,7 @@ public class PlayableCharacter extends Character{
             System.out.println("Are you sure you want set number " + armor_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
             String affirm = scanner.nextLine();
-            if (affirm=="y"){
+            if (affirm.equals("y")){
                 switch (type){
                     case Knight:
                         if (armor_chosen==1) {
@@ -561,7 +561,7 @@ public class PlayableCharacter extends Character{
                 }
                 armor_check = true;
                 System.out.println("Your Armor set is " + currentEquipment.getCurrentArmor());
-            } else if (affirm=="n") {
+            } else if (affirm.equals("n")) {
                 System.out.println("Which armor set do you prefer?");
             } else {
                 System.out.println("You typed the wrong number. Please enter your preferred armor set again.");
@@ -577,7 +577,7 @@ public class PlayableCharacter extends Character{
             System.out.println("Are you sure you want the weapon number " + weap1_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
             String affirm = scanner.nextLine();
-            if (affirm=="y"){
+            if (affirm.equals("y")){
                 switch (type){
                     case Knight:
                         if (weap1_chosen==1) {
@@ -642,7 +642,7 @@ public class PlayableCharacter extends Character{
                 }
                 weap1_check = true;
                 System.out.println("Your right hand weapon is " + currentEquipment.getRightWeapon());
-            } else if (affirm=="n") {
+            } else if (affirm.equals("n")) {
                 System.out.println("Which weapon do you prefer?");
             } else {
                 System.out.println("You typed the wrong number. Please enter your preferred weapon again.");
@@ -658,7 +658,7 @@ public class PlayableCharacter extends Character{
                 System.out.println("Are you sure you want the weapon number " + weap2_chosen + " ?");
                 System.out.println("For Yes type 'y', for No type 'n'.");
                 String affirm = scanner.nextLine();
-                if (affirm=="y"){
+                if (affirm.equals("y")){
                     switch (type){
                         case Knight:
                             if (weap2_chosen==1 && weap2_chosen != weap1_chosen) {
@@ -723,7 +723,7 @@ public class PlayableCharacter extends Character{
                     }
                     weap2_check = true;
                     System.out.println("Your left hand weapon is " + currentEquipment.getLeftWeapon());
-                } else if (affirm=="n") {
+                } else if (affirm.equals("n")) {
                     System.out.println("Which weapon do you prefer?");
                 } else {
                     System.out.println("You typed the wrong number. Please enter your preferred weapon again.");
@@ -744,7 +744,7 @@ public class PlayableCharacter extends Character{
             System.out.println("Are you sure you want your Ability to be number " + ab_chosen + " ?");
             System.out.println("For Yes type 'y', for No type 'n'.");
             String affirm = scanner.nextLine();
-            if (affirm=="y"){
+            if (affirm.equals("y")){
                 switch (type){
                     case Human:
                         if(ab_chosen==1){
@@ -934,7 +934,7 @@ public class PlayableCharacter extends Character{
                 }
                 ability_check = true;
                 System.out.println("Your Ability is set.");
-            } else if (affirm=="n") {
+            } else if (affirm.equals("n")) {
                 System.out.println("What would you like your Ability to be?");
             } else {
                 System.out.println("You typed the wrong number. Please enter your Ability again.");
@@ -953,9 +953,9 @@ public class PlayableCharacter extends Character{
         System.out.println("For Yes type 'y', for No type 'n'.");
         Scanner scanner = new Scanner(System.in);
         String affirm = scanner.nextLine();
-        if (affirm=="y"){
+        if (affirm.equals("y")){
             System.out.println("Have a wonderful adventure.");
-        } else if (affirm=="n") {
+        } else if (affirm.equals("n")) {
             System.out.println("Close the game, and when you open it again select 'New Game'.");
         }
     }

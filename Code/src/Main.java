@@ -92,8 +92,10 @@ public class Main {
         System.out.println(playerStatus.player.getName()+" "+playerStatus.player.getHp());
         */
         //System.out.println("The hp OF TAKHS IS "+takhs.getHp());
-        restingPoint1.interact();
-      //  playerStatus.getInventory().openInventory();
+      //  restingPoint1.interact();
+        PlayableCharacter pc = new PlayableCharacter();
+        pc.createCharacter(pc);
+        //  playerStatus.getInventory().openInventory();
      //   playerStatus.getInventory().openInventory();
       //  System.out.println(playerStatus.getInventory().getItems());
       // playerStatus.openPlayerStatus();
