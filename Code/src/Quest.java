@@ -46,10 +46,6 @@ public class Quest {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-
-    public boolean isCompleted() {
-        return completed;
-    }
     public void acceptQuest(Quest quest) {
         quests.add(quest);
         System.out.println("Quest accepted: " + quest.getName());
