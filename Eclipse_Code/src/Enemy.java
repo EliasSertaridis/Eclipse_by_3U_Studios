@@ -31,8 +31,8 @@ public class Enemy extends NonPlayableCharacter{
     private double enemyAttackDamage;
     private Item loot;
 
-    public Enemy(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, Type resistance, Type weakness, double resistMod, double weakMod, boolean facedBefore, int level, Weapon leftHandWeapon, Weapon rightHandWeapon, Spell spell1, Spell spell2) {
-        super(name, hp, strength, dexterity, vitality, intelligence, wisdom, dialogue, reputation);
+    public Enemy(String name, String gender, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom, String dialogue, int reputation, Type resistance, Type weakness, double resistMod, double weakMod, boolean facedBefore, int level, Weapon leftHandWeapon, Weapon rightHandWeapon, Spell spell1, Spell spell2) {
+        super(name, gender, hp, strength, dexterity, vitality, intelligence, wisdom, dialogue, reputation);
         this.resistance = resistance;
         this.weakness = weakness;
         this.resistMod = resistMod;

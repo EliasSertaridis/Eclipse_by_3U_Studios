@@ -1,4 +1,3 @@
-
 public class Item {
 
     private String name;
@@ -36,8 +35,6 @@ public class Item {
     public rarityType getRarity() {
         return rarity;
     }
-
-
     public int getMinDropRateValue() {
         return minDropRateValue;
     }
@@ -74,5 +71,4 @@ public class Item {
         System.out.println("This Item can be discarded.");
         return true;
     }
-
 }

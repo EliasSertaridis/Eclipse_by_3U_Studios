@@ -101,21 +101,56 @@ public class Combat {
     public void calcPlayerDamage(PlayableCharacter pc, Enemy enemy){
         double resistMod=0;
         double weakMod=0;
-        int i=0;
-        for(Spell spell: spellSlot.getSpellSlots()) {
-            if (enemy.getResistance().equals(pc.getCurrentEquipment().getRightWeapon().getDamageType()) || enemy.getResistance().equals(spellSlot.getSpellSlots().get(i).getDamageType())) {
+        if (attackDamage == pc.getPlayerStatus().totalDamage(pc.getCurrentEquipment().getRightWeapon())){
+            if(enemy.getResistance().equals(pc.getCurrentEquipment().getRightWeapon().getDamageType())){
                 resistMod = enemy.getResistMod();
-            } else if (enemy.getWeakness().equals(pc.getCurrentEquipment().getLeftWeapon().getDamageType()) || enemy.getWeakness().equals(spellSlot.getSpellSlots().get(i).getDamageType())) {
+            } else if (enemy.getWeakness().equals(pc.getCurrentEquipment().getRightWeapon().getDamageType())) {
                 weakMod = enemy.getWeakMod();
             }
-            i++;
+        } else if (attackDamage == pc.getPlayerStatus().totalDamage(pc.getCurrentEquipment().getLeftWeapon())) {
+            if (enemy.getResistance().equals(pc.getCurrentEquipment().getLeftWeapon().getDamageType())){
+                resistMod = enemy.getResistMod();
+            } else if (enemy.getWeakness().equals(pc.getCurrentEquipment().getLeftWeapon().getDamageType())) {
+                weakMod = enemy.getWeakMod();
+            }
+        } else if (attackDamage == spellSlot.totalSpellDamage(spellSlot.getSpellSlots().get(0))) {
+            if (enemy.getResistance().equals(spellSlot.getSpellSlots().get(0).getDamageType())){
+                resistMod = enemy.getResistMod();
+            } else if (enemy.getWeakness().equals(spellSlot.getSpellSlots().get(0).getDamageType())) {
+                weakMod = enemy.getWeakMod();
+            }
+        } else if (attackDamage == spellSlot.totalSpellDamage(spellSlot.getSpellSlots().get(1))) {
+            if (enemy.getResistance().equals(spellSlot.getSpellSlots().get(1).getDamageType())){
+                resistMod = enemy.getResistMod();
+            } else if (enemy.getWeakness().equals(spellSlot.getSpellSlots().get(1).getDamageType())) {
+                weakMod = enemy.getWeakMod();
+            }
+        } else if (attackDamage == spellSlot.totalSpellDamage(spellSlot.getSpellSlots().get(2))) {
+            if (enemy.getResistance().equals(spellSlot.getSpellSlots().get(2).getDamageType())){
+                resistMod = enemy.getResistMod();
+            } else if (enemy.getWeakness().equals(spellSlot.getSpellSlots().get(2).getDamageType())) {
+                weakMod = enemy.getWeakMod();
+            }
+        } else if (attackDamage == spellSlot.totalSpellDamage(spellSlot.getSpellSlots().get(3))) {
+            if (enemy.getResistance().equals(spellSlot.getSpellSlots().get(3).getDamageType())){
+                resistMod = enemy.getResistMod();
+            } else if (enemy.getWeakness().equals(spellSlot.getSpellSlots().get(3).getDamageType())) {
+                weakMod = enemy.getWeakMod();
+            }
         }
         this.finalDamage = (int) (attackDamage + attackDamage*weakMod - attackDamage*resistMod);
     }
 
     public void calcEnemyDamage(PlayableCharacter pc,Enemy enemy){
         if (chosenDodge==true){
-            this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * (dodge + pc.getDefenceModifier()/10)));
+            Random rand = new Random();
+            double rand_doub = rand.nextDouble();
+            if (rand_doub<=dodge){
+                this.finalDamage= 0;
+                System.out.println("You successfully dodged the enemy attack!");
+            } else {
+                this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * (pc.getDefenceModifier()/10)));
+            }
         } else if (chosenBlock==true) {
             this.finalDamage = (int)(enemy.getEnemyAttack() - (enemy.getEnemyAttack() * (block + pc.getDefenceModifier()/10)));
         }

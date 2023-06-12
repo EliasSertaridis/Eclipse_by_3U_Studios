@@ -1,5 +1,6 @@
 public class Character {
     private String name;
+    private String gender;
     private int hp;
     private int strength;
     private int dexterity;
@@ -8,8 +9,9 @@ public class Character {
     private int wisdom;
     private int maxHP;
 
-    public Character(String name, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom) {
+    public Character(String name, String gender, int hp, int strength, int dexterity, int vitality, int intelligence, int wisdom) {
         this.name = name;
+        this.gender = gender;
         this.hp = hp;
         this.strength = strength;
         this.dexterity = dexterity;
@@ -27,6 +29,14 @@ public class Character {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public int getHp() {
