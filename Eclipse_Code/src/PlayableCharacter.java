@@ -12,6 +12,7 @@ public class PlayableCharacter extends Character{
     private Inventory inventory;
     private SpellSlot spellSlot;
     private Class pc_class;
+    private Map <String, Integer> reputation;
 
     public PlayableCharacter(){
         super();
@@ -116,20 +117,68 @@ public class PlayableCharacter extends Character{
         playerStats.put(getName(),getHp());
         return playerStats;
     }
-
+    public void setReputation(){
+        Map<String,Integer> repWithMerch = new HashMap<>();
+        repWithMerch.put(Race.raceType.Human.toString(), 1);
+        repWithMerch.put(Race.raceType.Ork.toString(),1);
+        repWithMerch.put(Race.raceType.Elf.toString(),1);
+        repWithMerch.put(Race.raceType.Dwarf.toString(),1);
+        repWithMerch.put(Race.raceType.Halfling.toString(),1);
+        this.reputation = repWithMerch;
+    }
+    public Map getReputation(){
+        return reputation;
+    }
     //function that takes the race of a merchant and returns the reputation of the character with that merchant
     public int getReputationWithTypeOfMerchant(Merchant merchant){
-        String raceofmerch = String.valueOf(merchant.getRace());
+        String raceOfMerch = String.valueOf(merchant.getRace());
         //loop for accessing the map with the reputation of the character with the different races of merchants
         //and when it finds the one we want it returns it
-        for(Map.Entry<String, Integer> entry : race.getReputationWithMerchantRaces().entrySet()){
+        for(Map.Entry<String, Integer> entry : reputation.entrySet()){
             // if the key value of the map is the same with the race of the merchant,return the reputation with that
             //race, else return 0
-            if(raceofmerch.equals( entry.getKey())){
+            if(Objects.equals(raceOfMerch, entry.getKey())){
                 return entry.getValue();
             }
         }
         return 0;
+    }
+
+    //checks if the character has enough money to buy an item from a merchant
+    public boolean hasEnoughMoney(float price){
+        float playerMoney = getMoney();
+        if(playerMoney < price){
+            return false;
+        }
+        else if(playerMoney > price){
+            return true;
+        }
+        else{
+            System.out.println("Warning: After this purchase you will be broke!");
+            return true;
+        }
+    }
+
+    public void reduceMoney(Merchant merchant, Item item){
+        Map<Item, Float> prices = merchant.getPrices();
+        for(Map.Entry<Item, Float> entry : prices.entrySet()){
+            if(item.getName().equals(entry.getKey())){
+                float reducedMoney = getMoney() - entry.getValue();
+                setMoney((int) reducedMoney);
+                break;
+            }
+        }
+    }
+
+    public void incReputationWithTypeOfMerchant(Merchant merchant){
+        String raceOfMerch = String.valueOf(merchant.getRace());
+        for(Map.Entry<String, Integer> entry : reputation.entrySet()){
+            // if the key value of the map is the same with the race of the merchant,return the reputation with that
+            //race, else return 0
+            if(Objects.equals(raceOfMerch, entry.getKey())){
+                entry.setValue(entry.getValue() + 1);
+            }
+        }
     }
     public void setDefenceMod(){
         this.defenceModifier = currentEquipment.getTotalDefense();
